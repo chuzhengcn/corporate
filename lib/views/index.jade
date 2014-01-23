@@ -1,0 +1,45 @@
+extends layout
+
+block head
+    link(rel="stylesheet", href="/stylesheets/index.css")
+
+block content
+    .container
+        .masthead
+            h3.text-muted 深圳中港众和投资
+            ul.nav.nav-justified
+                li.active
+                    a(href="#") 首页
+                li
+                    a(href="#") 公司简介
+                li
+                    a(href="#") 公司项目
+                li
+                    a(href="#") 人才招聘
+                li
+                    a(href="#") 联系我们
+        .jumbotron
+            h1 我们是谁
+            p 这里是一些介绍的文字
+            p
+                a.btn.btn-lg.btn-success(href="＃", role="button") 希望客户采取的动作
+        .row
+            .col-lg-4
+                h2 最新通知
+                p.text-danger 祝贺北京拍的xxx地块
+                p
+                    a.btn.btn-primary(href="#") 了解详情
+            .col-lg-4
+                h2 太白县参观考察
+                p.text-danger 祝贺北京拍的xxx地块
+                p
+                    a.btn.btn-primary(href="#") 了解详情
+            .col-lg-4
+                h2 最新通知
+                p 祝贺北京拍的xxx地块
+                p
+                    a.btn.btn-primary(href="#") 了解详情
+
+        .footer
+            p 公司版权
+

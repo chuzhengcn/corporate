@@ -1,0 +1,108 @@
+extends layout
+
+block head
+    link(rel="stylesheet", href="/stylesheets/index2.css")
+
+block content
+    .navbar-wrapper
+        .container
+            .navbar.navbar-inverse.navbar-static-top(role="navigation")
+                .navbar-header
+                    button.navbar-toggle(type="button", data-toggle="collapse", data-target=".navbar-collapse")
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand(href="#") 深圳中港众和投资
+                .navbar-collapse.collapse
+                    ul.nav.navbar-nav
+                        li.active
+                            a(href="#") 首页
+                        li
+                            a(href="#") 公司简介
+                        li
+                            a(href="#") 公司项目
+                        li
+                            a(href="#") 人才招聘
+                        li
+                            a(href="#") 联系我们
+                        li.dropdown
+                            a.dropdown-toggle(href="#", data-toggle="dropdown") 下拉导航 
+                                b.caret
+                            ul.dropdown-menu
+                                li
+                                    a(href="#") 二级链接
+                                li
+                                    a(href="#") 二级链接
+                                li
+                                    a(href="#") 二级链接
+                                li.divider
+                                li.dropdown-header
+                                li
+                                    a(href="#") 二级链接
+                                li
+                                    a(href="#") 二级链接
+            #myCarousel.carousel.slide(data-ride="carousel")
+                ol.carousel-indicators
+                    li.active(data-target="#myCarousel", data-slide-to="0")
+                    li(data-target="#myCarousel", data-slide-to="1")
+                    li(data-target="#myCarousel", data-slide-to="2")
+                .carousel-inner
+                        .item.active
+                            img(data-src="", alt="First slide")
+                            .container
+                                .carousel-caption
+                                    h1 Example headline.
+                                    p Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.
+                        .item
+                            img(data-src="", alt="First slide")
+                            .container
+                                .carousel-caption
+                                    h1 Example headline.
+                                    p Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.
+                        .item
+                            img(data-src="", alt="First slide")
+                            .container
+                                .carousel-caption
+                                    h1 Example headline.
+                                    p Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.
+                a.left.carousel-control(href="#myCarousel", data-slide="prev")
+                    span.glyphicon.glyphicon-chevron-left
+                a.right.carousel-control(href="#myCarousel", data-slide="next")
+                    span.glyphicon.glyphicon-chevron-right
+            .container.marketing
+                .row
+                    .col-lg-4
+                        img.img-circle(data-src="holder.js/140x140",alt="Generic placeholder image")
+                        h2 heading
+                        p 一些介绍
+                        p
+                            a.btn(href="#") 了解详情
+                    .col-lg-4
+                        img.img-circle(data-src="holder.js/140x140",alt="Generic placeholder image")
+                        h2 heading
+                        p 一些介绍
+                        p
+                            a.btn(href="#") 了解详情
+                    .col-lg-4
+                        img.img-circle(data-src="holder.js/140x140",alt="Generic placeholder image")
+                        h2 heading
+                        p 一些介绍
+                        p
+                            a.btn(href="#") 了解详情
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
