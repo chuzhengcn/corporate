@@ -1,22 +1,12 @@
 {
-    "name" : "zhonggangzhonghe",
-    "description" : "website",
-    "author" : "chuzheng",
-    "version" : "0.0.1",
-    "private" : true,
-    "main" : "./lib/app.js",
-    "engines": { 
-        "node": "*" 
-    },
-    "dependencies": {
-        "express"   : "3.x",
-        "jade"      : "*",
-        "stylus"    : "*",
-        "mongodb"   : "*",
-        "mongoose"  : "*"
-    },
-    "scripts": {
-        "start": "node ./lib/app.js",
-        "test": "make test"
-    }
-} 
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.4.8",
+    "jade": "*"
+  }
+}
