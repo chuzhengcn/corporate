@@ -1,5 +1,75 @@
 extends layout
 
-block content
-  h1= title
-  p Welcome to #{title}
+append body
+    div.body
+        header
+            .container
+                h1.logo
+                    a(href="/")
+                        img(alt="扉页软件", src="/img/logo.png",data-small-height="44")
+                .navbar-collapse.nav-main-collapse.collapse
+                    nav.nav-main.mega-menu
+                        ul#mainMenu.nav.nav-pills.nav-main
+                            li.active
+                                a(href="/") 首页
+                            li
+                                a(href="") 联系我们
+                button.btn.btn-responsive-nav.btn-inverse(data-toggle="collapse",
+                        data-target=".nav-main-collapse")
+                    i.icon.icon-bars
+        .main(role="main")
+            #content.content.full
+                section.home-top-clean
+                    .slider-container
+                        #topRevolutionSlider.slider(data-plugin-options='{"startheight": 600}')
+                            ul
+                                li(data-transition="fade",data-slotamount="13",
+                                        data-masterspeed="300")
+                                    img(src="/img/slides/slide-basic-bg-1.jpg",
+                                            data-bgposition="left top", 
+                                            data-bgrepeat="no-repeat")
+
+                                    .tp-caption.top-label.md.customin(data-x="left",
+                                            data-hoffset="15",
+                                            data-y="170",
+                                            data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;",
+                                            data-speed="800",
+                                            data-start="0",
+                                            data-easing="Back.easeInOut",
+                                            data-endspeed="300") Everything for your new
+
+                                    .tp-caption.main-label.md.customin(data-x="left",
+                                            data-hoffset="15",
+                                            data-y="190",
+                                            data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;",
+                                            data-speed="800",
+                                            data-start="300",
+                                            data-easing="Back.easeInOut",
+                                            data-endspeed="300") WEBSITE
+
+                                    .tp-caption.bottom-label.md.sfb(data-x="left",
+                                            data-hoffset="35",
+                                            data-y="290",
+                                            data-speed="800",
+                                            data-start="500",
+                                            data-easing="Back.easeInOut",
+                                            data-endspeed="300") HTML5 . Bootstrap 3 . Premium Sliders . Unlimited Colors
+
+                                    .tp-caption.sft(data-x="left",
+                                            data-hoffset="105",
+                                            data-y="340",
+                                            data-speed="800",
+                                            data-start="700",
+                                            data-easing="Back.easeInOut",
+                                            data-endspeed="300")
+                                        a.btn.btn-lg.btn-primary.main-button(data-hash href="#get-started") Get Started Now!
+
+                                    .tp-caption.sfb(data-x="right",
+                                            data-hoffset="10",
+                                            data-y="center" data-voffset="10",
+                                            data-speed="1000",
+                                            data-start="700",
+                                            data-easing="Back.easeInOut",
+                                            data-endspeed="300")
+                                        img(src="/img/slides/slide-caption-1.png")
+
