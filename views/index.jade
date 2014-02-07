@@ -1,4 +1,14 @@
 extends layout
+
+append js
+    // Current Page Scripts 
+    script(src="/js/views/view.home.js")
+
+    // Theme Initializer
+    script(src="js/theme.js")
+
+    // Custom JS 
+    script(src="/js/custom.js")
     
 append body
     .body
@@ -22,44 +32,114 @@ append body
                     i.icon.icon-bars
         .main(role="main")
             #content.content.full
-                section.home-top-clean
+                section.home-top.with-carousel
                     .slider-container
-                        #topRevolutionSlider.slider(data-plugin-options="{'startheight': 600}")
+                        #topRevolutionSlider.slider
                             ul
                                 li(data-transition="fade", data-slotamount="13", data-masterspeed="300")
-                                    img(src="/img/slides/slide-basic-bg-1.jpg", data-bgposition="left top", data-bgrepeat="no-repeat")
-                                    .tp-caption.top-label.md.customin(data-x="left", data-hoffset="15", data-y="170", data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;", data-speed="800", data-start="0", data-easing="Back.easeInOut", data-endspeed="300")
-                                        | Everything for your new
-                                    .tp-caption.main-label.md.customin(data-x="left", data-hoffset="15", data-y="190", data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;", data-speed="800", data-start="300", data-easing="Back.easeInOut", data-endspeed="300")
-                                        | WEBSITE
-                                    .tp-caption.bottom-label.md.sfb(data-x="left", data-hoffset="35", data-y="290", data-speed="800", data-start="500", data-easing="Back.easeInOut", data-endspeed="300")
-                                        | HTML5 &period; Bootstrap 3 &period; Premium Sliders &period; Unlimited Colors
-                                    .tp-caption.sft(data-x="left", data-hoffset="105", data-y="340", data-speed="800", data-start="700", data-easing="Back.easeInOut", data-endspeed="300")
-                                        a.btn.btn-lg.btn-primary.main-button(data-hash="", href="#get-started") Get Started Now&excl;
-                                    .tp-caption.sfb(data-x="right", data-hoffset="10", data-y="center", data-voffset="10", data-speed="1000", data-start="700", data-easing="Back.easeInOut", data-endspeed="300")
-                                        img(src="/img/slides/slide-caption-1.png")
-                                li(data-transition="fade", data-slotamount="13", data-masterspeed="300")
-                                    img(src="/img/slides/slide-clean-bg-1.jpg", data-bgposition="left top", data-bgrepeat="no-repeat")
-                                    .tp-caption.sfr(data-x="center", data-hoffset="-200", data-y="center", data-voffset="30", data-speed="800", data-start="0", data-easing="Back.easeInOut", data-endspeed="300")
-                                        img(src="/img/slides/slide-mockup-1.png")
-                                    .tp-caption.sfr(data-x="center", data-hoffset="0", data-y="center", data-voffset="30", data-speed="800", data-start="300", data-easing="Back.easeInOut", data-endspeed="300")
-                                        img(src="/img/slides/slide-mockup-2.png")
-                                    .tp-caption.sfr(data-x="center", data-hoffset="200", data-y="center", data-voffset="30", data-speed="800", data-start="600", data-easing="Back.easeInOut", data-endspeed="300")
-                                        img(src="/img/slides/slide-mockup-3.png")
-                                    .tp-caption.text-bg.text-bg-dark.white.top-label.sfr(data-x="left", data-hoffset="130", data-y="center", data-voffset="-52", data-speed="800", data-start="500", data-easing="Back.easeInOut", data-endspeed="300", style="z-index: 1001; padding: 10px;")
-                                        | Everything you need&period;
-                                        br
-                                    .tp-caption.text-bg.white.top-label.sfr(data-x="left", data-hoffset="130", data-y="center", data-voffset="-10", data-speed="800", data-start="500", data-easing="Back.easeInOut", data-endspeed="300", style="z-index: 1001; padding: 10px;")
-                                        small to build your next website&period;
+                                    img(src="img/blank.gif", data-bgposition="left top", data-bgrepeat="no-repeat")
+                                    .tp-caption.top-label.customin(data-x="center", data-hoffset="0", data-y="135", data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;", data-speed="800", data-start="0", data-easing="Back.easeInOut", data-endspeed="300")
+                                        | 为移动时代创建新的
+                                    .tp-caption.top-label.sfr.visible-md.visible-lg(data-x="center", data-hoffset="-300", data-y="150", data-speed="800", data-start="0", data-easing="Back.easeInOut", data-endspeed="300")
+                                        .top-line
+                                    .tp-caption.top-label.sfl.visible-md.visible-lg(data-x="center", data-hoffset="300", data-y="150", data-speed="800", data-start="0", data-easing="Back.easeInOut", data-endspeed="300")
+                                        .top-line
+                                    .tp-caption.main-label.customin(data-x="center", data-hoffset="0", data-y="160", data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;", data-speed="800", data-start="300", data-easing="Back.easeInOut", data-endspeed="300")
+                                        | 响应式网站
+                                    .tp-caption.bottom-label.sfb(data-x="center", data-hoffset="0", data-y="310", data-speed="800", data-start="500", data-easing="Back.easeInOut", data-endspeed="300")
+                                        | 优雅 &period; 易用 &period; 稳定
+                                    .tp-caption.sft(data-x="center", data-hoffset="0", data-y="390", data-speed="800", data-start="700", data-easing="Back.easeInOut", data-endspeed="300")
+                                        a.btn.btn-lg.btn-primary.main-button(data-hash="", href="#get-started") 了解更多
+                    .main-carousel
+                        .owl-carousel.manual
+                            div
+                                .portfolio-item
+                                    a.thumb-info.img-thumbnail(href="portfolio-single.html", data-tooltip="婚礼网站")
+                                        span.thumb-info-image
+                                            span.thumb-info-act
+                                                span.thumb-info-act-left
+                                                    em 查看
+                                                span.thumb-info-act-right
+                                                    em
+                                                        i.icon.icon-plus
+                                                        |  详细
+                                            img.img-responsive(alt="", src="/img/projects/project-1.jpg")
+                            div
+                                .portfolio-item
+                                    a.thumb-info.img-thumbnail(href="portfolio-single.html", data-tooltip="公司官网")
+                                        span.thumb-info-image
+                                            span.thumb-info-act
+                                                span.thumb-info-act-left
+                                                    em 查看
+                                                span.thumb-info-act-right
+                                                    em
+                                                        i.icon.icon-plus
+                                                        | 详细
+                                            img.img-responsive(alt="", src="img/projects/project-2.jpg")
+                            div
+                                .portfolio-item
+                                    a.thumb-info.img-thumbnail(href="portfolio-single.html", data-tooltip="个人站点")
+                                        span.thumb-info-image
+                                            span.thumb-info-act
+                                                span.thumb-info-act-left
+                                                    em View
+                                                span.thumb-info-act-right
+                                                    em
+                                                        i.icon.icon-plus
+                                                        | Details
+                                            img.img-responsive(alt="", src="img/projects/project-3.jpg")
+                            div
+                                .portfolio-item
+                                    a.thumb-info.img-thumbnail(href="portfolio-single.html", data-tooltip="个人简历")
+                                        span.thumb-info-image
+                                            span.thumb-info-act
+                                                span.thumb-info-act-left
+                                                    em View
+                                                span.thumb-info-act-right
+                                                    em
+                                                        i.icon.icon-plus
+                                                        | Details
+                                            img.img-responsive(alt="", src="img/projects/project-4.jpg")
+                            div
+                                .portfolio-item
+                                    a.thumb-info.img-thumbnail(href="portfolio-single.html", data-tooltip="非营利组织网站")
+                                        span.thumb-info-image
+                                            span.thumb-info-act
+                                                span.thumb-info-act-left
+                                                    em View
+                                                span.thumb-info-act-right
+                                                    em
+                                                        i.icon.icon-plus
+                                                        | Details
+                                            img.img-responsive(alt="", src="img/projects/project-5.jpg")
+                            div
+                                .portfolio-item
+                                    a.thumb-info.img-thumbnail(href="portfolio-single.html", data-tooltip="微信开发")
+                                        span.thumb-info-image
+                                            span.thumb-info-act
+                                                span.thumb-info-act-left
+                                                    em View
+                                                span.thumb-info-act-right
+                                                    em
+                                                        i.icon.icon-plus
+                                                        | Details
+                                            img.img-responsive(alt="", src="img/projects/project-6.jpg")
+                            div
+                                .portfolio-item
+                                    a.thumb-info.img-thumbnail(href="portfolio-single.html", data-tooltip="产品&零售")
+                                        span.thumb-info-image
+                                            span.thumb-info-act
+                                                span.thumb-info-act-left
+                                                    em View
+                                                span.thumb-info-act-right
+                                                    em
+                                                        i.icon.icon-plus
+                                                        | Details
+                                            img.img-responsive(alt="", src="img/projects/project-7.jpg")
             .container
                 #get-started.row.center
                     .col-md-12
-                        h2.short.lead
-                            | We
-                            strong.alternative-font.default love
-                            | what we do&comma; and you will love too&period;
-                        p.featured.lead
-                            | Lorem ipsum dolor sit amet&comma; consectetur adipiscing elit&period; Quisque rutrum pellentesque imperdiet&period; Nulla lacinia iaculis nulla non metus&period; pulvinar&period; Cum sociis natoque penatibus et magnis dis parturient montes&comma; nascetur ridiculus mus&period; Ut eu risus enim&comma; ut pulvinar lectus&period; Sed hendrerit nibh&period;
+                        h2.short.lead 我们爱自己的作品，你也会爱上它。
                 hr.tall
                 .row.featured-boxes.tertiary
                     .col-md-3
@@ -87,127 +167,6 @@ append body
                                 h4 Well Documented
                                 p Donec id elit non mi porta gravida at eget metus&period; Fusce dapibus&period;
                 hr.tall.invisible
-            ul.portfolio-list.sort-destination.full-width
-                li.col-md-2.isotope-item.websites
-                    .portfolio-item
-                        a.thumb-info.secundary(href="portfolio-single.html")
-                            span.thumb-info-image
-                                span.thumb-info-act
-                                    span.thumb-info-content
-                                        h4 Apolo Website
-                                        span.date January 10&comma; 2013
-                                        span.label.label-primary view project
-                                img.img-responsive(alt="", src="img/projects/project-1.jpg")
-                li.col-md-2.isotope-item.brands
-                    .portfolio-item.img-thumbnail
-                        a.thumb-info.secundary(href="portfolio-single.html")
-                            span.thumb-info-image
-                                span.thumb-info-act
-                                    span.thumb-info-content
-                                        h4 Company T-Shirt
-                                        span.date January 10&comma; 2013
-                                        span.label.label-primary view project
-                                img.img-responsive(alt="", src="img/projects/project-2.jpg")
-                li.col-md-2.isotope-item.elements
-                    .portfolio-item.img-thumbnail
-                        a.thumb-info.secundary(href="portfolio-single.html")
-                            span.thumb-info-image
-                                span.thumb-info-act
-                                    span.thumb-info-content
-                                        h4 Dark Icons
-                                        span.date January 10&comma; 2013
-                                        span.label.label-primary view project
-                                img.img-responsive(alt="", src="img/projects/project-3.jpg")
-                li.col-md-2.isotope-item.elements
-                    .portfolio-item.img-thumbnail
-                        a.thumb-info.secundary(href="portfolio-single.html")
-                            span.thumb-info-image
-                                span.thumb-info-act
-                                    span.thumb-info-content
-                                        h4 Toolbars Custom Design
-                                        span.date January 10&comma; 2013
-                                        span.label.label-primary view project
-                                img.img-responsive(alt="", src="img/projects/project-4.jpg")
-                li.col-md-2.isotope-item.brands
-                    .portfolio-item.img-thumbnail
-                        a.thumb-info.secundary(href="portfolio-single.html")
-                            span.thumb-info-image
-                                span.thumb-info-act
-                                    span.thumb-info-content
-                                        h4 Personal Card
-                                        span.date January 10&comma; 2013
-                                        span.label.label-primary view project
-                                img.img-responsive(alt="", src="img/projects/project-6.jpg")
-                li.col-md-2.isotope-item.others
-                    .portfolio-item.img-thumbnail
-                        a.thumb-info.secundary(href="portfolio-single.html")
-                            span.thumb-info-image
-                                span.thumb-info-act
-                                    span.thumb-info-content
-                                        h4 Magazine Fashion
-                                        span.date January 10&comma; 2013
-                                        span.label.label-primary view project
-                                img.img-responsive(alt="", src="img/projects/project-5.jpg")
-                li.col-md-2.isotope-item.websites
-                    .portfolio-item.img-thumbnail
-                        a.thumb-info.secundary(href="portfolio-single.html")
-                            span.thumb-info-image
-                                span.thumb-info-act
-                                    span.thumb-info-content
-                                        h4 JetOrange Website
-                                        span.date January 10&comma; 2013
-                                        span.label.label-primary view project
-                                img.img-responsive(alt="", src="img/projects/project-7.jpg")
-                li.col-md-2.isotope-item.elements
-                    .portfolio-item.img-thumbnail
-                        a.thumb-info.secundary(href="portfolio-single.html")
-                            span.thumb-info-image
-                                span.thumb-info-act
-                                    span.thumb-info-content
-                                        h4 Chat Design
-                                        span.date January 10&comma; 2013
-                                        span.label.label-primary view project
-                                img.img-responsive(alt="", src="img/projects/project-8.jpg")
-                li.col-md-2.isotope-item.elements
-                    .portfolio-item.img-thumbnail
-                        a.thumb-info.secundary(href="portfolio-single.html")
-                            span.thumb-info-image
-                                span.thumb-info-act
-                                    span.thumb-info-content
-                                        h4 Dark Dropdown
-                                        span.date January 10&comma; 2013
-                                        span.label.label-primary view project
-                                img.img-responsive(alt="", src="img/projects/project-9.jpg")
-                li.col-md-2.isotope-item.elements
-                    .portfolio-item.img-thumbnail
-                        a.thumb-info.secundary(href="portfolio-single.html")
-                            span.thumb-info-image
-                                span.thumb-info-act
-                                    span.thumb-info-content
-                                        h4 Cool Pig Slideshow
-                                        span.date January 10&comma; 2013
-                                        span.label.label-primary view project
-                                img.img-responsive(alt="", src="img/projects/project-10.jpg")
-                li.col-md-2.isotope-item.icons
-                    .portfolio-item.img-thumbnail
-                        a.thumb-info.secundary(href="portfolio-single.html")
-                            span.thumb-info-image
-                                span.thumb-info-act
-                                    span.thumb-info-content
-                                        h4 Flat Icons
-                                        span.date January 10&comma; 2013
-                                        span.label.label-primary view project
-                                img.img-responsive(alt="", src="img/projects/project-11.jpg")
-                li.col-md-2.isotope-item.others
-                    .portfolio-item.img-thumbnail
-                        a.thumb-info.secundary(href="portfolio-single.html")
-                            span.thumb-info-image
-                                span.thumb-info-act
-                                    span.thumb-info-content
-                                        h4 Browser Design
-                                        span.date January 10&comma; 2013
-                                        span.label.label-primary view project
-                                img.img-responsive(alt="", src="img/projects/project-12.jpg")
             section.featured.highlight
                 .container
                     .row.center.counters
