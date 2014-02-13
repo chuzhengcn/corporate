@@ -1,0 +1,460 @@
+doctype html
+//if IE 8
+    html.ie.ie8  
+//if IE 9
+    html.ie.ie9  
+// [if gt IE 9] <!
+html
+    // <![endif]
+    head
+        // Basic
+        meta(charset="utf-8")
+        title Services &VerticalLine; Tucson - Responsive HTML5 Template
+        meta(name="keywords", content="HTML5 Template")
+        meta(name="description", content="Tucson - Responsive HTML5 Template")
+        meta(name="author", content="Crivos.com")
+        // Mobile Metas
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        // Web Fonts
+        link(href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Alegreya|Alegreya+SC|Oswald:400,300", rel="stylesheet", type="text/css")
+        // Libs CSS
+        link(rel="stylesheet", href="css/bootstrap.css")
+        link(rel="stylesheet", href="css/fonts/font-awesome/css/font-awesome.css")
+        link(rel="stylesheet", href="vendor/owl-carousel/owl.carousel.css", media="screen")
+        link(rel="stylesheet", href="vendor/owl-carousel/owl.theme.css", media="screen")
+        link(rel="stylesheet", href="vendor/rs-plugin/css/settings.css", media="screen")
+        link(rel="stylesheet", href="vendor/isotope/jquery.isotope.css", media="screen")
+        link(rel="stylesheet", href="vendor/magnific-popup/magnific-popup.css", media="screen")
+        // Theme CSS
+        link(rel="stylesheet", href="css/theme.css")
+        link(rel="stylesheet", href="css/theme-elements.css")
+        link(rel="stylesheet", href="css/theme-animate.css")
+        // Skin CSS
+        link(rel="stylesheet", href="css/skins/default.css")
+        // Custom CSS
+        link(rel="stylesheet", href="css/custom.css")
+        // Responsive CSS
+        link(rel="stylesheet", href="css/theme-responsive.css")
+        // Head Libs
+        script(src="vendor/modernizr.js")
+        //if IE
+            link(rel="stylesheet", href="css/ie.css")
+    body
+        .body
+            header
+                .container
+                    h1.logo
+                        a(href="index.html")
+                            img(alt="Tucson", src="img/logo.png", data-small-height="44")
+                    .navbar-collapse.nav-main-collapse.collapse
+                        #headerSearch.search
+                            a#headerSearchOpen(href="#")
+                                i.icon.icon-search
+                            .search-input
+                                form#headerSearchForm(action="page-search-results.html", method="get")
+                                    .input-group
+                                        input#q.form-control.search(type="text", name="q", placeholder="Search...")
+                                        span.input-group-btn
+                                            button.btn.btn-primary(type="button")
+                                                i.icon.icon-search
+                        nav.nav-main.mega-menu
+                            ul#mainMenu.nav.nav-pills.nav-main
+                                li.dropdown
+                                    a.dropdown-toggle(href="#")
+                                        | Home
+                                        i.icon.icon-caret-down
+                                    ul.dropdown-menu
+                                        li
+                                            a(href="index.html") Home - Default
+                                        li
+                                            a(href="index-basic.html") Home - Basic
+                                        li
+                                            a(href="index-video.html") Home - Video
+                                        li
+                                            a(href="index-extended.html") Home - Extended
+                                        li
+                                            a(href="index-blog.html") Home - Blog
+                                li
+                                    a(href="shortcodes.html")
+                                        | Shortcodes
+                                li.dropdown.mega-menu-item.mega-menu-fullwidth
+                                    a.dropdown-toggle(href="#")
+                                        | Features
+                                        i.icon.icon-caret-down
+                                    ul.dropdown-menu
+                                        li
+                                            .mega-menu-content
+                                                .row
+                                                    .col-md-3
+                                                        ul.sub-menu
+                                                            li
+                                                                span.mega-menu-sub-title Main Features
+                                                                ul.sub-menu
+                                                                    li
+                                                                        a(href="feature-grid-system.html") Grid System
+                                                                    li
+                                                                        a(href="feature-pricing-tables.html") Pricing Tables
+                                                                    li
+                                                                        a(href="feature-icons.html") Icons
+                                                                    li
+                                                                        a(href="feature-animations.html") Animations
+                                                                    li
+                                                                        a(href="feature-typograpy.html") Typograpy
+                                                                    li
+                                                                        a(href="feature-testimonials.html") Testimonials
+                                                    .col-md-3
+                                                        ul.sub-menu
+                                                            li
+                                                                span.mega-menu-sub-title Blog
+                                                                ul.sub-menu
+                                                                    li
+                                                                        a(href="blog-full-width.html") Blog Full Width
+                                                                    li
+                                                                        a(href="blog-large-image.html") Blog Large Image
+                                                                    li
+                                                                        a(href="blog-medium-image.html") Blog Medium Image
+                                                                    li
+                                                                        a(href="blog-timeline.html") Blog Timeline
+                                                                    li
+                                                                        a(href="blog-masonry.html") Blog Masonry
+                                                                    li
+                                                                        a(href="blog-masonry-full-width.html") Blog Masonry - Full Width
+                                                                    li
+                                                                        a(href="blog-masonry-sidebar.html") Blog Masonry - Sidebar
+                                                                    li
+                                                                        a(href="blog-post.html") Single Post
+                                                    .col-md-3
+                                                        ul.sub-menu
+                                                            li
+                                                                span.mega-menu-sub-title Headers
+                                                                ul.sub-menu
+                                                                    li
+                                                                        a(href="index-header-1.html") Header Version 1
+                                                                    li
+                                                                        a(href="index-header-2.html") Header Version 2
+                                                                    li
+                                                                        a(href="index-header-3.html") Header Version 3
+                                                                    li
+                                                                        a(href="index-header-4.html") Header Version 4
+                                                                    li
+                                                                        a(href="index-header-big-logo.html") Header - Big Logo
+                                                    .col-md-3
+                                                        ul.sub-menu
+                                                            li
+                                                                span.mega-menu-sub-title Shop
+                                                                ul.sub-menu
+                                                                    li
+                                                                        a(href="shop-full-width.html") Shop - Full Width
+                                                                    li
+                                                                        a(href="shop-sidebar.html") Shop - Sidebar
+                                                                    li
+                                                                        a(href="shop-product-full-width.html") Shop - Product Full Width
+                                                                    li
+                                                                        a(href="shop-product-sidebar.html") Shop - Product Sidebar
+                                                                    li
+                                                                        a(href="shop-cart.html") Shop - Cart
+                                                                    li
+                                                                        a(href="shop-login.html") Shop - Login
+                                                                    li
+                                                                        a(href="shop-checkout.html") Shop - Checkout
+                                li.dropdown
+                                    a.dropdown-toggle(href="#")
+                                        | Portfolio
+                                        i.icon.icon-caret-down
+                                    ul.dropdown-menu
+                                        li
+                                            a(href="portfolio-4-columns.html") 4 Columns
+                                        li
+                                            a(href="portfolio-3-columns.html") 3 Columns
+                                        li
+                                            a(href="portfolio-lightbox.html") Portfolio Lightbox
+                                        li
+                                            a(href="portfolio-timeline.html") Portfolio Timeline
+                                        li
+                                            a(href="portfolio-full-width.html") Portfolio Full Width
+                                        li
+                                            a(href="portfolio-single.html") Single - Basic
+                                        li
+                                            a(href="portfolio-single-extended.html") Single - Extended
+                                        li
+                                            a(href="portfolio-single-full-slider.html") Single - Full Slider
+                                        li
+                                            a(href="portfolio-single-sidebar.html") Single - Sidebar
+                                li.dropdown.active
+                                    a.dropdown-toggle(href="#")
+                                        | Pages
+                                        i.icon.icon-caret-down
+                                    ul.dropdown-menu
+                                        li
+                                            a(href="page-about-us.html") About Us
+                                        li
+                                            a(href="page-about-me.html") About Me
+                                        li
+                                            a(href="page-full-width.html") Full width
+                                        li
+                                            a(href="page-left-sidebar.html") Left sidebar
+                                        li
+                                            a(href="page-right-sidebar.html") Right sidebar
+                                        li.dropdown-submenu
+                                            a(href="#") Custom Header
+                                            ul.dropdown-menu
+                                                li
+                                                    a(href="page-custom-header.html") Product - Header
+                                                li
+                                                    a(href="page-custom-header-basic.html") Basic - Header
+                                                li
+                                                    a(href="page-custom-header-video.html") Video - Header
+                                                li
+                                                    a(href="page-custom-header-overlay.html") Overlay - Header
+                                                li
+                                                    a(href="page-custom-header-parallax.html") Parallax - Header
+                                                li
+                                                    a(href="page-custom-header-slideshow.html") Slideshow - Header
+                                        li
+                                            a(href="page-404.html") 404 Error
+                                        li
+                                            a(href="page-team.html") Team
+                                        li
+                                            a(href="page-services.html") Services
+                                        li
+                                            a(href="page-faq.html") FAQ
+                                li.dropdown
+                                    a.dropdown-toggle(href="#")
+                                        | Contact Us
+                                        i.icon.icon-caret-down
+                                    ul.dropdown-menu
+                                        li
+                                            a(href="contact-us.html") Version 1
+                                        li
+                                            a(href="contact-us-2.html") Version 2
+                    button.btn.btn-responsive-nav.btn-inverse(data-toggle="collapse", data-target=".nav-main-collapse")
+                        i.icon.icon-bars
+            .main(role="main")
+                section.page-top
+                    .slider-container
+                        .slider.page-top-slider(data-plugin-options="{'startheight': 250}")
+                            ul
+                                li(data-transition="fade", data-slotamount="1", data-masterspeed="300")
+                                    img(src="img/header-default-bg.jpg", data-bgfit="cover", data-bgposition="left top", data-bgrepeat="no-repeat")
+                    .page-top-info.with-slider.container
+                        .row
+                            .col-md-12
+                                ul.breadcrumb
+                                    li
+                                        a(href="index.html") Home
+                                    li.active Pages
+                        .row
+                            .col-md-12
+                                h2 Services
+                .container
+                    h2
+                        | Our
+                        strong Services
+                    .row
+                        .col-md-10
+                            p.lead
+                                | Lorem ipsum dolor sit amet&comma; consectetur adipiscing elit&period; Quisque rutrum pellentesque imperdiet&period; Nulla lacinia iaculis nulla non pulvinar&period; Cum sociis natoque penatibus et magnis dis parturient montes&comma; nascetur ridiculus mus&period; Ut eu risus enim&comma; ut pulvinar lectus&period; Sed hendrerit nibh metus&period;
+                        .col-md-2
+                            a.btn.btn-lg.btn-primary.push-top.pull-right(href="#") Get in Touch&excl;
+                    hr.tall
+                    .appear-animation(data-appear-animation="fadeInDown")
+                        .row.featured-boxes.secundary
+                            .col-md-2
+                                .appear-animation(data-appear-animation="bounceIn", data-appear-animation-delay="600")
+                                    .featured-box.featured-box-primary
+                                        .box-content
+                                            i.icon-featured.icon.icon-laptop
+                            .col-md-10
+                                h3.short.dark Website Design &amp; Development
+                                h5.short Lorem ipsum dolor sit amet&comma; consectetur adipiscing elit&period;
+                                p
+                                    | Lorem ipsum dolor sit amet&comma; consectetur adipiscing elit&period; Quisque rutrum pellentesque imperdiet&period; Nulla lacinia iaculis nulla non pulvinar&period; Cum sociis natoque penatibus et magnis dis parturient montes&comma; nascetur ridiculus mus&period; Ut eu risus enim&comma; ut pulvinar lectus&period; Sed hendrerit nibh metus&period;
+                    .appear-animation(data-appear-animation="fadeInDown")
+                        .row
+                            .appear-animation(data-appear-animation="fadeIn", data-appear-animation-delay="800")
+                                .col-md-2.center.push-bottom
+                                    span.icon-rounded
+                                        i.icon.icon-plus
+                    .appear-animation(data-appear-animation="fadeInDown")
+                        .row.featured-boxes.secundary
+                            .col-md-2
+                                .appear-animation(data-appear-animation="bounceIn", data-appear-animation-delay="600")
+                                    .featured-box.featured-box-primary
+                                        .box-content
+                                            i.icon-featured.icon.icon-users
+                            .col-md-10
+                                h3.short.dark Project Consulting
+                                h5.short Lorem ipsum dolor sit amet&comma; consectetur adipiscing elit&period;
+                                p
+                                    | Lorem ipsum dolor sit amet&comma; consectetur adipiscing elit&period; Quisque rutrum pellentesque imperdiet&period; Nulla lacinia iaculis nulla non pulvinar&period; Cum sociis natoque penatibus et magnis dis parturient montes&comma; nascetur ridiculus mus&period; Ut eu risus enim&comma; ut pulvinar lectus&period; Sed hendrerit nibh metus&period;
+                    .appear-animation(data-appear-animation="fadeInDown")
+                        .row
+                            .appear-animation(data-appear-animation="fadeIn", data-appear-animation-delay="800")
+                                .col-md-2.center.push-bottom
+                                    span.icon-rounded
+                                        i.icon.icon-plus
+                    .appear-animation(data-appear-animation="fadeInDown")
+                        .row.featured-boxes.secundary
+                            .col-md-2
+                                .appear-animation(data-appear-animation="bounceIn", data-appear-animation-delay="600")
+                                    .featured-box.featured-box-primary
+                                        .box-content
+                                            i.icon-featured.icon.icon-star
+                            .col-md-10
+                                h3.short.dark Marketing
+                                h5.short Lorem ipsum dolor sit amet&comma; consectetur adipiscing elit&period;
+                                p
+                                    | Lorem ipsum dolor sit amet&comma; consectetur adipiscing elit&period; Quisque rutrum pellentesque imperdiet&period; Nulla lacinia iaculis nulla non pulvinar&period; Cum sociis natoque penatibus et magnis dis parturient montes&comma; nascetur ridiculus mus&period; Ut eu risus enim&comma; ut pulvinar lectus&period; Sed hendrerit nibh metus&period;
+                    .appear-animation(data-appear-animation="fadeInDown")
+                        .row
+                            .appear-animation(data-appear-animation="fadeIn", data-appear-animation-delay="800")
+                                .col-md-2.center.push-bottom
+                                    span.icon-rounded
+                                        i.icon.icon-plus
+                    .appear-animation(data-appear-animation="fadeInDown")
+                        .row.featured-boxes.secundary
+                            .col-md-2
+                                .appear-animation(data-appear-animation="bounceIn", data-appear-animation-delay="600")
+                                    .featured-box.featured-box-primary
+                                        .box-content
+                                            i.icon-featured.icon.icon-puzzle-piece
+                            .col-md-10
+                                h3.short.dark Design &amp; Branding
+                                h5.short Lorem ipsum dolor sit amet&comma; consectetur adipiscing elit&period;
+                                p
+                                    | Lorem ipsum dolor sit amet&comma; consectetur adipiscing elit&period; Quisque rutrum pellentesque imperdiet&period; Nulla lacinia iaculis nulla non pulvinar&period; Cum sociis natoque penatibus et magnis dis parturient montes&comma; nascetur ridiculus mus&period; Ut eu risus enim&comma; ut pulvinar lectus&period; Sed hendrerit nibh metus&period;
+                    hr.tall
+                    .row
+                        .col-md-7
+                            h2
+                                | Premium
+                                strong Features
+                            p.lead
+                                | Lorem ipsum dolor sit amet&comma; consectetur adipiscing elit&period; Curabitur imperdiet hendrerit volutpat&period; Sed in nunc nec ligula consectetur mollis in vel justo&period; Vestibulum ante ipsum primis in faucibus orci&period;
+                            p.tall
+                                | Lorem ipsum dolor sit amet&comma; consectetur adipiscing elit&period; Curabitur imperdiet hendrerit volutpat&period; Sed in nunc nec ligula consectetur mollis in vel justo&period; Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae&semi; Praesent scelerisque volutpat turpis&comma; eu hendrerit enim scel&period;
+                        .col-md-4.col-md-offset-1.push-top
+                            img.img-responsive.push-top(src="img/device.png")
+            footer#footer
+                .container
+                    .row
+                        .col-md-3
+                            a.logo.push-bottom(href="index.html")
+                                img(alt="Tucson Website Template", src="img/logo-footer.png")
+                            p
+                                | Tucson is a very powerful HTML5 template&comma; you will be able to create an awesome website in a very simple way&period;
+                                a.btn-flat.btn-xs(href="#")
+                                    | View More
+                                    i.icon.icon-arrow-right
+                            .contact-details
+                                ul.contact
+                                    li
+                                        p
+                                            i.icon.icon-map-marker
+                                            strong Address&colon;
+                                            | 123 Street Name&comma; City&comma; USA
+                                    li
+                                        p
+                                            i.icon.icon-phone
+                                            strong Phone&colon;
+                                            | &lpar;123&rpar; 456-7890
+                                    li
+                                        p
+                                            i.icon.icon-envelope
+                                            strong Email&colon;
+                                            a(href="mailto:mail@example.com") mail&commat;example&period;com
+                        .col-md-3
+                            h4 Recent Posts
+                            ul.nav.nav-list.primary
+                                li
+                                    a(title="Class aptent taciti sociosqu ad litora torquent", href="blog-post.html") Class aptent taciti aptent sociosqu&period;&period;&period;
+                                li
+                                    a(title="Class aptent taciti sociosqu ad litora torquent", href="blog-post.html") Aptent class taciti sociosqu&period;&period;&period;
+                                li
+                                    a(title="Class aptent taciti sociosqu ad litora torquent", href="blog-post.html") Taciti aptent aptent sociosqu ad&period;&period;&period;
+                                li
+                                    a(title="Class aptent taciti sociosqu ad litora torquent", href="blog-post.html") Sociosqu class aptent taciti&period;&period;&period;
+                                li
+                                    a(title="Class aptent taciti sociosqu ad litora torquent", href="blog-post.html") Class aptent taciti aptent sociosqu&period;&period;&period;
+                            a.btn-flat.pull-right.btn-xs.view-more-recent-work(href="#")
+                                | View Blog
+                                i.icon.icon-arrow-right
+                        .col-md-3
+                            h4 Recent Tweets
+                            #tweet.twitter(data-account-id="")
+                                p Please wait&period;&period;&period;
+                        .col-md-3
+                            h4 Recent Work
+                            ul.list-unstyled.recent-work
+                                li
+                                    a.thumb-info(href="portfolio-single.html")
+                                        img.img-responsive(width="78", height="78", src="img/projects/project-thumb-1.jpg", alt="")
+                                li
+                                    a.thumb-info(href="portfolio-single.html")
+                                        img.img-responsive(width="78", height="78", src="img/projects/project-thumb-9.jpg", alt="")
+                                li
+                                    a.thumb-info(href="portfolio-single.html")
+                                        img.img-responsive(width="78", height="78", src="img/projects/project-thumb-3.jpg", alt="")
+                                li
+                                    a.thumb-info(href="portfolio-single.html")
+                                        img.img-responsive(width="78", height="78", src="img/projects/project-thumb-4.jpg", alt="")
+                                li
+                                    a.thumb-info(href="portfolio-single.html")
+                                        img.img-responsive(width="78", height="78", src="img/projects/project-thumb-5.jpg", alt="")
+                                li
+                                    a.thumb-info(href="portfolio-single.html")
+                                        img.img-responsive(width="78", height="78", src="img/projects/project-thumb-11.jpg", alt="")
+                            a.btn-flat.pull-right.btn-xs.view-more-recent-work(href="#")
+                                | View More
+                                i.icon.icon-arrow-right
+                .footer-copyright
+                    .container
+                        .row
+                            .col-md-6
+                                p Copyright &copy; 2014&period; All Rights Reserved&period;
+                            .col-md-6
+                                ul.social-icons
+                                    li
+                                        a(href="http://www.twitter.com/", target="_blank", rel="tooltip", title="Twitter")
+                                            i.icon.icon-twitter
+                                    li
+                                        a(href="http://www.facebook.com/", target="_blank", rel="tooltip", title="Facebook")
+                                            i.icon.icon-facebook
+                                    li
+                                        a(href="http://www.google.com/", target="_blank", rel="tooltip", title="Google+")
+                                            i.icon.icon-google-plus
+                                    li
+                                        a(href="http://www.linkedin.com/", target="_blank", rel="tooltip", title="Linkedin")
+                                            i.icon.icon-linkedin
+        // Libs
+        script(src="vendor/jquery.js")
+        script(src="js/plugins.js")
+        script(src="vendor/jquery.easing.js")
+        script(src="vendor/jquery.appear.js")
+        script(src="vendor/jquery.cookie.js")
+        script(src="vendor/bootstrap.js")
+        script(src="vendor/masonry.js")
+        script(src="vendor/twitterjs/twitter.js")
+        script(src="vendor/rs-plugin/js/jquery.themepunch.plugins.min.js")
+        script(src="vendor/rs-plugin/js/jquery.themepunch.revolution.min.js")
+        script(src="vendor/owl-carousel/owl.carousel.js")
+        script(src="vendor/magnific-popup/magnific-popup.js")
+        script(src="vendor/jquery.knob.js")
+        script(src="vendor/jquery.stellar.js")
+        script(src="vendor/jquery.validate.js")
+        script(src="vendor/isotope/jquery.isotope.js")
+        // Theme Initializer
+        script(src="js/theme.js")
+        // Custom JS
+        script(src="js/custom.js")
+        //
+             Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
+            		<script>
+            			(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            			function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            			e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            			e.src='//www.google-analytics.com/analytics.js';
+            			r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            			ga('create','UA-XXXXX-X');ga('send','pageview');
+            		</script>
+            		 
