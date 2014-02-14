@@ -1,8 +1,8 @@
 {
-    "name": "bae-nodejs",
+    "name": "feiyesoft",
     "version": "1.0.0",
     "author": "bae",
-    "description": "The first bae nodejs app!",
+    "description": "feiyesoft-official-site",
     "scripts": {
         "start": "node server.js"
     },
