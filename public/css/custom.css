@@ -1,4 +1,7 @@
 /* Add here all your CSS customizations */
+.auto-img {
+    max-width: 100%;
+}
 .skill-img {
     height: 70px;
 }
