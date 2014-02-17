@@ -2,7 +2,7 @@
 /**
  * Module dependencies.
  */
-require('dotenv');
+require('dotenv').load();
 var express = require('express');
 var init_routes = require('./routes');
 var http = require('http');
