@@ -3,6 +3,9 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        jshint: {
+            all: ['Gruntfile.js', 'public/js/custom.js']
+        }
     });
 
     // 加载包含 "jshint" 任务的插件。
