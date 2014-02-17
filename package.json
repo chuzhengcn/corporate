@@ -6,7 +6,12 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "*",
-    "jade": "*"
+    "express": "latest",
+    "jade": "latest",
+    "dotenv": "latest"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-jshint": "~0.8.0"
   }
 }
