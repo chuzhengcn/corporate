@@ -49,7 +49,8 @@ function msg(req, res) {
 
     req.on('end', function() {
         parseXmlString(body, function(err, results) {
-            req.weixin_user_msg = results
+            req.weixin_user_msg = results.xml
+
             res.type('xml')
             send_msg(req, res)
         })
@@ -70,7 +71,6 @@ function send_msg(req, res) {
 
     var reply_content = util.format(template, req.weixin_user_msg.FromUserName, req.weixin_user_msg.ToUserName,
                                     Date.now(), content)
-    console.log(reply_content)
     res.send(reply_content)
 
 }
