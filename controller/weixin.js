@@ -3,7 +3,7 @@ var TOKEN   = process.env.WEIXIN_TOKEN || 'feiyesoft1984',
 
 // 申请消息接口，成为开发者----------------------------------------------------------------------------------
 function verify(req, res) {
-    var echostr = req.query.echostr,
+    var echostr = req.query.echostr;
 
     if (is_valid_signature(req.query.signature, req.query.timestamp, req.query.nonce)) {
         res.send(echostr)
