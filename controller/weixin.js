@@ -123,11 +123,6 @@ function create_menu(req, res) {
                 "key"  : "about_feiye"
             },
             {
-                "type" : "click",
-                "name" : "联系我们",
-                "key"  : "contact_us"
-            },
-            {
                 "name"       : "项目",
                 "sub_button" : [
                     { 
@@ -136,6 +131,11 @@ function create_menu(req, res) {
                       "url"  : "http://www.feiyesoft.com/xiaoxiong"
                     }
                 ]
+            },
+            {
+                "type" : "click",
+                "name" : "联系我们",
+                "key"  : "contact_us"
             }
         ]
     };
