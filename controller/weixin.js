@@ -28,7 +28,6 @@ function is_valid_signature(signature, timestamp, nonce) {
     if (encrypted_str === signature) {
         return true
     } else {
-        console.log(encrypted_str)
         return false
     }
 }
@@ -36,7 +35,7 @@ function is_valid_signature(signature, timestamp, nonce) {
 exports.is_valid_signature = is_valid_signature
 // ------------------------------------------------------------------------------------------------
 function msg(req, res) {
-    if (!is_valid_signature(req.query.signature, req.query.timestamp, req.query.nonce)) {
+    if (!(is_valid_signature(req.query.signature, req.query.timestamp, req.query.nonce))) {
         return res.send({ok : 0, msg : '消息不是来自于微信'}) 
     }
 
