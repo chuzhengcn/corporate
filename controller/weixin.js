@@ -25,8 +25,6 @@ function is_valid_signature(signature, timestamp, nonce) {
     shasum.update(unencrypted_params)
     encrypted_str = shasum.digest('hex')
 
-    console.log(unencrypted_params)
-
     if (encrypted_str === signature) {
         return true
     } else {
@@ -72,7 +70,7 @@ function send_msg(req, res) {
 
     var reply_content = util.format(template, req.weixin_user_msg.FromUserName, req.weixin_user_msg.ToUserName,
                                     Date.now(), content)
-
+    console.log(reply_content)
     res.send(reply_content)
 
 }
