@@ -1,7 +1,7 @@
 var TOKEN   = process.env.WEIXIN_TOKEN || 'feiyesoft1984',
     crypto  = require('crypto');
 
-// ------------------------------------------------------------------------------------------------
+// 申请消息接口，成为开发者----------------------------------------------------------------------------------
 function verify(req, res) {
     var echostr = req.query.echostr,
 
@@ -13,10 +13,11 @@ function verify(req, res) {
 }
 
 exports.verify = verify
-// ------------------------------------------------------------------------------------------------
+
+// 验证消息真实性--------------------------------------------------------------------------------
 function is_valid_signature(signature, timestamp, nonce) {
     var shasum              = crypto.createHash('sha1'),
-        unencrypted_params  = [timestamp, nonce].sort().join().replace(/,/g, ''),
+        unencrypted_params  = [TOKEN, timestamp, nonce].sort().join().replace(/,/g, ''),
         encrypted_str       = '';
 
     shasum.update(unencrypted_params)
@@ -31,3 +32,4 @@ function is_valid_signature(signature, timestamp, nonce) {
 
 exports.is_valid_signature = is_valid_signature
 // ------------------------------------------------------------------------------------------------
+
