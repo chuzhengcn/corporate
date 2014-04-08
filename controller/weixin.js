@@ -28,6 +28,7 @@ function is_valid_signature(signature, timestamp, nonce) {
     if (encrypted_str === signature) {
         return true
     } else {
+        console.log(encrypted_str)
         return false
     }
 }
@@ -74,4 +75,4 @@ function send_msg(req, res) {
     res.send(reply_content)
 
 }
-exports.send_msg = send_msg
+// ------------------------------------------------------------------------------------------------
