@@ -50,7 +50,6 @@ function msg(req, res) {
     req.on('end', function() {
         parseXmlString(body, function(err, results) {
             req.weixin_user_msg = results
-            send_msg(req, res)
             res.type('xml')
             send_msg(req, res)
         })
