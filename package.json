@@ -6,11 +6,12 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "latest",
-    "jade": "latest",
-    "dotenv": "latest",
-    "moment": "latest",
-    "async" : "latest"
+    "express" : "latest",
+    "jade"    : "latest",
+    "dotenv"  : "latest",
+    "moment"  : "latest",
+    "async"   : "latest",
+    "xml2js"  : "*"
   },
   "devDependencies": {
     "grunt": "~0.4.2",

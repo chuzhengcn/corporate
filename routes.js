@@ -3,7 +3,7 @@ var index = require('./controller/index'),
 
 function init_routes(app) {
     app.get('/', index.index);
-    app.get('/weixin/verify', weixin.verify)
+    app.get('/weixin', weixin.verify)
 }
 
 exports = module.exports = init_routes;
