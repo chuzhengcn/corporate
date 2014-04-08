@@ -1,10 +1,7 @@
 var TOKEN   = process.env.WEIXIN_TOKEN || 'feiyesoft1984',
-    crypto  = require('crypto'),
-    util    = require('util'),
-    async   = require('async'),
-    moment  = require('moment');
+    crypto  = require('crypto');
 
-// -------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 function verify(req, res) {
     var shasum              = crypto.createHash('sha1'),
         signature           = req.query.signature,
@@ -24,4 +21,4 @@ function verify(req, res) {
 }
 
 exports.verify = verify
-// ----------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
