@@ -11,7 +11,8 @@
     "dotenv"  : "latest",
     "moment"  : "latest",
     "async"   : "latest",
-    "xml2js"  : "*"
+    "xml2js"  : "latest",
+    "request" : "latest"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
