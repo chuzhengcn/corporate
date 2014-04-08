@@ -25,6 +25,8 @@ function is_valid_signature(signature, timestamp, nonce) {
     shasum.update(unencrypted_params)
     encrypted_str = shasum.digest('hex')
 
+    console.log(signature, timestamp, nonce)
+
     if (encrypted_str === signature) {
         return true
     } else {
