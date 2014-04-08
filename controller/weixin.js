@@ -1,5 +1,6 @@
 var TOKEN           = process.env.WEIXIN_TOKEN || 'feiyesoft1984',
     crypto          = require('crypto'),
+    util            = require('util'),
     parseXmlString  = require('xml2js').parseString;
 
 // 申请消息接口，成为开发者----------------------------------------------------------------------------------
@@ -34,6 +35,10 @@ function is_valid_signature(signature, timestamp, nonce) {
 exports.is_valid_signature = is_valid_signature
 // ------------------------------------------------------------------------------------------------
 function msg(req, res) {
+    if (!is_valid_signature(req.query.signature, req.query.timestamp, req.query.nonce)) {
+        return res.send({ok : 0, msg : '消息不是来自于微信'}) 
+    }
+
     var body = '';
 
     req.setEncoding('utf8');
@@ -44,11 +49,30 @@ function msg(req, res) {
 
     req.on('end', function() {
         parseXmlString(body, function(err, results) {
-            console.log(typeof results)
-            console.log(results)
+            req.weixin_user_msg = results
+            send_msg(req, res)
+            res.type('xml')
+            send_msg(req, res)
         })
     })
 }
 
 exports.msg = msg;
+// ------------------------------------------------------------------------------------------------
+function send_msg(req, res) {
+    var template =  '<xml>' +
+                        '<ToUserName><![CDATA[%s]]></ToUserName>' +
+                        '<FromUserName><![CDATA[%s]]></FromUserName>' +
+                        '<CreateTime>%d</CreateTime>' +
+                        '<MsgType><![CDATA[text]]></MsgType>' +
+                        '<Content><![CDATA[%s]]></Content>' + 
+                    '</xml>';
+    var content = '扉页软件公众账号正在开发中，谢谢关注！';
 
+    var reply_content = util.format(template, req.weixin_user_msg.FromUserName, req.weixin_user_msg.ToUserName,
+                                    Date.now(), content)
+
+    res.send(reply_content)
+
+}
+exports.send_msg = send_msg
