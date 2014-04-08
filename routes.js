@@ -4,6 +4,7 @@ var index = require('./controller/index'),
 function init_routes(app) {
     app.get('/', index.index);
     app.get('/weixin', weixin.verify)
+    app.post('/weixin', weixin.msg)
 }
 
 exports = module.exports = init_routes;

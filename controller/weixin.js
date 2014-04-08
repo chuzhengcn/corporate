@@ -1,5 +1,6 @@
-var TOKEN   = process.env.WEIXIN_TOKEN || 'feiyesoft1984',
-    crypto  = require('crypto');
+var TOKEN           = process.env.WEIXIN_TOKEN || 'feiyesoft1984',
+    crypto          = require('crypto'),
+    parseXmlString  = require('xml2js').parseString;
 
 // 申请消息接口，成为开发者----------------------------------------------------------------------------------
 function verify(req, res) {
@@ -32,5 +33,22 @@ function is_valid_signature(signature, timestamp, nonce) {
 
 exports.is_valid_signature = is_valid_signature
 // ------------------------------------------------------------------------------------------------
+function msg(req, res) {
+    var body = '';
 
+    req.setEncoding('utf8');
+
+    req.on('data', function(chunk) {
+        body += chunk
+    })
+
+    req.on('end', function() {
+        parseXmlString(body, function(err, results) {
+            console.log(typeof results)
+            console.log(results)
+        })
+    })
+}
+
+exports.msg = msg;
 
