@@ -12,6 +12,7 @@ var TOKEN           = process.env.WEIXIN_TOKEN || 'feiyesoft1984',
         expires_in : 0
     };
 
+
 // 获取access token ---------------------------------------------------------------------------------
 function get_access_token(cb) {
     var now = Date.now();
@@ -69,49 +70,6 @@ function is_valid_signature(signature, timestamp, nonce) {
 
 exports.is_valid_signature = is_valid_signature
 
-// 接收消息--------------------------------------------------------------------------------------------
-function msg(req, res) {
-    if (!(is_valid_signature(req.query.signature, req.query.timestamp, req.query.nonce))) {
-        return res.send({ok : 0, msg : '消息不是来自于微信'}) 
-    }
-
-    var body = '';
-
-    req.setEncoding('utf8');
-
-    req.on('data', function(chunk) {
-        body += chunk
-    })
-
-    req.on('end', function() {
-        parseXmlString(body, function(err, results) {
-            req.weixin_user_msg = results.xml
-
-            res.type('xml')
-            send_msg(req, res)
-        })
-    })
-}
-
-exports.msg = msg;
-
-// 发送被动响应消息------------------------------------------------------------------------------------------------
-function send_msg(req, res) {
-    var template =  '<xml>' +
-                        '<ToUserName><![CDATA[%s]]></ToUserName>' +
-                        '<FromUserName><![CDATA[%s]]></FromUserName>' +
-                        '<CreateTime>%d</CreateTime>' +
-                        '<MsgType><![CDATA[text]]></MsgType>' +
-                        '<Content><![CDATA[%s]]></Content>' + 
-                    '</xml>';
-    var content = '扉页软件公众账号正在开发中，谢谢关注！';
-
-    var reply_content = util.format(template, req.weixin_user_msg.FromUserName, req.weixin_user_msg.ToUserName,
-                                    Date.now(), content)
-    res.send(reply_content)
-
-}
-
 // 创建自定义菜单------------------------------------------------------------------------------------------------
 function create_menu(req, res) {
     var create_url = "https://api.weixin.qq.com/cgi-bin/menu/create",
@@ -131,9 +89,9 @@ function create_menu(req, res) {
                 "name"       : "小熊农场",
                 "sub_button" : [
                     { 
-                      "type" : "view",
+                      "type" : "click",
                       "name" : "今日菜谱",
-                      "url"  : "http://www.feiyesoft.com/xiaoxiong"
+                      "key"  : "today_menu"
                     }
                 ]
             }
@@ -159,4 +117,106 @@ function create_menu(req, res) {
 
 exports.create_menu = create_menu;
 
-// -----------------------------------------------------------------------------------------------
+// 接收消息--------------------------------------------------------------------------------------------
+function msg(req, res) {
+    if (!(is_valid_signature(req.query.signature, req.query.timestamp, req.query.nonce))) {
+        return res.send({ok : 0, msg : '消息不是来自于微信'}) 
+    }
+
+    var body = '';
+
+    req.setEncoding('utf8');
+
+    req.on('data', function(chunk) {
+        body += chunk
+    })
+
+    req.on('end', function() {
+        parseXmlString(body, function(err, results) {
+            req.weixin_user_msg = results.xml
+            send_response_msg(req, res)
+        })
+    })
+}
+
+exports.msg = msg;
+
+// 发送被动响应消息------------------------------------------------------------------------------------------------
+function send_response_msg(req, res) {
+    response_in_different_way(req.weixin_user_msg)(req, res)
+}
+
+// 分析消息类型, 调用不同的函数---------------------------------------------------------------------------------------
+function response_in_different_way(msg_json) {
+    var msg_type = {
+        "event_today_menu" : send_event_today_menu_response,
+        "default"          : send_default_response
+    }
+
+    if (msg_json.EventKey && msg_json.EventKey === 'today_menu') {
+        return msg_type["event_today_menu"]
+    }
+
+    return msg_type["default"]
+}
+
+// 用默认方式回复用户---------------------------------------------------------------------------------------
+function send_default_response(req, res) {
+    var template =  '<xml>' +
+                        '<ToUserName><![CDATA[%s]]></ToUserName>' +
+                        '<FromUserName><![CDATA[%s]]></FromUserName>' +
+                        '<CreateTime>%d</CreateTime>' +
+                        '<MsgType><![CDATA[text]]></MsgType>' +
+                        '<Content><![CDATA[%s]]></Content>' + 
+                    '</xml>';
+    var content = '扉页软件公众账号正在开发中，谢谢关注！';
+
+    var reply_content = util.format(template, req.weixin_user_msg.FromUserName, req.weixin_user_msg.ToUserName,
+                                    Date.now(), content)
+    res.type('xml')
+    res.send(reply_content)
+}
+// 回复今日菜单 多图文-----------------------------------------------------------------------------------------------------
+function send_event_today_menu_response(req, res) {
+    var template =  '<xml>' +
+                        '<ToUserName><![CDATA[%s]]></ToUserName>' +
+                        '<FromUserName><![CDATA[%s]]></FromUserName>' +
+                        '<CreateTime>%d</CreateTime>' +
+                        '<MsgType><![CDATA[news]]></MsgType>' +
+                        '<ArticleCount><![CDATA[%d]]></ArticleCount>' + 
+                        '<Articles></Articles>'
+                    '</xml>';
+    var item_template = "<item>" +
+                            "<Title><![CDATA[%s]]></Title>" + 
+                            "<Description><![CDATA[%s]]></Description>" +
+                            "<PicUrl><![CDATA[%s]]></PicUrl>" +
+                            "<Url><![CDATA[%s]]></Url>" +
+                        "</item>";
+
+    var menu = [
+        {
+            "title" : "茄子炒肉",
+            "description" : "茄子炒肉的做法",
+            "pic_url" : "http://recipe0.hoto.cn/pic/recipe/l/02/70/159746_8ed537.jpg",
+            "url" : "http://www.haodou.com/recipe/album/74068/"
+        }
+    ];
+
+    var items = "";
+
+    menu.forEach(function(item) {
+        items += util.format(item_template, item.title, item.description, item.pic_url, item.url)
+    })
+
+    template = util.format(template, req.weixin_user_msg.FromUserName, req.weixin_user_msg.ToUserName,
+                            Date.now(), menu.length);
+
+    var insert_point = template.lastIndexOf('Articles') - 2
+
+    var content = template.slice(0, insert_point) + items + template.slice(insert_point)
+
+    res.type('xml')
+    res.send(reply_content)
+}
+// -----------------------------------------------------------------------
+
