@@ -148,6 +148,7 @@ function send_response_msg(req, res) {
 
 // 分析消息类型, 调用不同的函数---------------------------------------------------------------------------------------
 function response_in_different_way(msg_json) {
+    console.log(msg_json)
     var msg_type = {
         "event_today_menu" : send_event_today_menu_response,
         "default"          : send_default_response
