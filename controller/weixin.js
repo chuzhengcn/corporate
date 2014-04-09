@@ -184,7 +184,7 @@ function send_event_today_menu_response(req, res) {
                         '<CreateTime>%d</CreateTime>' +
                         '<MsgType><![CDATA[news]]></MsgType>' +
                         '<ArticleCount><![CDATA[%d]]></ArticleCount>' + 
-                        '<Articles></Articles>'
+                        '<Articles></Articles>' + 
                     '</xml>';
     var item_template = "<item>" +
                             "<Title><![CDATA[%s]]></Title>" + 
