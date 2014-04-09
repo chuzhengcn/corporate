@@ -123,19 +123,19 @@ function create_menu(req, res) {
                 "key"  : "about_feiye"
             },
             {
-                "name"       : "项目",
-                "sub_button" : [
-                    { 
-                      "type" : "view",
-                      "name" : "小熊农场",
-                      "url"  : "http://www.feiyesoft.com/xiaoxiong"
-                    }
-                ]
-            },
-            {
                 "type" : "click",
                 "name" : "联系我们",
                 "key"  : "contact_us"
+            },
+            {
+                "name"       : "小熊农场",
+                "sub_button" : [
+                    { 
+                      "type" : "view",
+                      "name" : "今日菜谱",
+                      "url"  : "http://www.feiyesoft.com/xiaoxiong"
+                    }
+                ]
             }
         ]
     };
