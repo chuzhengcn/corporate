@@ -12,7 +12,8 @@
     "moment"  : "latest",
     "async"   : "latest",
     "xml2js"  : "latest",
-    "request" : "latest"
+    "request" : "latest",
+    "mongoose": "latest"
   },
   "devDependencies": {
     "grunt": "~0.4.2",

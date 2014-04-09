@@ -1,0 +1,15 @@
+extends layout
+
+append head
+    link(rel="stylesheet", href="/xiaoxiong/admin/css/login.css")
+
+append body
+    .container
+        form#signin-form.form-signin(role="form", action="/xiaoxiong-admin/login", method="post")
+            h2.form-signin-heading 登入小熊农场后台
+            input.form-control(type="text", name="name", placeholder="用户名", required, autofocus)
+            input.form-control(type="password", name="password", placeholder="密码", required)
+            button.btn.btn-lg.btn-primary.btn-block(type="submit") 登录
+
+append script
+    script(src="/xiaoxiong/admin/js/login.js")

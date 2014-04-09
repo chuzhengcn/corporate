@@ -1,0 +1,24 @@
+extends layout
+
+append head
+
+append body
+    .navbar.navbar-inverse.navbar-fixed-top
+        .container
+            .navbar-header
+                button.navbar-toggle(type="button", data-toggle="collapse", data-target=".navbar-collapse")
+                    span.sr-only 开关导航
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                a.navbar-brand(href="/xiaoxiong-admin") 小熊农场后台
+            .navbar-collapse.collapse
+                ul.nav.navbar-nav
+                    li.active
+                        a(href="/xiaoxiong-admin") 首页
+                
+                ul.nav.navbar-nav.navbar-right
+                    li
+                        a(href="/xiaoxiong-admin/logout") 退出 
+    .container
+append script
