@@ -148,13 +148,12 @@ function send_response_msg(req, res) {
 
 // 分析消息类型, 调用不同的函数---------------------------------------------------------------------------------------
 function response_in_different_way(msg_json) {
-    console.log(msg_json)
     var msg_type = {
         "event_today_menu" : send_event_today_menu_response,
         "default"          : send_default_response
     }
 
-    if (msg_json.EventKey && msg_json.EventKey === 'today_menu') {
+    if (msg_json.EventKey[0] && msg_json.EventKey[0] === 'today_menu') {
         return msg_type["event_today_menu"]
     }
 
@@ -172,7 +171,7 @@ function send_default_response(req, res) {
                     '</xml>';
     var content = '扉页软件公众账号正在开发中，谢谢关注！';
 
-    var reply_content = util.format(template, req.weixin_user_msg.FromUserName, req.weixin_user_msg.ToUserName,
+    var reply_content = util.format(template, req.weixin_user_msg.FromUserName[0], req.weixin_user_msg.ToUserName[0],
                                     Date.now(), content)
     res.type('xml')
     res.send(reply_content)
@@ -209,7 +208,7 @@ function send_event_today_menu_response(req, res) {
         items += util.format(item_template, item.title, item.description, item.pic_url, item.url)
     })
 
-    template = util.format(template, req.weixin_user_msg.FromUserName, req.weixin_user_msg.ToUserName,
+    template = util.format(template, req.weixin_user_msg.FromUserName[0], req.weixin_user_msg.ToUserName[0],
                             Date.now(), menu.length);
 
     var insert_point = template.lastIndexOf('Articles') - 2
