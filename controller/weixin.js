@@ -199,6 +199,12 @@ function send_event_today_menu_response(req, res) {
             "description" : "茄子炒肉的做法",
             "pic_url" : "http://recipe0.hoto.cn/pic/recipe/l/02/70/159746_8ed537.jpg",
             "url" : "http://www.haodou.com/recipe/album/74068/"
+        },
+        {
+            "title" : "",
+            "description" : "土豆丝一定不要和肉炒在一起哦",
+            "pic_url" : "http://pic.gansudaily.com.cn/0/10/03/70/10037073_200474.jpg",
+            "url" : "http://eat.gansudaily.com.cn/system/2006/07/19/010082404.shtml"
         }
     ];
 
