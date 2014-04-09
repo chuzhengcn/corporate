@@ -215,7 +215,6 @@ function send_event_today_menu_response(req, res) {
 
     var reply_content = template.slice(0, insert_point) + items + template.slice(insert_point)
 
-    console.log(reply_content)
     res.type('xml')
     res.send(reply_content)
 }
