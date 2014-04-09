@@ -201,7 +201,7 @@ function send_event_today_menu_response(req, res) {
             "url" : "http://www.haodou.com/recipe/album/74068/"
         },
         {
-            "title" : "",
+            "title" : "土豆丝",
             "description" : "土豆丝一定不要和肉炒在一起哦",
             "pic_url" : "http://pic.gansudaily.com.cn/0/10/03/70/10037073_200474.jpg",
             "url" : "http://eat.gansudaily.com.cn/system/2006/07/19/010082404.shtml"
