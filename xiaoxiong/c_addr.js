@@ -27,7 +27,7 @@ function send_event_my_addr_response(req, res) {
         }
 
         if (!doc) {
-            content = '您还没有绑定地址，请<a href="">绑定</a>';
+            content = '您还没有绑定地址。\n<a href="">现在绑定</a>';
         } else {
             content = "您的常用地址：" + doc.name + " " + doc.tel + " " + doc.area + " " + doc.detail +
                       "，<a href=''>编辑或修改</a>"; 
