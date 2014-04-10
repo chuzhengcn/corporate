@@ -6,7 +6,7 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express" : "latest",
+    "express" : "3.x",
     "jade"    : "latest",
     "dotenv"  : "latest",
     "moment"  : "latest",
