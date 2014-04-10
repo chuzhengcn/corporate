@@ -1,7 +1,7 @@
 var util        = require("util"),
     m_addr      = require("./m_addr"),
     weixin      = require("../lib/c_weixin"),
-    my_open_id  = wexin.my_open_id,
+    my_open_id  = weixin.my_open_id,
     error_text  = "绑定地址出错，请重试";
 
 // 回复我的地址响应 ------------------------------------------------------------------
@@ -28,10 +28,10 @@ function send_event_my_addr_response(req, res) {
 
         if (!doc) {
             content = '您还没有绑定地址，请<a href="">绑定</a>';
+        } else {
+            content = "您的常用地址：" + doc.name + " " + doc.tel + " " + doc.area + " " + doc.detail +
+                      "，<a href=''>编辑或修改</a>"; 
         }
-
-        content = "您的常用地址：" + doc.name + " " + doc.tel + " " + doc.area + " " + doc.detail +
-                  "，<a href=''>编辑或修改</a>"; 
 
         reply_content = util.format(template, user_open_id, my_open_id, now, content)
         res.type('xml')
