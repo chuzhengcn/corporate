@@ -1,14 +1,14 @@
-var index                   = require('./controller/index'),
-    weixin                  = require('./controller/weixin'),
-    xiaoxiong_index         = require('./controller/xiaoxiong/index'),
-    xiaoxiong_admin_index   = require('./controller/xiaoxiong/admin/index');
-    xiaoxiong_admin_login   = require('./controller/xiaoxiong/admin/login');
+var feiye_index             = require('./feiye/c_index'),
+    lib_weixin              = require('./lib/c_weixin'),
+    xiaoxiong_index         = require('./xiaoxiong/c_index'),
+    xiaoxiong_admin_index   = require('./xiaoxiong/admin/c_index');
+    xiaoxiong_admin_login   = require('./xiaoxiong/admin/c_login');
 
 function init_routes(app) {
-    app.get('/', index.index);
-    app.get('/create_weixin_menu', weixin.create_menu)
-    app.get('/weixin', weixin.verify)
-    app.post('/weixin', weixin.msg)
+    app.get('/', feiye_index.index);
+    app.get('/create_weixin_menu', lib_weixin.create_menu)
+    app.get('/weixin', lib_weixin.verify)
+    app.post('/weixin', lib_weixin.msg)
 
     // xiaoxiong
     app.get('/xiaoxiong', xiaoxiong_index.index)

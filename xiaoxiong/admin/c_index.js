@@ -1,4 +1,4 @@
-var login = require("./login");
+var login = require("./c_login");
 
 exports.index = function(req, res) {
     login.check_login_and_send(req, res, function() {

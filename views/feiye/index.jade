@@ -1,0 +1,227 @@
+extends layout
+
+append js
+    // Current Page Scripts 
+    script(src="/js/views/view.home.js")
+
+    // Theme Initializer
+    script(src="/js/theme.js")
+
+    // Custom JS 
+    script(src="/js/custom.js")
+    
+append body
+    .body
+        header
+            .container
+                h1.logo
+                    a(href="/")
+                        img(alt="扉页软件", src="/img/logo.png", data-small-height="44")
+                .navbar-collapse.nav-main-collapse.collapse
+                    nav.nav-main.mega-menu
+                        ul#mainMenu.nav.nav-pills.nav-main
+                            li.active
+                                a(href="#")
+                                    | 首页
+                            li
+                                a(href="#about-us", data-hash="")
+                                    | 关于我们
+                            li
+                                a(href="#service", data-hash="")
+                                    | 服务项目
+                            li
+                                a(href="#skill", data-hash="")
+                                    | 技术方案
+                            li
+                                a(href="#contact-us", data-hash="")
+                                    | 联系我们
+                button.btn.btn-responsive-nav.btn-inverse(data-toggle="collapse", data-target=".nav-main-collapse")
+                    i.icon.icon-bars
+        .main(role="main")
+            #content.content.full
+                section.home-top-clean
+                    .slider-container
+                        #topRevolutionSlider.slider(data-plugin-options="{'startheight': 600}")
+                            ul
+                                li(data-transition="fade", data-slotamount="13", data-masterspeed="300")
+                                    img(src="img/slides/slide-basic-bg-1.jpg", data-bgposition="left top", data-bgrepeat="no-repeat")
+                                    .tp-caption.top-label.md.customin(data-x="center", data-y="135", data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;", data-speed="800", data-start="0", data-easing="Back.easeInOut", data-endspeed="300")
+                                        | 为移动时代创建全新的
+                                    .tp-caption.top-label.sfr.visible-md.visible-lg(data-x="center", data-hoffset="-300", data-y="150", data-speed="800", data-start="0", data-easing="Back.easeInOut", data-endspeed="300")
+                                        .top-line
+                                    .tp-caption.top-label.sfl.visible-md.visible-lg(data-x="center", data-hoffset="300", data-y="150", data-speed="800", data-start="0", data-easing="Back.easeInOut", data-endspeed="300")
+                                        .top-line
+                                    .tp-caption.main-label.md.customin(data-x="center", data-y="180", data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;", data-speed="800", data-start="300", data-easing="Back.easeInOut", data-endspeed="300")
+                                        | 响应式网站
+                                    .tp-caption.bottom-label.md.sfb(data-x="center", data-y="300", data-speed="800", data-start="500", data-easing="Back.easeInOut", data-endspeed="300")
+                                        | 优雅 &period;  易用 &period; 稳定
+                                    .tp-caption.sft(data-x="center", data-y="390", data-speed="800", data-start="700", data-easing="Back.easeInOut", data-endspeed="300")
+                                        a.btn.btn-lg.btn-primary.main-button(data-hash="", href="#get-started") 了解更多
+            .container
+                #get-started.row.center
+                    .col-md-12
+                        h2.short.lead
+                            | 在手机、平板、桌面电脑的屏幕上，网站都会完美呈现
+                        p.featured.lead
+                            | 每一天，终端设备种类都在增长，用户将有不同的手机，不同的平台，不同的浏览器。为每种设备都提供一种解决方案，将变得非常昂贵且费时，而一个站点对应多种屏幕的响应式网站设计将成为这个移动时代的绝佳选择。
+                        img.auto-img(src="/img/responsive_design_mood_factory.png")
+            .container
+                #about-us.row.center
+                    .col-md-12
+                        .divider.tall.colored
+                            i.icon.icon-star
+                        h2 简单、快速、有效的获得高质量的公司官网、项目主页、个人品牌站点
+                        p.featured.lead
+                            | 扉页软件帮助你完整开发各类具有领先水准网站、WebApp、微信应用
+                hr#service.tall
+                .appear-animation(data-appear-animation="fadeInDown")
+                    .row.featured-boxes.secundary
+                        .col-md-2
+                            .appear-animation(data-appear-animation="bounceIn", data-appear-animation-delay="600")
+                                .featured-box.featured-box-primary
+                                    .box-content
+                                        i.icon-featured.icon.icon-users
+                        .col-md-10
+                            h3.short.dark 项目咨询
+                            h5.short 需求分析&comma; 功能规划&comma; 项目计划
+                            p
+                                | 帮助你清晰定义要从网站得到什么，例如商业目标、品牌识别，以及你的用户要从网站得到什么，帮助他们更快的、充分的了解你，还是提供便利手段来促进双方的沟通。这个阶段我们最终制定出初步功能规格和阶段性成功标准。
+                .appear-animation(data-appear-animation="fadeInDown")
+                    .row
+                        .appear-animation(data-appear-animation="fadeIn", data-appear-animation-delay="800")
+                            .col-md-2.center.push-bottom
+                                span.icon-rounded
+                                    i.icon.icon-plus
+                .appear-animation(data-appear-animation="fadeInDown")
+                    .row.featured-boxes.secundary
+                        .col-md-2
+                            .appear-animation(data-appear-animation="bounceIn", data-appear-animation-delay="600")
+                                .featured-box.featured-box-primary
+                                    .box-content
+                                        i.icon-featured.icon.icon-puzzle-piece
+                        .col-md-10
+                            h3.short.dark UI设计 & 功能设计
+                            h5.short 高质量网站模板&comma; 技术解决方案
+                            p
+                                | 根据需求目标来设计网站的信息结构、网站与用户的交互过程，制定出技术方案和设计用户界面。把功能、内容、美学汇集起来产生一个满足目标的设计。
+                .appear-animation(data-appear-animation="fadeInDown")
+                    .row
+                        .appear-animation(data-appear-animation="fadeIn", data-appear-animation-delay="800")
+                            .col-md-2.center.push-bottom
+                                span.icon-rounded
+                                    i.icon.icon-plus
+                .appear-animation(data-appear-animation="fadeInDown")
+                    .row.featured-boxes.secundary
+                        .col-md-2
+                            .appear-animation(data-appear-animation="bounceIn", data-appear-animation-delay="600")
+                                .featured-box.featured-box-primary
+                                    .box-content
+                                        i.icon-featured.icon.icon-laptop 
+                        .col-md-10
+                            h3.short.dark 开发 & 部署
+                            h5.short 客户端开发&comma; 服务端开发&comma; 应用程序部署
+                            p
+                                | 利用技术手段把设计的成果转化成现实，我们采用可靠的技术方案，不仅保证线上功能的完好运行，也为软件升级和需求变更做好准备，使你在应对外部条件变化的时候有更灵活的选择。
+                .appear-animation(data-appear-animation="fadeInDown")
+                    .row
+                        .appear-animation(data-appear-animation="fadeIn", data-appear-animation-delay="800")
+                            .col-md-2.center.push-bottom
+                                span.icon-rounded
+                                    i.icon.icon-plus
+                .appear-animation(data-appear-animation="fadeInDown")
+                    .row.featured-boxes.secundary
+                        .col-md-2
+                            .appear-animation(data-appear-animation="bounceIn", data-appear-animation-delay="600")
+                                .featured-box.featured-box-primary
+                                    .box-content
+                                        i.icon-featured.icon.icon-star
+                        .col-md-10
+                            h3.short.dark 质量保证 & 后期支持
+                            h5.short 应用程序状态监控&comma; 内容管理&comma; 安全更新&comma; 客服支持
+                            p
+                                | 应用程序上线后，我们会做到7 X 24 小时的可用性保证，并及时得到安全更新。如果您内容管理需求或者遇到问题，可以随时联系客服帮助您解决。 
+                .divider.tall.colored
+                    i.icon.icon-star
+                hr.tall.invisible
+            .container
+                #skill.row
+                    .col-md-12
+                        .row
+                            .col-md-3
+                                .feature-box.secundary.center
+                                    .skill-img
+                                        img(src="/img/logos/html5.png")
+                                    p.tall
+                                        | 利用新一代的网页技术HTML5（包括HTML、CSS、JavaScript）不仅可以显著提高开发速度，更能增强用户体验，这意味着你花更小的成本，得到却更多。
+                                .feature-box.secundary.center
+                                    .skill-img
+                                        img(src="/img/logos/mongodb.png")
+                                    p.tall
+                                        | 领先的NoSQL数据库MongoDB，灵活查询数据的同时保持高性能，并能轻松应对需要海量数据的应用程序。
+                            .col-md-3
+                                .feature-box.secundary.center
+                                    .skill-img
+                                        img(src="/img/logos/nodejs.png")
+                                    p.tall
+                                        | 服务端JavaScript运行框架Node.js提供了高性能的技术实现，对比其他技术，同样的业务逻辑，需要的服务器资源更少，普通Web应用一台服务器可能就足够了。
+                                .feature-box.secundary.center
+                                    .skill-img
+                                        img(src="/img/logos/clound.png")
+                                    p.tall
+                                        | 扉页软件采用知名厂商的服务器托管服务，完善的监控体系，定时的数据备份，让您的业务站点持续安全运行。
+                            .col-md-5.col-md-offset-1
+                                .progress-bars
+                                    .progress-label
+                                        span HTML 5 / CSS 3
+                                    .progress
+                                        .progress-bar.progress-bar-primary(data-appear-progress-animation="100%")
+                                            span.progress-bar-tooltip 100&percnt;
+                                    .progress-label
+                                        span JavaScript / Node.js
+                                    .progress
+                                        .progress-bar.progress-bar-primary(data-appear-progress-animation="90%", data-appear-animation-delay="300")
+                                            span.progress-bar-tooltip 90&percnt;
+                                    .progress-label
+                                        span MongoDB
+                                    .progress
+                                        .progress-bar.progress-bar-primary(data-appear-progress-animation="75%", data-appear-animation-delay="600")
+                                            span.progress-bar-tooltip 75&percnt;
+                                    .progress-label
+                                        span Hosting
+                                    .progress
+                                        .progress-bar.progress-bar-primary(data-appear-progress-animation="85%", data-appear-animation-delay="900")
+                                            span.progress-bar-tooltip 85&percnt;
+                                    .progress-label
+                                        span Design
+                                    .progress
+                                        .progress-bar.progress-bar-primary(data-appear-progress-animation="70%", data-appear-animation-delay="1000")
+                                            span.progress-bar-tooltip 70&percnt;
+        footer#footer
+            .container
+                #contact-us.row
+                    .col-md-3
+                        a.logo.push-bottom(href="/") 扉页软件
+                        .contact-details
+                            ul.contact
+                                li
+                                    p
+                                        i.icon.icon-phone
+                                        strong Phone&colon;
+                                        | &lpar;86&rpar; 0755-25774105
+                                li
+                                    p
+                                        i.icon.icon-envelope
+                                        strong Email&colon;
+                                        | feiyesoft&commat;gmail&period;com
+                    .col-md-3
+                        
+                    .col-md-3
+                        
+                    .col-md-3
+                        
+            .footer-copyright
+                .container
+                    .row
+                        .col-md-6
+                            p Copyright &copy; 2014&period; All Rights Reserved&period;
+                        .col-md-6
