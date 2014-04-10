@@ -1,5 +1,5 @@
 var util        = require("util"),
-    m_addr      = require("./m_addr"),
+    m_addr      = require("./m_addr").Addr,
     weixin      = require("../lib/c_weixin"),
     my_open_id  = weixin.my_open_id,
     error_text  = "绑定地址出错，请重试";
