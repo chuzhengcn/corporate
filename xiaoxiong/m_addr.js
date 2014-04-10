@@ -13,6 +13,12 @@ var addr_schema = new Schema({
 
 addr_schema.index({ open_id : 1})
 
+addr_schema.static.find_last_used = function (open_id, cb) {
+    this.findOne({open_id : open_id}, null, {sort : {last_used_at : -1}}, function(err, doc) {
+        cb(err, doc)
+    })
+}
+
 var Addr = mongoose.model('addr', addr_schema)
 
 exports.Addr = Addr;
