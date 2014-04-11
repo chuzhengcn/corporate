@@ -1,7 +1,8 @@
 var feiye_index             = require('./feiye/c_index'),
     lib_weixin              = require('./lib/c_weixin'),
     xiaoxiong_index         = require('./xiaoxiong/c_index'),
-    xiaoxiong_admin_index   = require('./xiaoxiong/admin/c_index');
+    xiaoxiong_addr          = require('./xiaoxiong/c_addr'),
+    xiaoxiong_admin_index   = require('./xiaoxiong/admin/c_index'),
     xiaoxiong_admin_login   = require('./xiaoxiong/admin/c_login');
 
 function init_routes(app) {
@@ -11,7 +12,9 @@ function init_routes(app) {
     app.post('/weixin', lib_weixin.msg)
 
     // xiaoxiong
-    app.get('/xiaoxiong', xiaoxiong_index.index)
+    app.get('/xiaoxiong',           xiaoxiong_index.index)
+    app.get('/xiaoxiong/addr-create-page/:open_id', xiaoxiong_addr.create_page)
+    app.get('/xiaoxiong/addr/:open_id', xiaoxiong_addr.list_page)
 
     // xiaoxiong admin
     app.get('/xiaoxiong-admin', xiaoxiong_admin_index.index)
