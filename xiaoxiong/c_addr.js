@@ -3,6 +3,7 @@ var util        = require("util"),
     m_addr      = require("./m_addr").Addr,
     weixin      = require("../lib/c_weixin"),
     my_open_id  = weixin.my_open_id,
+    domain      = "http://www.feiyesoft.com"
     error_text  = "绑定地址出错，请重试";
 
 // 回复我的地址响应 ------------------------------------------------------------------
@@ -12,8 +13,8 @@ function send_event_my_addr_response(req, res) {
         reply_content           = "",
         content                 = "",
         now                     = Date.now(),
-        create_addr_url         = "/xiaoxiong/addr-create-page/" + encypted_user_open_id,
-        all_addr_page           = "/xiaoxiong/addr/" + encypted_user_open_id,
+        create_addr_url         = domain + "/xiaoxiong/addr-create-page/" + encypted_user_open_id,
+        all_addr_page           = domain + "/xiaoxiong/addr/" + encypted_user_open_id,
         template                = '<xml>' +
                                     '<ToUserName><![CDATA[%s]]></ToUserName>' +
                                     '<FromUserName><![CDATA[%s]]></FromUserName>' +
