@@ -3,7 +3,8 @@ var feiye_index             = require('./feiye/c_index'),
     xiaoxiong_index         = require('./xiaoxiong/c_index'),
     xiaoxiong_addr          = require('./xiaoxiong/c_addr'),
     xiaoxiong_admin_index   = require('./xiaoxiong/admin/c_index'),
-    xiaoxiong_admin_login   = require('./xiaoxiong/admin/c_login');
+    xiaoxiong_admin_login   = require('./xiaoxiong/admin/c_login'),
+    xiaoxiong_admin_recipe  = require('./xiaoxiong/admin/c_recipe');
 
 function init_routes(app) {
     app.get('/', feiye_index.index);
@@ -24,6 +25,7 @@ function init_routes(app) {
     app.get('/xiaoxiong-admin', xiaoxiong_admin_index.index)
     app.get('/xiaoxiong-admin/login', xiaoxiong_admin_login.index)
     app.post('/xiaoxiong-admin/login', xiaoxiong_admin_login.login)
+    app.get('/xiaoxiong-admin/recipes', xiaoxiong_admin_recipe.index)
 }
 
 exports = module.exports = init_routes;

@@ -1,0 +1,17 @@
+mixin header(nav_index)
+    .navbar-header
+        button.navbar-toggle(type="button", data-toggle="collapse", data-target=".navbar-collapse")
+            span.sr-only 开关导航
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        a.navbar-brand(href="/xiaoxiong-admin") 小熊农场后台
+    .navbar-collapse.collapse
+        ul.nav.navbar-nav
+            li(class=nav_index["0"])
+                a(href="/xiaoxiong-admin") 首页
+            li(class=nav_index["1"])
+                a(href="/xiaoxiong-admin/recipes") 食谱
+        ul.nav.navbar-nav.navbar-right
+            li
+                a(href="/xiaoxiong-admin/logout") 退出 
