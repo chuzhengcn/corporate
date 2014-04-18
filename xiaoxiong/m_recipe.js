@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 var recipe_schema = new Schema({
     title : String,
     content : String,
-    thumb: String,
+    thumbnail: String,
     original_price: Number,
     price: Number,
     create_date : String,

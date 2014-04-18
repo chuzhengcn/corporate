@@ -3,9 +3,21 @@ extends layout
 append head
 
 append body
-    .navbar.navbar-inverse.navbar-fixed-top
+    .navbar.navbar-inverse
         .container
             include header
             +header({"1" : "active"})
     .container
+        .page-header
+            h3 所有菜谱
+                a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/recipes-create") 添加菜谱
+        - each recipe,index in recipe_list
+            .thumbnail
+                img(data-src="#{recipe.thumbnail}")
+                .div.caption
+                    h3 #{recipe.title}
+                    span.label.label-primary #{(recipe / 100).toFixed(2)} 元
+                    p
+                        a.btn.btn-default(href="/xiaoxiong-admin/recipe/#{recipe._id}") 详情
+
 append script

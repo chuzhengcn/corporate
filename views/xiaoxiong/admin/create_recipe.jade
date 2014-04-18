@@ -1,0 +1,32 @@
+extends layout
+
+append head
+
+append body
+    .navbar.navbar-inverse
+        .container
+            include header
+            +header({"1" : "active"})
+    .container
+        .page-header
+            h3 添加菜谱
+                a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/recipes") 返回所有菜谱
+        form#create-recipe-form(role="form", method="post", action="/xiaoxiong-admin/recipes")
+            .form-group
+                label(for="title") 名称
+                input.form-control(type="text", name="title", value="", required)
+            .form-group
+                label(for="original_price") 原价
+                input.form-control(type="number", name="original_price", value="", required)
+            .form-group
+                label(for="price") 现价
+                input.form-control(type="number", name="price", value="", required)
+            .form-group
+                label(for="thumbnail") 缩略图
+                input.form-control(type="file", name="thumbnail", value="", required)
+            .form-group
+                label(for="content") 内容
+                textarea.form-control(rows="3", name="content")
+            button.btn.btn-primary(type="submit") 提交
+
+append script

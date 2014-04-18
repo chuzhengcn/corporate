@@ -14,3 +14,19 @@ exports.index = function (req, res) {
     })
 }
 
+exports.create_page = function(req, res) {
+    res.render('xiaoxiong/admin/create_recipe')
+}
+
+exports.create = function(req, res) {
+    var doc = {
+        title : req.body.title,
+        content : req.body.content,
+        thumbnail: req.body.thumbnail,
+        original_price: req.body.original_price,
+        price: req.body.price,
+        create_at : Date.now()
+    }
+
+    m_recipe.create()
+}

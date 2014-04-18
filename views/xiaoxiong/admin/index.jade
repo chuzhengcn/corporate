@@ -3,9 +3,10 @@ extends layout
 append head
 
 append body
-    .navbar.navbar-inverse.navbar-fixed-top
+    .navbar.navbar-inverse
         .container
             include header
             +header({"0" : "active"})
     .container
+
 append script
