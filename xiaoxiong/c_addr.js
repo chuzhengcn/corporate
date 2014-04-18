@@ -56,3 +56,24 @@ function list_page(req, res) {
     res.render('xiaoxiong/addr_list', {user_open_id : req.params.open_id})
 }
 exports.list_page = list_page
+
+function create(req, res) {
+    var doc = {
+        open_id         : lib_util.decipher(req.body.user_open_id),
+        name            : req.body.name,
+        tel             : req.body.tel,
+        area            : req.body.area,
+        detail          : req.body.detail,
+        postcode        : 518000,
+        last_used_at    : Date.now()
+    }
+
+    m_addr.create(doc, function(err) {
+        if (err) {
+            return res.send({ok : 0})
+        }
+
+        res.send({ok : 1})
+    })
+}
+exports.create = create;

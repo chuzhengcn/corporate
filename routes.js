@@ -15,6 +15,7 @@ function init_routes(app) {
     app.get('/xiaoxiong',           xiaoxiong_index.index)
     app.get('/xiaoxiong/addr-create-page/:open_id', xiaoxiong_addr.create_page)
     app.get('/xiaoxiong/addr/:open_id', xiaoxiong_addr.list_page)
+    app.post('/xiaoxiong/addr', xiaoxiong_addr.create)
 
     // xiaoxiong admin
     app.get('/xiaoxiong-admin', xiaoxiong_admin_index.index)

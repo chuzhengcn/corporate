@@ -5,7 +5,7 @@ append head
 append body
     .container-fluid
         h1 添加地址
-        form(role="form")
+        form#create-addr-form(role="form")
             input(type="hidden", name="user_open_id", value="#{user_open_id}")
             .form-group
                 label(for="name") 收货人
@@ -19,3 +19,7 @@ append body
             .form-group
                 label(for="detail") 详细地址
                 input.form-control(type="text", name="detail", required)
+            button.btn.btn-primary.btn-block(type="submit") 提交
+
+append script
+    script(src="/xiaoxiong/js/create_addr.js")
