@@ -1,6 +1,10 @@
 (function () {
     $(function() {
-        $('#create-addr-form').submit(function(event) {
+        var $form = $('#create-addr-form');
+
+        $form.
+
+        $form.submit(function(event) {
             var $self   = $(this),
                 open_id = $self.find('input[name="user_open_id"]').val();
 
@@ -13,7 +17,11 @@
                     return alert('创建地址错误，稍后再试')
                 }
 
-                location.href = '/xiaoxiong/addr/' + open_id 
+                alert('添加地址成功')
+
+                setTimeout(function() {
+                    location.href = '/xiaoxiong/addr/' + open_id 
+                })
             })
 
             event.preventDefault()

@@ -4,9 +4,13 @@ append head
 
 append body
     .container-fluid
+        h1 我的地址
+            a.btn.btn-primary.pull-right(href="/xiaoxiong/addr-create-page/#{user_open_id}") 添加地址
         - each addr in addr_list
             .panel.panel-info
-                .panel-heading #{addr.name}
+                .panel-heading #{addr.name} #{addr.tel}
                 .panel-body #{addr.area} #{addr.detail}
-                .panel-footer #{addr.tel}
+                .panel-footer.clearfix 
+                    button.btn.btn-default.btn-sm.pull-left 修改
+                    button.btn.btn-danger.btn-sm.pull-right 删除
 

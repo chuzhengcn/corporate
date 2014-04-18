@@ -36,7 +36,7 @@ function send_event_my_addr_response(req, res) {
             console.log(content)
         } else {
             content = "您的常用地址：" + doc.name + " " + doc.tel + " " + doc.area + " " + doc.detail +
-                      "，<a href='" + all_addr_page + "'>编辑或修改</a>"; 
+                      "。<a href='" + all_addr_page + "'>修改</a>"; 
         }
 
         reply_content = util.format(template, user_open_id, my_open_id, now, content)
