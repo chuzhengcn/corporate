@@ -4,3 +4,9 @@ append head
 
 append body
     .container-fluid
+        - each addr in addr_list
+            .panel.panel-info
+                .panel-heading #{addr.name}
+                .panel-body #{addr.area} #{addr.detail}
+                .panel-footer #{addr.tel}
+

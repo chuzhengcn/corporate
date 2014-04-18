@@ -53,7 +53,17 @@ function create_page(req, res) {
 exports.create_page = create_page
 
 function list_page(req, res) {
-    res.render('xiaoxiong/addr_list', {user_open_id : req.params.open_id})
+    var open_id = lib_util.decipher(req.params.open_id);
+
+    m_addr.find({open_id : open_id}).sort("-last_used_at").exec(function(err, results) {
+
+        res.render('xiaoxiong/addr_list', 
+            {
+                user_open_id : req.params.open_id,
+                addr_list    : results
+            }
+        )
+    })
 }
 exports.list_page = list_page
 
