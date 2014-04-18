@@ -1,0 +1,27 @@
+extends layout
+
+append head
+
+append body
+    .container-fluid
+        h1 修改地址
+            a.btn.btn-primary.pull-right(href="/xiaoxiong/addr/#{user_open_id}") 返回地址列表
+        form#edit-addr-form(role="form")
+            input(type="hidden", name="user_open_id", value="#{user_open_id}")
+            input(type="hidden", name="addr_id", value="#{addr._id}")
+            .form-group
+                label(for="name") 收货人
+                input.form-control(type="text", name="name", value="#{addr.name}", required)
+            .form-group
+                label(for="tel") 电话
+                input.form-control(type="number", name="tel", value="#{addr.tel}", required)
+            .form-group
+                label(for="area") 地区
+                input.form-control(type="text", name="area", placeholder="深圳", value="#{addr.area}", required)
+            .form-group
+                label(for="detail") 详细地址
+                input.form-control(type="text", name="detail", value="#{addr.detail}", required)
+            button.btn.btn-primary.btn-block(type="submit") 提交修改
+
+append script
+    script(src="/xiaoxiong/js/edit_addr.js")

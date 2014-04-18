@@ -87,3 +87,49 @@ function create(req, res) {
     })
 }
 exports.create = create;
+
+function edit_page(req, res) {
+    var addr_id = req.params.addr_id;
+
+    m_addr.findById(addr_id).exec(function(err, result) {
+        res.render('xiaoxiong/edit_addr', {
+            user_open_id : req.params.open_id,
+            addr         : result,
+        })
+    })
+}
+exports.edit_page = edit_page
+
+function edit(req, res) {
+    var addr_id = req.params.addr_id,
+        doc = {
+            name            : req.body.name,
+            tel             : req.body.tel,
+            area            : req.body.area,
+            detail          : req.body.detail,
+            last_used_at    : Date.now()
+        };
+
+    m_addr.findByIdAndUpdate(addr_id, doc, function(err) {
+        if (err) {
+            return res.send({ok : 0})
+        }
+
+        res.send({ok : 1})
+    })
+}
+
+exports.edit = edit;
+
+function remove(req, res) {
+    var addr_id = req.params.addr_id;
+
+    m_addr.findByIdAndRemove(addr_id, function(err) {
+        if (err) {
+            return res.send({ok : 0})
+        }
+
+        res.send({ok : 1})
+    })
+}
+exports.remove = remove;

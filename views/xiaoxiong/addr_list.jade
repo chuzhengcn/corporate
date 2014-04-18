@@ -6,11 +6,17 @@ append body
     .container-fluid
         h1 我的地址
             a.btn.btn-primary.pull-right(href="/xiaoxiong/addr-create-page/#{user_open_id}") 添加地址
-        - each addr in addr_list
-            .panel.panel-info
-                .panel-heading #{addr.name} #{addr.tel}
-                .panel-body #{addr.area} #{addr.detail}
-                .panel-footer.clearfix 
-                    button.btn.btn-default.btn-sm.pull-left 修改
-                    button.btn.btn-danger.btn-sm.pull-right 删除
+        - if (addr_list.length === 0)
+            .alert.alert-warning 您还没有收获地址。
+                a.btn.btn-default.btn-sm(href="/xiaoxiong/addr-create-page/#{user_open_id}") 添加
+        - else
+            - each addr in addr_list
+                .panel.panel-info
+                    .panel-heading #{addr.name} #{addr.tel}
+                    .panel-body #{addr.area} #{addr.detail}
+                    .panel-footer.clearfix 
+                        a.btn.btn-default.btn-sm.pull-left(href="/xiaoxiong/addr/#{addr._id}/user/#{user_open_id}") 修改
+                        button.btn.btn-danger.btn-sm.pull-right(data-url="/xiaoxiong/addr/#{addr._id}/user/#{user_open_id}") 删除
+append script
+    script(src="/xiaoxiong/js/addr_list.js")                    
 

@@ -16,6 +16,9 @@ function init_routes(app) {
     app.get('/xiaoxiong/addr-create-page/:open_id', xiaoxiong_addr.create_page)
     app.get('/xiaoxiong/addr/:open_id', xiaoxiong_addr.list_page)
     app.post('/xiaoxiong/addr', xiaoxiong_addr.create)
+    app.get('/xiaoxiong/addr/:addr_id/user/:open_id', xiaoxiong_addr.edit_page)
+    app.put('/xiaoxiong/addr/:addr_id/user/:open_id', xiaoxiong_addr.edit)
+    app.delete('/xiaoxiong/addr/:addr_id/user/:open_id', xiaoxiong_addr.remove)
 
     // xiaoxiong admin
     app.get('/xiaoxiong-admin', xiaoxiong_admin_index.index)
