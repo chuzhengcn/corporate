@@ -2,8 +2,6 @@
     $(function() {
         var $form = $('#create-addr-form');
 
-        $form.
-
         $form.submit(function(event) {
             var $self   = $(this),
                 open_id = $self.find('input[name="user_open_id"]').val();
