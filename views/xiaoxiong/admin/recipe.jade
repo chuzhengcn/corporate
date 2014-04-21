@@ -11,6 +11,7 @@ append body
         .page-header
             h3 所有菜谱
                 a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/recipes-create") 添加菜谱
+        .row
         - each recipe,index in recipe_list
             .thumbnail
                 img(data-src="#{recipe.thumbnail}")

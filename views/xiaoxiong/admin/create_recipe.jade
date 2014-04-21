@@ -11,6 +11,10 @@ append body
         .page-header
             h3 添加菜谱
                 a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/recipes") 返回所有菜谱
+        form(action="#", method="post")
+            .form-group
+                label(for="thumbnail") 缩略图
+                input#fileupload.form-control(type="file", name="thumbnail", data-url="/xiaoxiong-admin/upload")
         form#create-recipe-form(role="form", method="post", action="/xiaoxiong-admin/recipes")
             .form-group
                 label(for="title") 名称
@@ -22,11 +26,13 @@ append body
                 label(for="price") 现价
                 input.form-control(type="number", name="price", value="", required)
             .form-group
-                label(for="thumbnail") 缩略图
-                input.form-control(type="file", name="thumbnail", value="", required)
-            .form-group
                 label(for="content") 内容
                 textarea.form-control(rows="3", name="content")
             button.btn.btn-primary(type="submit") 提交
 
 append script
+    script(src="/vendor/jquery.ui.widget.js")
+    script(src="/vendor/jquery.iframe-transport.js")
+    script(src="/vendor/jquery.fileupload.js")
+    script(src="/xiaoxiong/admin/js/create_recipe.js")
+

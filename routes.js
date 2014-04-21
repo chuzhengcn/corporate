@@ -3,6 +3,7 @@ var feiye_index             = require('./feiye/c_index'),
     xiaoxiong_index         = require('./xiaoxiong/c_index'),
     xiaoxiong_addr          = require('./xiaoxiong/c_addr'),
     xiaoxiong_admin_index   = require('./xiaoxiong/admin/c_index'),
+    xiaoxiong_admin_upload  = require('./xiaoxiong/admin/c_upload'),
     xiaoxiong_admin_login   = require('./xiaoxiong/admin/c_login'),
     xiaoxiong_admin_recipe  = require('./xiaoxiong/admin/c_recipe');
 
@@ -22,6 +23,7 @@ function init_routes(app) {
     app.delete('/xiaoxiong/addr/:addr_id/user/:open_id', xiaoxiong_addr.remove)
 
     // xiaoxiong admin
+    app.post('/xiaoxiong-admin/upload', xiaoxiong_admin_upload.index)
     app.get('/xiaoxiong-admin', xiaoxiong_admin_index.index)
     app.get('/xiaoxiong-admin/login', xiaoxiong_admin_login.index)
     app.post('/xiaoxiong-admin/login', xiaoxiong_admin_login.login)
