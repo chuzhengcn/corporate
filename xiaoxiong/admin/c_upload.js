@@ -5,9 +5,9 @@ exports.index = function(req, res) {
     login.check_login_and_send(req, res, function() {
         var input_file_name = "thumbnail",
             max_size        = 5000000,
-            local_path      = __dirname + '/../../public/xiaoxiong/_att',
+            local_path      = __dirname + '/../../public/xiaoxiong/_att/' + input_file_name,
             upload_file     = req.files[input_file_name],
-            http_url        = "http://www.feiyesoft.com/xiaoxiong/_att";
+            http_url        = "http://www.feiyesoft.com/xiaoxiong/_att/" + input_file_name;
 
         if (upload_file.size > max_size) {
             fs.unlink(upload_file.path)
