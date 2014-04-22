@@ -5,3 +5,15 @@
     border:solid 1px #ddd;
     margin-top:10px;
 }
+
+.thumbnail_in_table {
+    max-height: 100px;
+    max-width: 200px;
+}
+
+.thumbnail_in_info {
+    max-width: 500px;
+}
+.gap-right {
+    margin-right: 20px;
+}

@@ -1,7 +1,9 @@
 (function () {
     $(function() {
         var editor,
-            $form = $('#create-recipe-form');
+            $form = $('#edit-recipe-form');
+
+        $('#fileupload_preview').show();
 
         KindEditor.ready(function(K) {
             editor = K.create('#content-editor', {
@@ -33,20 +35,20 @@
         $form.submit(function(event) {
             var $self   = $(this);
             editor.sync()
-
+            
             $.ajax({
                 url     : $self.attr('action'),
                 type    : $self.attr('method'),
                 data    : $self.serialize(),
             }).done(function(data) {
                 if (data.ok !== 1) {
-                    return alert('添加菜谱错误，稍后再试')
+                    return alert('更新菜谱错误，稍后再试')
                 }
 
-                alert('添加菜谱成功')
+                alert('更新菜谱成功')
 
                 setTimeout(function() {
-                    location.href = '/xiaoxiong-admin/recipes' 
+                    location.href = $self.attr('action') 
                 })
             })
 

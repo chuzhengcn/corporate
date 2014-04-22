@@ -32,6 +32,9 @@ function init_routes(app) {
     app.get('/xiaoxiong-admin/recipes', xiaoxiong_admin_recipe.index)
     app.get('/xiaoxiong-admin/recipes-create', xiaoxiong_admin_recipe.create_page)
     app.post('/xiaoxiong-admin/recipes', xiaoxiong_admin_recipe.create)
+    app.get('/xiaoxiong-admin/recipes/:id', xiaoxiong_admin_recipe.info)
+    app.get('/xiaoxiong-admin/recipes-edit/:id', xiaoxiong_admin_recipe.edit_page)
+    app.put('/xiaoxiong-admin/recipes/:id', xiaoxiong_admin_recipe.edit)
 }
 
 exports = module.exports = init_routes;

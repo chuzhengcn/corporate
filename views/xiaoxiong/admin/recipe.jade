@@ -11,14 +11,41 @@ append body
         .page-header
             h3 所有菜谱
                 a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/recipes-create") 添加菜谱
-        .row
-        - each recipe,index in recipe_list
-            .thumbnail
-                img(data-src="#{recipe.thumbnail}")
-                .div.caption
-                    h3 #{recipe.title}
-                    span.label.label-primary #{(recipe / 100).toFixed(2)} 元
-                    p
-                        a.btn.btn-default(href="/xiaoxiong-admin/recipe/#{recipe._id}") 详情
+        .panel.panel-default
+            .panel-heading 菜谱列表
+                span.badge.pull-right #{current_page} / #{total_page}
+            table.table
+                tr
+                    th 缩略图
+                    th 名称
+                    th 原价
+                    th 现价
+                    th 操作
+                - each recipe,index in recipe_list
+                    tr
+                        td
+                            img.img-thumbnail.thumbnail_in_table(src="#{recipe.thumbnail}")
+                        td #{recipe.title}
+                        td
+                            span.label.label-default #{(recipe.original_price / 100).toFixed(2)} 元
+                        td
+                            span.label.label-info #{(recipe.price / 100).toFixed(2)} 元
+                        td
+                            .btn-group
+                                a.btn.btn-default(href="/xiaoxiong-admin/recipes/#{recipe._id}") 详情
+                                a.btn.btn-default(href="/xiaoxiong-admin/recipes-edit/#{recipe._id}") 编辑
+        ul.pager
+            - if (current_page === 1)
+                li.previous.disabled
+                    a(href="#") 上页
+            - else
+                li.previous
+                    a(href="?page=#{current_page - 1}") 上页
+            - if (total_page === current_page) 
+                li.next.disabled
+                    a(href="#") 下页
+            - else
+                li.next
+                    a(href="?page=#{current_page + 1}") 下页
 
 append script

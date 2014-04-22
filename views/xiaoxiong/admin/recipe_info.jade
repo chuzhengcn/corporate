@@ -1,0 +1,22 @@
+extends layout
+
+append head
+append body
+    .navbar.navbar-inverse
+        .container
+            include header
+            +header({"1" : "active"})
+    .container
+        .page-header
+            h3 #{recipe.title}
+                a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/recipes") 返回所有菜谱
+                a.btn.btn-default.pull-right.gap-right(href="/xiaoxiong-admin/recipes-edit/#{recipe._id}") 编辑此菜谱
+        img.thumbnail_in_info.center-block.img-thumbnail(src="#{recipe.thumbnail}")
+        p
+            span.label.label-default.gap-right  原价： #{(recipe.original_price / 100).toFixed(2)} 元
+            span.label.label-info  现价：#{(recipe.price / 100).toFixed(2)} 元
+        .panel.panel-default
+            .panel-body
+                !{recipe.content}
+append script
+

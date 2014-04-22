@@ -9,28 +9,28 @@ append body
             +header({"1" : "active"})
     .container
         .page-header
-            h3 添加菜谱
+            h3 编辑菜谱
                 a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/recipes") 返回所有菜谱
-        form#create-recipe-form(role="form", method="post", action="/xiaoxiong-admin/recipes")
+        form#edit-recipe-form(role="form", method="put", action="/xiaoxiong-admin/recipes/#{recipe._id}")
             .form-group
                 label(for="title") 名称
-                input.form-control(type="text", name="title", value="", required)
+                input.form-control(type="text", name="title", value="#{recipe.title}", required)
             .form-group
                 label(for="original_price") 原价
-                input.form-control(type="number", min="0.01", step="0.01", name="original_price", value="", required)
+                input.form-control(type="number", min="0.01", step="0.01", name="original_price", value="#{recipe.original_price / 100}", required)
             .form-group
                 label(for="price") 现价
-                input.form-control(type="number", min="0.01", step="0.01", name="price", value="", required)
+                input.form-control(type="number", min="0.01", step="0.01", name="price", value="#{recipe.price / 100}", required)
             .form-group
                 label(for="thumbnail_url") 缩略图
                 input#fileupload.form-control(type="file", value="", name="thumbnail", data-url="/xiaoxiong-admin/upload/thumbnail")
-                input#fileupload_url(type="hidden", name="thumbnail_url", value="")
-                img#fileupload_preview(src="")
+                input#fileupload_url(type="hidden", name="thumbnail_url", value="#{recipe.thumbnail}")
+                img#fileupload_preview(src="#{recipe.thumbnail}")
             .form-group
                 label(for="content") 内容
-                textarea#content-editor.form-control(rows="30", name="content")
+                textarea#content-editor.form-control(rows="30", name="content") #{recipe.content}
             
-            button.btn.btn-primary.btn-block(type="submit") 提交
+            button.btn.btn-primary.btn-block(type="submit") 更新
 
 append script
     script(src="/vendor/jquery.ui.widget.js")
@@ -38,5 +38,4 @@ append script
     script(src="/vendor/jquery.fileupload.js")
     script(charset="utf-8", src="/vendor/kindeditor-4.1.10/kindeditor-min.js")
     script(charset="utf-8",src="/vendor/kindeditor-4.1.10/lang/zh_CN.js")
-    script(src="/xiaoxiong/admin/js/create_recipe.js")        
-
+    script(src="/xiaoxiong/admin/js/recipe_edit.js")
