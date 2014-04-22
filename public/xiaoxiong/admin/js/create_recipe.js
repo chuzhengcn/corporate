@@ -1,6 +1,7 @@
 (function () {
     $(function() {
-        var editor;
+        var editor,
+            $form = $('#create-addr-form');
 
         KindEditor.ready(function(K) {
             editor = K.create('#content-editor', {
@@ -28,5 +29,27 @@
                 
             }
         });
+
+        $form.submit(function(event) {
+            var $self   = $(this);
+
+            $.ajax({
+                url     : $self.attr('action'),
+                type    : $self.attr('method'),
+                data    : $self.serialize(),
+            }).done(function(data) {
+                if (data.ok !== 1) {
+                    return alert('添加菜谱错误，稍后再试')
+                }
+
+                alert('添加菜谱成功')
+
+                setTimeout(function() {
+                    location.href = '/xiaoxiong-admin/recipes' 
+                })
+            })
+
+            event.preventDefault()
+        })
     })
 })();

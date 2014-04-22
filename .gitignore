@@ -15,6 +15,9 @@ results
 npm-debug.log
 node_modules
 
+tmp/*
+!tmp/readme
+
 public/xiaoxiong/_att/thumbnail/*
 !public/xiaoxiong/_att/thumbnail/readme
 
