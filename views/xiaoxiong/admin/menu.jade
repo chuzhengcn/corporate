@@ -1,0 +1,46 @@
+extends layout
+
+append head
+
+append body
+    .navbar.navbar-inverse
+        .container
+            include header
+            +header({"2" : "active"})
+    .container
+        .page-header
+            h3 所有菜单
+                a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/menus-create") 创建菜单
+        .panel.panel-default
+            .panel-heading 菜单列表
+                span.badge.pull-right #{current_page} / #{total_page}
+            table.table
+                tr
+                    th 标题
+                    th 日期
+                    th 菜谱数
+                    th 操作
+                - each menu,index in menu_list
+                    tr
+                        td #{menu.title}
+                        td #{menu.publish_date}
+                        td #{menu.content.length}
+                        td
+                            .btn-group
+                                a.btn.btn-default(href="/xiaoxiong-admin/menus/#{menus._id}") 详情
+                                a.btn.btn-default(href="/xiaoxiong-admin/menus-edit/#{menus._id}") 编辑
+        ul.pager
+            - if (current_page === 1)
+                li.previous.disabled
+                    a(href="#") 上页
+            - else
+                li.previous
+                    a(href="?page=#{current_page - 1}") 上页
+            - if (total_page === current_page) 
+                li.next.disabled
+                    a(href="#") 下页
+            - else
+                li.next
+                    a(href="?page=#{current_page + 1}") 下页
+
+append script
