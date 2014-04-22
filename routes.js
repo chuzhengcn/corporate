@@ -23,7 +23,8 @@ function init_routes(app) {
     app.delete('/xiaoxiong/addr/:addr_id/user/:open_id', xiaoxiong_addr.remove)
 
     // xiaoxiong admin
-    app.post('/xiaoxiong-admin/upload', xiaoxiong_admin_upload.index)
+    app.post('/xiaoxiong-admin/upload/thumbnail', xiaoxiong_admin_upload.thumbnail)
+    app.post('/xiaoxiong-admin/upload/editor', xiaoxiong_admin_upload.editor)
     app.get('/xiaoxiong-admin', xiaoxiong_admin_index.index)
     app.get('/xiaoxiong-admin/login', xiaoxiong_admin_login.index)
     app.post('/xiaoxiong-admin/login', xiaoxiong_admin_login.login)

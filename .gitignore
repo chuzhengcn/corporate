@@ -17,3 +17,6 @@ node_modules
 
 public/xiaoxiong/_att/thumbnail/*
 !public/xiaoxiong/_att/thumbnail/readme
+
+public/xiaoxiong/_att/editor/*
+!public/xiaoxiong/_att/editor/readme

@@ -1,5 +1,17 @@
-(function (argument) {
+(function () {
     $(function() {
+        var editor;
+
+        KindEditor.ready(function(K) {
+            editor = K.create('#content-editor', {
+                resizeType : 1,
+                uploadJson : '/xiaoxiong-admin/upload/editor',
+                items : [
+                    'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                    'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                    'insertunorderedlist', '|', 'image']
+            });
+        });
 
         $('#fileupload').fileupload({
             dataType: 'json',
