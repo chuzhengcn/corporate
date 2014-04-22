@@ -16,4 +16,4 @@ npm-debug.log
 node_modules
 
 public/xiaoxiong/_att/*
-!public/xiaoxiong/_att/readme
+!public/xiaoxiong/_att/thumbnail/readme
