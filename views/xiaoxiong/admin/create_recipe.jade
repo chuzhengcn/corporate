@@ -11,10 +11,6 @@ append body
         .page-header
             h3 添加菜谱
                 a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/recipes") 返回所有菜谱
-        form(action="#", method="post")
-            .form-group
-                label(for="thumbnail") 缩略图
-                input#fileupload.form-control(type="file", name="thumbnail", data-url="/xiaoxiong-admin/upload")
         form#create-recipe-form(role="form", method="post", action="/xiaoxiong-admin/recipes")
             .form-group
                 label(for="title") 名称
@@ -28,6 +24,11 @@ append body
             .form-group
                 label(for="content") 内容
                 textarea.form-control(rows="3", name="content")
+            .form-group
+                label(for="thumbnail") 缩略图
+                input#fileupload.form-control(type="file", name="thumbnail", data-url="/xiaoxiong-admin/upload")
+                input#fileupload_url(type="hidden")
+                img#fileupload_preview(src="")
             button.btn.btn-primary(type="submit") 提交
 
 append script

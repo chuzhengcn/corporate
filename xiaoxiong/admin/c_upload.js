@@ -5,7 +5,7 @@ exports.index = function(req, res) {
         max_size        = 5000000,
         local_path      = __dirname + '/../../public/xiaoxiong/_att',
         upload_file     = req.files[input_file_name],
-        http_url        = "http://www.xiaoxiong.com/_att";
+        http_url        = "http://www.feiyesoft.com/xiaoxiong/_att";
 
     if (upload_file.size > max_size) {
         fs.unlink(upload_file.path)

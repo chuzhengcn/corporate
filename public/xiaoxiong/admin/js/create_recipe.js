@@ -5,17 +5,15 @@
             dataType: 'json',
             done: function (event, data) {
                 if (data.result.ok !== 1) {
-                    App.show_message('danger', '上传文件出错', data.result.msg)
+                    alert('上传文件出错, 图片最大5m')
                 }
 
-                App.show_message('success', '上传文件成功', '')
+                ('success', '上传文件成功', '')
 
-                setTimeout(function() {
-                    location.reload()
-                }, 500)
-                // $.each(data.result.files, function (index, file) {
-                //     $('<p/>').text(file.name).appendTo(document.body);
-                // });
+                // $('#fileupload').hide()
+                $('#fileupload_url').val(data.result.url)
+                $('#fileupload_preview').show().attr('src', data.result.url)
+                
             }
         });
     })
