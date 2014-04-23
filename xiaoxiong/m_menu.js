@@ -1,4 +1,5 @@
-var async = require('async'),    
+var async = require('async'),   
+    moment = require('moment'), 
     m_recipe = require("./m_recipe").Recipe,
     mongoose = require('mongoose'),
     Schema   = mongoose.Schema;
@@ -56,6 +57,21 @@ menu_schema.static('find_by_id_and_recipes', function(id, cb) {
     ],
     function(err, reslut) {
         cb(err, reslut)
+    })
+})
+
+menu_schema.static('find_today', function(cb) {
+    var limit_num = 10,
+        today     = moment().format("YYYY-MM-DD");
+
+    this.findOne({publish_date : today}, function(err, doc) {
+        m_recipe.find({_id : {$in : doc.content}}, function(err, recipe_docs) {
+            if (err) {
+                return cb(err)
+            }
+            doc.recipes = recipe_docs
+            cb(null, doc)
+        })
     })
 })
 
