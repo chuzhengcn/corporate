@@ -8,7 +8,7 @@ append body
             +header({"2" : "active"})
     .container
         .page-header
-            h3 添加菜单
+            h3 修改菜单
                 a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/menus") 返回所有菜单
         .row
             .col-md-6
@@ -49,18 +49,29 @@ append body
                                 button#search-recipe-btn.btn.btn-default 搜索
                         .list-group
             .col-md-6
-                form#create-menu-form(role="form", method="post", action="/xiaoxiong-admin/menus")
+                form#edit-menu-form(role="form", method="put", action="/xiaoxiong-admin/menus/#{menu._id}")
                     .form-group
                         label(for="title") 名称
-                        input.form-control(type="text", name="title", value="", required)
+                        input.form-control(type="text", name="title", value="#{menu.title}", required)
                     .form-group
                         label(for="publish_date")
-                        input.form-control(type="date", name="publish_date", value="", required)
+                        input.form-control(type="date", name="publish_date", value="#{menu.publish_date}", required)
                     #selected-recipes-input.form-group
                         label(for="recipe") 食谱
+                        - each recipe in menu.recipes
+                            input(type="hidden", name="recipe", value="#{recipe._id}")
                     #selected-recipes.list-group
-                    button.btn.btn-primary.btn-block(type="submit") 提交
+                        - each recipe in menu.recipes
+                            li.list-group-item.clearfix
+                                img.img-thumbnail.pull-left.thumbnail_in_list.gap-right(src="#{recipe.thumbnail}")
+                                .pull-left
+                                    h5 #{recipe.title}
+                                    span.label.label-default.gap-right 原价： #{(recipe.original_price / 100).toFixed(2)} 元
+                                    span.label.label-info 现价：#{(recipe.price / 100).toFixed(2)} 元
+                                .pull-right
+                                    button.btn.btn-default.remove-recipe-btn(data-id="#{recipe._id}") 删除
+                    button.btn.btn-primary.btn-block(type="submit") 修改
 
 
 append script
-    script(src="/xiaoxiong/admin/js/menu_create.js")        
+    script(src="/xiaoxiong/admin/js/menu_edit.js")        

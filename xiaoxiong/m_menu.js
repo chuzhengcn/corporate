@@ -1,4 +1,5 @@
 var async = require('async'),    
+    m_recipe = require("./m_recipe").Recipe,
     mongoose = require('mongoose'),
     Schema   = mongoose.Schema;
 
@@ -30,6 +31,31 @@ menu_schema.static("find_by_page", function (page, cb) {
 
             cb(err, docs, Math.ceil(num / per_page), page)
         })
+    })
+})
+
+menu_schema.static('find_by_id_and_recipes', function(id, cb) {
+    var self = this;
+
+    async.waterfall([
+        function(calllback) {
+            self.findById(id, function(err, doc) {
+                calllback(err, doc)
+            })
+        },
+
+        function(doc, calllback) {
+            m_recipe.find({_id : {$in : doc.content}}, function(err, recipe_docs) {
+                if (err) {
+                    return calllback(err)
+                }
+                doc.recipes = recipe_docs
+                calllback(null, doc)
+            })
+        }
+    ],
+    function(err, reslut) {
+        cb(err, reslut)
     })
 })
 

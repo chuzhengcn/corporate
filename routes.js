@@ -39,6 +39,10 @@ function init_routes(app) {
 
     app.get('/xiaoxiong-admin/menus', xiaoxiong_admin_menu.index)
     app.get('/xiaoxiong-admin/menus-create', xiaoxiong_admin_menu.create_page)
+    app.post('/xiaoxiong-admin/menus', xiaoxiong_admin_menu.create)
+    app.get('/xiaoxiong-admin/menus/:id', xiaoxiong_admin_menu.info)
+    app.get('/xiaoxiong-admin/menus-edit/:id', xiaoxiong_admin_menu.edit_page)
+    app.put('/xiaoxiong-admin/menus/:id', xiaoxiong_admin_menu.edit)
 }
 
 exports = module.exports = init_routes;

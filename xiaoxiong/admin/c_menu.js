@@ -34,3 +34,78 @@ exports.create_page = function(req, res) {
         })
     })
 }
+
+exports.create = function(req, res) {
+    login.check_login_and_send(req, res, function() {
+        var now = Date.now(),
+            doc = {
+                title   : req.body.title,
+                content : req.body.recipe,    
+                publish_date : req.body.publish_date,
+                create_date : moment(now).format("YYYY-MM-DD"),
+                create_at : now,
+                modify_at : now,
+            }
+
+        m_menu.create(doc, function(err) {
+            if (err) {
+                console.log(err)
+                res.send({ok : 0})
+                return
+            }
+
+            res.send({ok : 1})
+        })
+    })
+}
+
+exports.info = function(req, res) {
+    login.check_login_and_send(req, res, function() {
+        var id = req.params.id;
+
+        m_menu.find_by_id_and_recipes(id, function(err, doc) {
+            res.render('xiaoxiong/admin/menu_info', {
+                menu : doc
+            })
+        })
+    })
+}
+
+exports.edit_page = function(req, res) {
+    login.check_login_and_send(req, res, function() {
+        var id = req.params.id;
+
+        m_recipe.find_newest_by_create_at(20, function(err, create_docs) {
+            m_recipe.find_newest_by_modify_at(20, function(err, modify_docs) {
+                m_menu.find_by_id_and_recipes(id, function(err, doc) {
+                    res.render('xiaoxiong/admin/menu_edit', {
+                        menu : doc,
+                        newest_recipes : create_docs,
+                        modify_recipes : modify_docs
+                    })
+                })
+            })
+        })
+    })
+}
+
+exports.edit = function(req, res) {
+    login.check_login_and_send(req, res, function() {
+        var id = req.params.id,
+            now = Date.now(),
+            doc = {
+                title   : req.body.title,
+                content : req.body.recipe,    
+                publish_date : req.body.publish_date,
+                modify_at : now,
+            };
+
+        m_menu.findByIdAndUpdate(id, doc, function(err) {
+            if (err) {
+                return res.send({ok : 0})
+            }
+
+            res.send({ok : 1})
+        })
+    })
+}

@@ -1,0 +1,25 @@
+extends layout
+
+append head
+append body
+    .navbar.navbar-inverse
+        .container
+            include header
+            +header({"2" : "active"})
+    .container
+        .page-header
+            h3 #{menu.publish_date}
+                a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/menus") 返回所有菜单
+                a.btn.btn-default.pull-right.gap-right(href="/xiaoxiong-admin/menus-edit/#{menu._id}") 修改
+        p #{menu.title} 
+        .list-group
+            - each recipe in menu.recipes
+                li.list-group-item.clearfix
+                    img.img-thumbnail.pull-left.thumbnail_in_list.gap-right(src="#{recipe.thumbnail}")
+                    .pull-left
+                        h5 #{recipe.title}
+                        span.label.label-default.gap-right 原价： #{(recipe.original_price / 100).toFixed(2)} 元
+                        span.label.label-info 现价：#{(recipe.price / 100).toFixed(2)} 元
+                    .pull-right
+                        a.btn.btn-default(href="/xiaoxiong-admin/recipes/#{recipe._id}", target="_blank") 详情
+append script

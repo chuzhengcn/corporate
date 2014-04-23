@@ -9,8 +9,8 @@ append body
             +header({"1" : "active"})
     .container
         .page-header
-            h3 编辑菜谱
-                a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/recipes") 返回所有菜谱
+            h3 编辑食谱
+                a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/recipes") 返回所有食谱
         form#edit-recipe-form(role="form", method="put", action="/xiaoxiong-admin/recipes/#{recipe._id}")
             .form-group
                 label(for="title") 名称
