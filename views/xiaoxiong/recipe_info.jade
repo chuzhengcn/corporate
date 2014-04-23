@@ -5,12 +5,15 @@ append head
 append body
     .container-fluid
         .panel.panel-default
-            .panel-heading.text-center.clearfix 
-                a.btn.btn-default.pull-left(href="/xiaoxiong/menus-today/user/#{user_open_id}") 今日菜谱
-                button.btn.btn-primary.pull-right(data-openid="#{user_open_id}") #{(recipe.price / 100).toFixed(2)}元 加入购物车
+            .panel-heading
+                a.btn.btn-default(href="/xiaoxiong/menus-today/user/#{user_open_id}") 
+                    //- span.glyphicon.glyphicon-chevron-left
+                    | 今日所有菜谱
             .panel-body
                 h3 #{recipe.title}
                 p.text-center
                     img.img-thumbnail(src="#{recipe.thumbnail}")
                 | !{recipe.content}
+            .panel-footer.clearfix
+                button.btn.btn-primary.pull-right(data-openid="#{user_open_id}") #{(recipe.price / 100).toFixed(2)}元 加入购物车
 append script
