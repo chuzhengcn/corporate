@@ -10,7 +10,8 @@ append body
                     .panel.panel-default
                         .panel-heading #{recipe.title}
                         .panel-body
-                            img(src="#{recipe.thumbnail}")
+                            a(href="/xiaoxiong/recipes/#{recipe._id}/user/#{user_open_id}")
+                                img(src="#{recipe.thumbnail}")
                         .panel-footer.clearfix
                             span.label.label-info.pull-left 现价：#{(recipe.price / 100).toFixed(2)} 元
                             button.btn.btn-primary.btn-sm.pull-right  加入购物车
