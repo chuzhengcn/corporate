@@ -30,7 +30,7 @@ exports.send_event_today_menu_response = function(req, res) {
                 title : item.title,
                 pic_url : item.thumbnail,
                 description : item.content,
-                url : domain + '/xiaoxiong/recipe/' + item._id + "?open_id=" + encypted_user_open_id
+                url : domain + '/xiaoxiong/recipes/' + item._id + "/user/" + encypted_user_open_id
             }
         })
 
