@@ -11,10 +11,10 @@ append body
                         .thumbnail
                             img(src="#{recipe.thumbnail}")
                             .caption
-                                h3.text-center #{recipe.title}
-                                p.clearfix
-                                    span.label.label-info.pull-left 现价：#{(recipe.price / 100).toFixed(2)} 元
-                                    button.btn.btn-primary.btn-sm.pull-right  加入购物车
+                                h3 #{recipe.title}
+                                    span.label.label-info.pull-right 现价：#{(recipe.price / 100).toFixed(2)} 元
+                                p
+                                    button.btn.btn-primary.btn-sm  加入购物车
             - else
                 .alert.alert-warning 今日暂无供应
 append script
