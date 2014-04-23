@@ -10,26 +10,57 @@ append body
         .page-header
             h3 添加菜单
                 a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/menus") 返回所有菜单
-        form#create-menu-form(role="form", method="post", action="/xiaoxiong-admin/menus")
-            .form-group
-                label(for="title") 名称
-                input.form-control(type="text", name="title", value="", required)
-            .form-group
-                label(for="original_price") 原价
-                input.form-control(type="number", min="0.01", step="0.01", name="original_price", value="", required)
-            .form-group
-                label(for="price") 现价
-                input.form-control(type="number", min="0.01", step="0.01", name="price", value="", required)
-            .form-group
-                label(for="thumbnail_url") 缩略图
-                input#fileupload.form-control(type="file", value="", name="thumbnail", data-url="/xiaoxiong-admin/upload/thumbnail")
-                input#fileupload_url(type="hidden", name="thumbnail_url", value="")
-                img#fileupload_preview(src="")
-            .form-group
-                label(for="content") 内容
-                textarea#content-editor.form-control(rows="30", name="content")
-            
-            button.btn.btn-primary.btn-block(type="submit") 提交
+        .row
+            .col-md-6
+                form#create-menu-form(role="form", method="post", action="/xiaoxiong-admin/menus")
+                    .form-group
+                        label(for="title") 名称
+                        input.form-control(type="text", name="title", value="", required)
+                    .form-group
+                        label(for="publish_date")
+                        input.form-control(type="datetime-local", name="publish_date", value="", required)
+                    #selected-recipes-input.form-group
+                        label(for="recipe") 菜谱
+                    #selected-recipes.list-group
+                    button.btn.btn-primary.btn-block(type="submit") 提交
+            .col-md-6
+                ul.nav.nav-tabs.nav-justified.gap-bottom
+                    li.active
+                        a(href="#new-recipe",  data-toggle="tab") 最新添加
+                    li
+                        a(href="#modify-recipe",  data-toggle="tab") 最新修改
+                    li
+                        a(href="#search-recipe",  data-toggle="tab") 搜索
+                .tab-content
+                    #new-recipe.tab-pane.active
+                        .list-group
+                            - each recipe in newest_recipes
+                                li.list-group-item.clearfix
+                                    img.img-thumbnail.pull-left.thumbnail_in_list.gap-right(src="#{recipe.thumbnail}")
+                                    .pull-left
+                                        h5 #{recipe.title}
+                                        span.label.label-default.gap-right 原价： #{(recipe.original_price / 100).toFixed(2)} 元
+                                        span.label.label-info 现价：#{(recipe.price / 100).toFixed(2)} 元
+                                    .pull-right
+                                        button.btn.btn-default.select-recipe-btn(data-id="#{recipe._id}") 选择
+                    #modify-recipe.tab-pane
+                        .list-group
+                            - each recipe in modify_recipes
+                                li.list-group-item.clearfix
+                                    img.img-thumbnail.pull-left.thumbnail_in_list.gap-right(src="#{recipe.thumbnail}")
+                                    .pull-left
+                                        h5 #{recipe.title}
+                                        span.label.label-default.gap-right 原价： #{(recipe.original_price / 100).toFixed(2)} 元
+                                        span.label.label-info 现价：#{(recipe.price / 100).toFixed(2)} 元
+                                    .pull-right
+                                        button.btn.btn-default.select-recipe-btn(data-id="#{recipe._id}") 选择
+                    #search-recipe.tab-pane
+                        .input-group.gap-bottom
+                            input#search-input.form-control(type="text", placeholder="菜谱标题")
+                            span.input-group-btn
+                                button#search-recipe-btn.btn.btn-default 搜索
+                        .list-group
+
 
 append script
     script(src="/xiaoxiong/admin/js/menu_create.js")        
