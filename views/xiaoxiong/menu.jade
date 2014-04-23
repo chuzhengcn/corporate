@@ -4,7 +4,7 @@ append head
 
 append body
     .container-fluid
-            h3 今日菜谱
+            h3(data-openid="#{user_open_id}") 今日菜谱
             - if (menu)
                 .row
                     - each recipe in menu.recipes
