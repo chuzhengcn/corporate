@@ -1,4 +1,4 @@
-var m_menu      = require("./m_menu"),
+var m_menu      = require("./m_menu").Menu,
     util        = require("util"),
     lib_util    = require("../lib/util"),
     weixin      = require("../lib/c_weixin"),
