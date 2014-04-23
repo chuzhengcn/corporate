@@ -6,7 +6,7 @@ append body
     .container-fluid
         .panel.panel-default
             .panel-heading.text-center.clearfix 
-                a.btn.btn-primary.pull-left(href="/xiaoxiong/recipes-today/user/#{user_open_id}") 今日所有菜谱
+                a.btn.btn-primary.pull-left(href="/xiaoxiong/recipes-today/user/#{user_open_id}") 今日菜谱
                 button.btn.btn-success.pull-right(data-openid="#{user_open_id}") #{(recipe.price / 100).toFixed(2)}元 加入购物车
             .panel-body
                 h3 #{recipe.title}
