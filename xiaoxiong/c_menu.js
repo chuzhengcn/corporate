@@ -24,15 +24,26 @@ exports.send_event_today_menu_response = function(req, res) {
                             "<Url><![CDATA[%s]]></Url>" +
                         "</item>";
 
-    m_menu.find_today(function(err, docs) {
-        var menus = docs.recipes.map(function(item, index) {
-            return {
-                title : item.title,
-                pic_url : item.thumbnail,
-                description : item.content,
-                url : domain + '/xiaoxiong/recipes/' + item._id + "/user/" + encypted_user_open_id
-            }
-        })
+    m_menu.find_today(function(err, doc) {
+        var menus;
+
+        if (!doc) {
+            menus = [{
+                title : '今日暂无菜单',
+                pic_url : "#",
+                description : '#',
+                url : "#"
+            }];
+        } else {
+            menus = doc.recipes.map(function(item, index) {
+                return {
+                    title : item.title,
+                    pic_url : item.thumbnail,
+                    description : item.content,
+                    url : domain + '/xiaoxiong/recipes/' + item._id + "/user/" + encypted_user_open_id
+                }
+            })
+        }
 
         var items = "";
 
@@ -49,5 +60,16 @@ exports.send_event_today_menu_response = function(req, res) {
         res.type('xml')
         res.send(reply_content)
 
+    })
+}
+
+exports.today_menu = function(req, res) {
+    var user_open_id = req.params.open_id;
+
+    m_menu.find_today(function(err, doc) {
+        res.render('xiaoxiong/menu', {
+            menu : doc,
+            user_open_id : user_open_id,
+        })
     })
 }

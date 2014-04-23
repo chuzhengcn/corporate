@@ -6,8 +6,8 @@ append body
     .container-fluid
         .panel.panel-default
             .panel-heading.text-center.clearfix 
-                a.btn.btn-primary.pull-left(href="/xiaoxiong/recipes-today/user/#{user_open_id}") 今日菜谱
-                button.btn.btn-success.pull-right(data-openid="#{user_open_id}") #{(recipe.price / 100).toFixed(2)}元 加入购物车
+                a.btn.btn-default.pull-left(href="/xiaoxiong/menus-today/user/#{user_open_id}") 今日菜谱
+                button.btn.btn-primary.pull-right(data-openid="#{user_open_id}") #{(recipe.price / 100).toFixed(2)}元 加入购物车
             .panel-body
                 h3 #{recipe.title}
                 p.text-center

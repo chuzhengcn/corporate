@@ -1,0 +1,20 @@
+extends layout
+
+append head
+
+append body
+    .container-fluid
+            h3 今日菜谱
+            - if (menu)
+                .list-group
+                    - each recipe in menu.recipes
+                        li.list-group-item.clearfix
+                            img.img-thumbnail.thumbnail_in_list.pull-left.gap-right(src="#{recipe.thumbnail}")
+                            .pull-left
+                                h5 #{recipe.title}
+                                span.label.label-info 现价：#{(recipe.price / 100).toFixed(2)} 元
+                            .pull-right
+                                button.btn.btn-primary  加入购物车
+            - else
+                .alert.alert-warning 今日暂无供应
+append script

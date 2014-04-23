@@ -65,6 +65,10 @@ menu_schema.static('find_today', function(cb) {
         today     = moment().format("YYYY-MM-DD");
 
     this.findOne({publish_date : today}, function(err, doc) {
+        if (!doc) {
+            return cb(null, null)
+        }
+        
         m_recipe.find({_id : {$in : doc.content}}, function(err, recipe_docs) {
             if (err) {
                 return cb(err)
