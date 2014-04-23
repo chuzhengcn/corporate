@@ -24,8 +24,8 @@ exports.index = function (req, res) {
 
 exports.create_page = function(req, res) {
     login.check_login_and_send(req, res, function() {
-        m_recipe.find_newest_by_create_at(10, function(err, create_docs) {
-            m_recipe.find_newest_by_modify_at(10, function(err, modify_docs) {
+        m_recipe.find_newest_by_create_at(20, function(err, create_docs) {
+            m_recipe.find_newest_by_modify_at(20, function(err, modify_docs) {
                 res.render('xiaoxiong/admin/menu_create', {
                     newest_recipes : create_docs,
                     modify_recipes : modify_docs

@@ -12,18 +12,6 @@ append body
                 a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/menus") 返回所有菜单
         .row
             .col-md-6
-                form#create-menu-form(role="form", method="post", action="/xiaoxiong-admin/menus")
-                    .form-group
-                        label(for="title") 名称
-                        input.form-control(type="text", name="title", value="", required)
-                    .form-group
-                        label(for="publish_date")
-                        input.form-control(type="datetime-local", name="publish_date", value="", required)
-                    #selected-recipes-input.form-group
-                        label(for="recipe") 菜谱
-                    #selected-recipes.list-group
-                    button.btn.btn-primary.btn-block(type="submit") 提交
-            .col-md-6
                 ul.nav.nav-tabs.nav-justified.gap-bottom
                     li.active
                         a(href="#new-recipe",  data-toggle="tab") 最新添加
@@ -60,6 +48,18 @@ append body
                             span.input-group-btn
                                 button#search-recipe-btn.btn.btn-default 搜索
                         .list-group
+            .col-md-6
+                form#create-menu-form(role="form", method="post", action="/xiaoxiong-admin/menus")
+                    .form-group
+                        label(for="title") 名称
+                        input.form-control(type="text", name="title", value="", required)
+                    .form-group
+                        label(for="publish_date")
+                        input.form-control(type="datetime-local", name="publish_date", value="", required)
+                    #selected-recipes-input.form-group
+                        label(for="recipe") 菜谱
+                    #selected-recipes.list-group
+                    button.btn.btn-primary.btn-block(type="submit") 提交
 
 
 append script
