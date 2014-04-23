@@ -40,7 +40,7 @@ exports.send_event_today_menu_response = function(req, res) {
             items += util.format(item_template, item.title, item.description, item.pic_url, item.url)
         })
 
-        template = util.format(template, user_open_id, my_open_id, Date.now(), menu.length);
+        template = util.format(template, user_open_id, my_open_id, Date.now(), menus.length);
 
         var insert_point = template.lastIndexOf('Articles') - 2
 
