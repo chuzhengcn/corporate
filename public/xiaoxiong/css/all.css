@@ -1,8 +1,25 @@
+.padding-bottom {
+    padding-bottom: 40px; 
+}
+.cart {
+    position: fixed;
+    bottom: 0;
+    left:0;
+    right: 0;
+    border: solid 1px #dfdfdf;
+    height: 40px;
+    line-height: 40px;
+    background: #f5f5f5;
+    text-align: center;
+}
 .thumbnail_in_list {
     width: 70px;
 }
 .gap-right {
     margin-right: 20px;
+}
+.gap-left {
+    margin-left: 20px;
 }
 .gap-bottom {
     margin-bottom: 20px;

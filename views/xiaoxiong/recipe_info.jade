@@ -3,17 +3,19 @@ extends layout
 append head
 
 append body
-    .container-fluid
+    .container-fluid.padding-bottom(data-openid="#{user_open_id}")
         .panel.panel-default
-            .panel-heading
-                a.btn.btn-default(href="/xiaoxiong/menus-today/user/#{user_open_id}") 
-                    //- span.glyphicon.glyphicon-chevron-left
+            .panel-heading.clearfix
+                a.btn.btn-default.pull-left(href="/xiaoxiong/menus-today/user/#{user_open_id}") 
                     | 今日所有菜谱
+                span.label.label-info.pull-right #{(recipe.price / 100).toFixed(2)}元
             .panel-body
                 h3 #{recipe.title}
                 p.text-center
                     img.img-thumbnail(src="#{recipe.thumbnail}")
                 | !{recipe.content}
             .panel-footer.clearfix
-                button.btn.btn-primary.pull-right(data-openid="#{user_open_id}") #{(recipe.price / 100).toFixed(2)}元 加入购物车
+                button.btn.btn-primary.pull-right.add-cart-btn(data-recipeid="#{recipe._id}") 加入购物车
+        include include_cart
 append script
+    script(src="/xiaoxiong/js/cart.js")

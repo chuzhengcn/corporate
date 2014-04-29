@@ -3,7 +3,7 @@ extends layout
 append head
 
 append body
-    .container-fluid
+    .container-fluid.padding-bottom(data-openid="#{user_open_id}")
             h3(data-openid="#{user_open_id}") 今日菜谱
             - if (menu)
                 - each recipe in menu.recipes
@@ -14,7 +14,9 @@ append body
                                 img.img-rounded.img-responsive(src="#{recipe.thumbnail}")
                         .panel-footer.clearfix
                             span.label.label-info.pull-left 现价：#{(recipe.price / 100).toFixed(2)} 元
-                            button.btn.btn-primary.btn-sm.pull-right  加入购物车
+                            button.btn.btn-primary.btn-sm.pull-right.add-cart-btn(data-recipeid="#{recipe._id}")  加入购物车
             - else
                 .alert.alert-warning 今日暂无供应
+        include include_cart
 append script
+    script(src="/xiaoxiong/js/cart.js")
