@@ -33,6 +33,7 @@ function init_routes(app) {
     app.get('/xiaoxiong/cart/:open_id', xiaoxiong_cart.index)
     app.post('/xiaoxiong/cart/:open_id', xiaoxiong_cart.create)
     app.get('/xiaoxiong/cart-page/:open_id', xiaoxiong_cart.page)
+    app.delete('/xiaoxiong/cart/:recipe_id/user/:open_id', xiaoxiong_cart.remove_recipe)
 
 
     // xiaoxiong admin

@@ -45,3 +45,16 @@ exports.page = function(req, res) {
     })
 }
 
+exports.remove_recipe = function(req, res) {
+    var user_open_id = lib_util.decipher(req.params.open_id),
+        recipe_id    = req.params.recipe_id;
+
+    m_cart.findOneAndRemove({user_open_id : user_open_id, recipe_id : recipe_id}, function(err) {
+        if (err) {
+            return res.send({ok : 0})
+        }
+
+        res.send({ok : 1})
+    })
+}
+

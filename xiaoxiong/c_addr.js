@@ -109,9 +109,16 @@ function edit(req, res) {
             detail          : req.body.detail,
             last_used_at    : Date.now()
         };
+        
+    for (var key in doc) {
+        if (typeof doc[key] === 'undefined') {
+            delete doc[key]
+        }
+    }
 
     m_addr.findByIdAndUpdate(addr_id, doc, function(err) {
         if (err) {
+            console.log(err)
             return res.send({ok : 0})
         }
 

@@ -8,7 +8,7 @@ append body
                 .panel-heading.clearfix.text-center 
                     h4 确认订单
                 .panel-body
-                    h5 收获地址
+                    h5 收货地址
                     - if (!addr) 
                         .alert.alert-warning 你还没有收获地址。
                             a.btn.btn-primary.btn-sm(href="/xiaoxiong/addr-create-page/#{user_open_id}") 添加
@@ -25,6 +25,7 @@ append body
                         th 菜品
                         th 数量
                         th 价格
+                        th 操作
                 .panel-footer.clearfix
                     a.btn.btn-default.btn-sm.pull-left(href="/xiaoxiong/menus-today/user/#{user_open_id}") 继续挑选
                     button.btn.btn-primary.btn-sm.pull-right 

@@ -10,13 +10,14 @@ append body
             .alert.alert-warning 您还没有收获地址。
                 a.btn.btn-default.btn-sm(href="/xiaoxiong/addr-create-page/#{user_open_id}") 添加
         - else
-            - each addr in addr_list
+            - each addr,index in addr_list
                 .panel.panel-info
                     .panel-heading #{addr.name} #{addr.tel}
                     .panel-body #{addr.area} #{addr.detail}
-                    .panel-footer.clearfix 
-                        a.btn.btn-default.btn-sm.pull-left(href="/xiaoxiong/addr/#{addr._id}/user/#{user_open_id}") 修改
+                    .panel-footer.clearfix
+                        button.btn.btn-default.btn-sm.pull-left.select-primary(data-url="/xiaoxiong/addr/#{addr._id}/user/#{user_open_id}") 选择
                         button.btn.btn-danger.btn-sm.pull-right(data-url="/xiaoxiong/addr/#{addr._id}/user/#{user_open_id}") 删除
+                        a.btn.btn-default.btn-sm.pull-right.gap-right(href="/xiaoxiong/addr/#{addr._id}/user/#{user_open_id}") 修改
 append script
     script(src="/xiaoxiong/js/addr_list.js")                    
 
