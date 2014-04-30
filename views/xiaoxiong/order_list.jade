@@ -8,19 +8,17 @@ append body
         - if (!orders || orders.length < 1)
             .alert.alert-warning 没有订单
         - else
-            .list-group
                 - each order in orders
-                    a.list-group-item(href="#")
-                        h4.list-group-item-heading.clearfix #{order.create_date}
-
-                            span.pull-right.label.label-info #{(order.price / 100).toFixed(2)} 元
-                        .list-group-item-text
-                            p 
-                                span.label.label-primary #{order.status} 
-                        .list-group-item-text 
+                    .panel.panel-default
+                        .panel-heading
+                            h4.clearfix #{order.create_date}
+                                span.label.label-primary.pull-right #{order.status} 
+                        .panel-body
                             p 收货人：#{order.addr.name} #{order.addr.tel}
-                        .list-group-item-text
+
                             p
                                 - each recipe in order.recipes
-                                    span.gap-right #{recipe.title}  
+                                    span.gap-right #{recipe.title} 
+                        .panel-footer.clearfix
+                            span.pull-left.label.label-info 总计：#{(order.price / 100).toFixed(2)} 元
 append script
