@@ -20,5 +20,6 @@ append body
                                 - each recipe in order.recipes
                                     span.gap-right #{recipe.title} 
                         .panel-footer.clearfix
-                            span.pull-left.label.label-info 总计：#{(order.price / 100).toFixed(2)} 元
+                            span.gap-right 共 #{order.recipes.length} 件商品
+                            span.label.label-info 总计：#{(order.price / 100).toFixed(2)} 元
 append script
