@@ -43,8 +43,6 @@
 
                 if (document.referrer.indexOf("cart") > -1) {
                     location.href = document.referrer
-                } else {
-                    location.reload()
                 }
             })
         })
