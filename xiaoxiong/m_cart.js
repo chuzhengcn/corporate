@@ -72,6 +72,12 @@ cart_schema.static('add_one_recipe', function(doc, cb) {
     })
 })
 
+cart_schema.static("remove_cart_by_openid", function(open_id, cb) {
+    this.remove({user_open_id : open_id}, function(err) {
+        cb(err)
+    })
+})
+
 var Cart = mongoose.model('carts', cart_schema)
 
 exports.Cart = Cart;

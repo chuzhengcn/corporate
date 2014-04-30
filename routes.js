@@ -5,6 +5,7 @@ var feiye_index             = require('./feiye/c_index'),
     xiaoxiong_recipe        = require('./xiaoxiong/c_recipe'),
     xiaoxiong_menu          = require('./xiaoxiong/c_menu'),
     xiaoxiong_cart          = require('./xiaoxiong/c_cart'),
+    xiaoxiong_order         = require('./xiaoxiong/c_order'),
     xiaoxiong_admin_index   = require('./xiaoxiong/admin/c_index'),
     xiaoxiong_admin_upload  = require('./xiaoxiong/admin/c_upload'),
     xiaoxiong_admin_login   = require('./xiaoxiong/admin/c_login'),
@@ -34,6 +35,9 @@ function init_routes(app) {
     app.post('/xiaoxiong/cart/:open_id', xiaoxiong_cart.create)
     app.get('/xiaoxiong/cart-page/:open_id', xiaoxiong_cart.page)
     app.delete('/xiaoxiong/cart/:recipe_id/user/:open_id', xiaoxiong_cart.remove_recipe)
+
+    app.post('/xiaoxiong/orders/user/:open_id', xiaoxiong_order.create)
+    app.get('/xiaoxiong/orders/user/:open_id', xiaoxiong_order.list)
 
 
     // xiaoxiong admin

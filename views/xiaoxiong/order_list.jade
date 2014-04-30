@@ -1,0 +1,26 @@
+extends layout
+
+append head
+
+append body
+    .container-fluid
+        h3(data-openid="#{user_open_id}") 我的订单
+        - if (!orders || orders.length < 1)
+            .alert.alert-warning 没有订单
+        - else
+            .list-group
+                - each order in orders
+                    a.list-group-item(href="#")
+                        h4.list-group-item-heading.clearfix #{order.create_date}
+
+                            span.pull-right.label.label-info #{(order.price / 100).toFixed(2)} 元
+                        .list-group-item-text
+                            p 
+                                span.label.label-primary #{order.status} 
+                        .list-group-item-text 
+                            p 收货人：#{order.addr.name} #{order.addr.tel}
+                        .list-group-item-text
+                            p
+                                - each recipe in order.recipes
+                                    span.gap-right #{recipe.title}  
+append script

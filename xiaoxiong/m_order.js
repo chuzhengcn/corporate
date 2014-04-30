@@ -1,0 +1,142 @@
+var mongoose = require('mongoose'),
+    Schema   = mongoose.Schema,
+    async    = require("async"),
+    moment   = require("moment"),
+    m_recipe = require("./m_recipe").Recipe,
+    m_cart   = require("./m_cart").Cart,
+    m_addr   = require("./m_addr").Addr;
+
+var order_schema = new Schema({
+    open_id         : String,
+    recipes         : [Schema.Types.Mixed],
+    addr            : Schema.Types.Mixed,
+    status          : Number,
+    price           : Number,
+    pay             : Number,
+    create_at       : Number,
+    create_date     : String,
+    modify_at       : Number,
+})
+
+var order_status = {
+    "0" : "已取消",
+    "1" : "已提交",
+    "2" : "已确认",
+    "3" : "正在采购",
+    "4" : "采购完成",
+    "5" : "正在配菜",
+    "6" : "配送中",
+    "7" : "配送完成",
+}
+
+var pay_status = {
+    "0" : "未付款",
+    "1" : "已付款",
+    "2" : "申请退款",
+    "3" : "退款中",
+    "4" : "退款完成",
+}
+
+order_schema.static("list", function(open_id, page, cb) {
+    var current_page = page || 1,
+        per_page = 5,
+        skip_num = (current_page - 1) * per_page;
+
+    this.find({open_id: open_id}, null, {sort : {create_at : -1 }, limit : per_page, skip : skip_num}, function(err, docs) {
+        if (err) {
+            return cb(err)
+        }
+
+        docs = docs.map(function(item) {
+            item = item.toJSON()
+            item.status = order_status[item.status.toString()]
+            item.pay    = pay_status[item.pay.toString()]
+            return item
+        })
+
+        cb(null, docs)
+    })
+})
+
+order_schema.static('create_order', function (open_id, cb) {
+    var self    = this,
+        price   = 0;
+
+    async.parallel({
+        addr : function(callback) {
+            m_addr.find_last_used(open_id, function(err, addr_doc) {
+                if (err) {
+                    return callback(err)
+                }
+
+                if (!addr_doc) {
+                    return callback('没有收货地址')
+                }
+
+                callback(null, {
+                    name : addr_doc.name,
+                    tel  : addr_doc.tel,
+                    area : addr_doc.area,
+                    detail : addr_doc.detail,
+                })
+            })
+        },
+
+        recipes : function(callback) {
+            m_cart.find_cart_with_recipe_by_openid(open_id, function(err, cart_docs) {
+                if (err) {
+                    return callback(err)
+                }
+
+                if (cart_docs.length < 1) {
+                    return callback('购物车中没有商品')
+                }
+
+                cart_docs = cart_docs.map(function(item) {
+                    price += (item.recipe.price * item.amount)
+                    return {
+                        recipe_id   : item.recipe_id,
+                        title       : item.recipe.title,
+                        price       : item.recipe.price,
+                        amount      : item.amount
+                    }
+                })
+
+                callback(null, cart_docs)
+
+            })
+        }
+    },
+    function(err, result) {
+        var now = Date.now();
+
+        var doc = {
+            open_id : open_id,
+            recipes : result.recipes,
+            addr    : result.addr,
+            price   : price,
+            status  : 1,
+            pay     : 0,
+            create_at   : now,
+            create_date : moment(now).format("YYYY-MM-DD"),
+            modify_at   : now,
+        }
+
+        self.create(doc, function(err, order_doc) {
+            if (err) {
+                return cb(err)
+            }
+            m_cart.remove_cart_by_openid(open_id, function(err) {
+                if (err) {
+                    return cb(err)
+                }
+
+                cb(null, order_doc)
+            })
+        })
+    })
+})
+
+order_schema.index({ open_id : 1})
+
+exports.Order = mongoose.model('orders', order_schema)

@@ -2,8 +2,7 @@ var util        = require("util"),
     lib_util    = require("../lib/util"),
     m_recipe    = require("./m_recipe").Recipe,
     weixin      = require("../lib/c_weixin"),
-    my_open_id  = weixin.my_open_id,
-    domain      = "http://www.feiyesoft.com";
+    my_open_id  = weixin.my_open_id;
 
 exports.info = function (req, res) {
     var id = req.params.id,

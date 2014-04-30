@@ -36,6 +36,7 @@
             $total_price.html((total_price / 100).toFixed(2))
         })
 
+        // 删除购物车商品
         $cart_table.delegate(".remove-cart-item-btn", "click", function(event) {
             var $this_item = $(this).parent().parent();
             var recipe_id = $this_item.data('id');
@@ -55,6 +56,19 @@
                 }
 
                 location.reload()
+            })
+        })
+
+        $("#create-order").click(function(event) {
+            $.ajax({
+                url : "/xiaoxiong/orders/user/" + open_id,
+                type : "post",
+            }).done(function(data) {
+                if (data.ok !== 1) {
+                    return alert("创建订单失败, 稍后再试")
+                }
+
+                location.href = "/xiaoxiong/orders/user/" + open_id
             })
         })
     })
