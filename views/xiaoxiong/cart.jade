@@ -1,0 +1,36 @@
+extends layout
+
+append head
+
+append body
+    .container-fluid.padding-bottom(data-openid="#{user_open_id}")
+            .panel.panel-default
+                .panel-heading.clearfix.text-center 
+                    h4 确认订单
+                .panel-body
+                    h5 收获地址
+                    - if (!addr) 
+                        .alert.alert-warning 你还没有收获地址。
+                            a.btn.btn-primary.btn-sm(href="/xiaoxiong/addr-create-page/#{user_open_id}") 添加
+                    - else
+                        .well
+                            h5 
+                                strong #{addr.name} #{addr.tel}
+                            p #{addr.area} #{addr.detail}
+                            p
+                                a.btn.btn-primary.btn-sm(href="/xiaoxiong/addr/#{user_open_id}") 修改
+                table#cart-table.table
+                    tr
+                        th 图片
+                        th 菜品
+                        th 数量
+                        th 价格
+                .panel-footer.clearfix
+                    a.btn.btn-default.btn-sm.pull-left(href="/xiaoxiong/menus-today/user/#{user_open_id}") 继续挑选
+                    button.btn.btn-primary.btn-sm.pull-right 
+                        | 总计：
+                        span#total-price
+                        |  元，提交订单
+                    
+append script
+    script(src="/xiaoxiong/js/cart_detail.js")

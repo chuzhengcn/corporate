@@ -1,5 +1,6 @@
 var util        = require("util"),
     m_cart      = require("./m_cart").Cart,
+    m_addr      = require("./m_addr").Addr,
     lib_util    = require("../lib/util");
 
 exports.index = function (req, res) {
@@ -22,8 +23,25 @@ exports.create = function(req, res) {
             return res.send({ok : 0})
         }
 
-        console.log(err, doc)
-
         res.send({ok : 1})
     })
 }
+
+exports.page = function(req, res) {
+    var user_open_id = lib_util.decipher(req.params.open_id);
+
+    m_addr.find_last_used(user_open_id, function(err, addr_doc) {
+        if (err) {
+            console.log(err)
+        }
+
+        m_cart.find_cart_with_recipe_by_openid(user_open_id, function(err, doc) {
+            res.render('xiaoxiong/cart', {
+                user_open_id : req.params.open_id, 
+                cart : doc,
+                addr : addr_doc
+            })
+        })
+    })
+}
+
