@@ -37,24 +37,88 @@ var pay_status = {
     "4" : "退款完成",
 }
 
-order_schema.static("list", function(open_id, page, cb) {
-    var current_page = page || 1,
-        per_page = 5,
-        skip_num = (current_page - 1) * per_page;
+order_schema.static("user_list", function(open_id, page, cb) {
+    var current_page = parseInt(page) || 1,
+        per_page     = 5,
+        skip_num     = (current_page - 1) * per_page,
+        self         = this;
 
-    this.find({open_id: open_id}, null, {sort : {create_at : -1 }, limit : per_page, skip : skip_num}, function(err, docs) {
+    async.parallel({
+        orders : function(callback) {
+            self.find({open_id: open_id}, null, {sort : {create_at : -1 }, limit : per_page, skip : skip_num}, function(err, docs) {
+                if (err) {
+                    return callback(err)
+                }
+
+                docs = docs.map(function(item) {
+                    item = item.toJSON()
+                    item.status = order_status[item.status.toString()]
+                    item.pay    = pay_status[item.pay.toString()]
+                    return item
+                })
+
+                callback(null, docs)
+            })
+        },
+
+        total : function(callback) {
+            self.count({open_id : open_id}, function(err, num) {
+                if (err) {
+                    return callback(err)
+                }
+
+                callback(null, num)
+            })
+        }
+
+    }, function(err, result) {
         if (err) {
             return cb(err)
         }
 
-        docs = docs.map(function(item) {
-            item = item.toJSON()
-            item.status = order_status[item.status.toString()]
-            item.pay    = pay_status[item.pay.toString()]
-            return item
-        })
+        cb(null, result.orders, Math.ceil(result.total / per_page), current_page)
+    })
+})
 
-        cb(null, docs)
+order_schema.static("list", function(page, cb) {
+    var current_page = parseInt(page) || 1,
+        per_page     = 20,
+        skip_num     = (current_page - 1) * per_page,
+        self         = this;
+
+    async.parallel({
+        orders : function(callback) {
+            self.find({}, null, {sort : {create_at : -1}, limit : per_page, skip : skip_num}, function(err, docs) {
+                if (err) {
+                    return callback(err)
+                }
+
+                docs = docs.map(function(item) {
+                    item = item.toJSON()
+                    item.status = order_status[item.status.toString()]
+                    item.pay    = pay_status[item.pay.toString()]
+                    return item
+                })
+
+                callback(null, docs)
+            })
+        },
+
+        total : function(callback) {
+            self.count({}, function(err, num) {
+                if (err) {
+                    return callback(err)
+                }
+
+                callback(null, num)
+            })
+        },
+    },function(err, result) {
+        if (err) {
+            return cb(err)
+        }
+
+        cb(null, result.orders, Math.ceil(result.total / per_page), current_page)
     })
 })
 

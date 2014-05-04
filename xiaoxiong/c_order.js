@@ -21,7 +21,7 @@ exports.list = function(req, res) {
     var user_open_id = lib_util.decipher(req.params.open_id),
         page         = req.query.page;
 
-    m_order.list(user_open_id, page, function(err, docs) {
+    m_order.user_list(user_open_id, page, function(err, docs) {
         res.render('xiaoxiong/order_list', {
             user_open_id : req.params.open_id,
             orders : docs

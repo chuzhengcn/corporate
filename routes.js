@@ -10,7 +10,8 @@ var feiye_index             = require('./feiye/c_index'),
     xiaoxiong_admin_upload  = require('./xiaoxiong/admin/c_upload'),
     xiaoxiong_admin_login   = require('./xiaoxiong/admin/c_login'),
     xiaoxiong_admin_recipe  = require('./xiaoxiong/admin/c_recipe'),
-    xiaoxiong_admin_menu    = require('./xiaoxiong/admin/c_menu');
+    xiaoxiong_admin_menu    = require('./xiaoxiong/admin/c_menu'),
+    xiaoxiong_admin_order   = require('./xiaoxiong/admin/c_order');
 
 function init_routes(app) {
     app.get('/', feiye_index.index);
@@ -60,6 +61,8 @@ function init_routes(app) {
     app.get('/xiaoxiong-admin/menus/:id', xiaoxiong_admin_menu.info)
     app.get('/xiaoxiong-admin/menus-edit/:id', xiaoxiong_admin_menu.edit_page)
     app.put('/xiaoxiong-admin/menus/:id', xiaoxiong_admin_menu.edit)
+
+    app.get('/xiaoxiong-admin/orders', xiaoxiong_admin_order.list)
 }
 
 exports = module.exports = init_routes;
