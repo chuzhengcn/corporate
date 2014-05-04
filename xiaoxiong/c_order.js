@@ -38,11 +38,12 @@ exports.send_event_my_order_response = function(req, res) {
                 recipes += item.title + " "
             })
 
-            content = "<p>您的最近一次订单：[" + doc.create_date +"] " + recipes + ", 总价： " + (doc.price/100).toFixed(2) + "元。</p>" +
+            content = "您的最近一次订单：[" + doc.create_date +"] " + recipes + ", 总价： " + (doc.price/100).toFixed(2) + "元。\n" +
                       "<a href='" + all_user_order_page + "'>全部订单</a>"; 
         }
 
         reply_content = util.format(template, user_open_id, my_open_id, now, content)
+        console.log(reply_content)
         res.type('xml')
         res.send(reply_content)
     })
