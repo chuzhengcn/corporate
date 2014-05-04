@@ -21,7 +21,7 @@ exports.send_event_my_order_response = function(req, res) {
                                     '<FromUserName><![CDATA[%s]]></FromUserName>' +
                                     '<CreateTime>%d</CreateTime>' +
                                     '<MsgType><![CDATA[text]]></MsgType>' +
-                                    '<Content><![CDATA[%s]]></Content>' + 
+                                    '<Content>%s</Content>' + 
                                   '</xml>';
 
     m_order.find_user_lasted_order(user_open_id, function(err, doc) {
