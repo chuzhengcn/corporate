@@ -42,10 +42,7 @@ exports.send_event_my_order_response = function(req, res) {
                       "<a href='" + all_user_order_page + "'>全部订单</a>"; 
         }
 
-        console.log(content)
-
         reply_content = util.format(template, user_open_id, my_open_id, now, content)
-        console.log(reply_content)
         res.type('xml')
         res.send(reply_content)
     })
