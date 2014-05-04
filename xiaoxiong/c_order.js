@@ -21,7 +21,7 @@ exports.send_event_my_order_response = function(req, res) {
                                     '<FromUserName><![CDATA[%s]]></FromUserName>' +
                                     '<CreateTime>%d</CreateTime>' +
                                     '<MsgType><![CDATA[text]]></MsgType>' +
-                                    '<Content>%s</Content>' + 
+                                    '<Content><![CDATA[%s]]></Content>' + 
                                   '</xml>';
 
     m_order.find_user_lasted_order(user_open_id, function(err, doc) {
@@ -38,7 +38,7 @@ exports.send_event_my_order_response = function(req, res) {
                 recipes += item.title + " "
             })
 
-            content = "您的最近一次订单：[" + doc.create_date +"] " + recipes + ", 总价： " + (doc.price/100).toFixed(2) + "元。\n" + 
+            content = "您的最近一次订单：[" + doc.create_date +"] " + recipes + ", 总价： " + (doc.price/100).toFixed(2) + "元。\\n" + 
                       "<a href='" + all_user_order_page + "'>全部订单</a>"; 
         }
 
