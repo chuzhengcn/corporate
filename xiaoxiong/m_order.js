@@ -37,6 +37,12 @@ var pay_status = {
     "4" : "退款完成",
 }
 
+order_schema.static("find_user_lasted_order", function(open_id, cb) {
+    this.findOne({open_id : open_id}, null, {sort : {create_at : -1}}, function(err, doc) {
+        cb(err, doc)
+    })
+})
+
 order_schema.static("user_list", function(open_id, page, cb) {
     var current_page = parseInt(page) || 1,
         per_page     = 5,

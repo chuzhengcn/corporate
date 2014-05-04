@@ -3,7 +3,7 @@ var util        = require("util"),
     m_addr      = require("./m_addr").Addr,
     weixin      = require("../lib/c_weixin"),
     my_open_id  = weixin.my_open_id,
-    domain      = "http://www.feiyesoft.com"
+    domain      = weixin.domain,
     error_text  = "绑定地址出错，请重试";
 
 // 回复我的地址响应 ------------------------------------------------------------------
