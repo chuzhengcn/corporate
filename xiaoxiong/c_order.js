@@ -15,7 +15,7 @@ exports.send_event_my_order_response = function(req, res) {
         content                 = "",
         error_text              = "获取订单出错，请重试",
         now                     = Date.now(),
-        all_user_order_page     = domain + "/xiaoxiong/orders/" + encypted_user_open_id,
+        all_user_order_page     = domain + "/xiaoxiong/orders/user/" + encypted_user_open_id,
         template                = '<xml>' +
                                     '<ToUserName><![CDATA[%s]]></ToUserName>' +
                                     '<FromUserName><![CDATA[%s]]></FromUserName>' +
@@ -33,7 +33,7 @@ exports.send_event_my_order_response = function(req, res) {
         if (!doc) {
             content = '您还没有订单。';
         } else {
-            var recipes;
+            var recipes ="";
             doc.recipes.forEach(function(item) {
                 recipes += item.title + " "
             })
