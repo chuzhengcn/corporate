@@ -5,7 +5,7 @@ var addr_schema = new Schema({
     open_id                         : String,
     userName                        : String,
     telNumber                       : String,
-    addressPostalCode               : {type : Number, default : 518000}
+    addressPostalCode               : {type : Number, default : 518000},
     proviceFirstStageName           : {type : String, default : "广东"},
     addressCitySecondStageName      : {type : String, default : "深圳"},
     addressCountiesThirdStageName   : String,
