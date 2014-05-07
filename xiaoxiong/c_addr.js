@@ -32,9 +32,9 @@ function send_event_my_addr_response(req, res) {
         }
 
         if (!doc) {
-            content = '您还没有收货地址。<a href="' + create_addr_url + '">现在添加</a>';
+            content = '您还没有收货地址。\t\r <a href="' + create_addr_url + '">现在添加</a>';
         } else {
-            content = "您的常用地址：" + doc.name + " " + doc.tel + " " + doc.area + " " + doc.detail +
+            content = "您的常用地址：\t\r " + doc.userName + " " + doc.telNumber + " " + doc.area + " " + doc.detail +
                       "。<a href='" + all_addr_page + "'>修改</a>"; 
         }
 
