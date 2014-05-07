@@ -38,7 +38,7 @@ function send_event_my_addr_response(req, res) {
                       "。<a href='" + all_addr_page + "'>修改</a>"; 
         }
 
-        reply_content = util.format(template, user_open_id, my_open_id, now, content, 'hahah')
+        reply_content = util.format(template, open_id, my_open_id, now, content, 'hahah')
         res.type('xml')
         res.send(reply_content)
     })
