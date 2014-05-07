@@ -69,7 +69,7 @@ exports.list_page = function(req, res) {
 
 exports.create = function(req, res) {
     var doc = {
-        open_id             : req.body.user_open_id,
+        open_id             : req.body.open_id,
         userName            : req.body.user_name,
         telNumber           : req.body.tel_number,
         addressDetailInfo   : req.body.address_detail_info,
