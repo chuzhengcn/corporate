@@ -5,19 +5,19 @@ append head
 append body
     .container-fluid
         h1 我的地址
-            a.btn.btn-primary.pull-right(href="/xiaoxiong/addr-create-page/#{user_open_id}") 添加地址
+            a.btn.btn-primary.pull-right(href="/xiaoxiong/addr-create-page/#{open_id}") 添加地址
         - if (addr_list.length === 0)
             .alert.alert-warning 您还没有收获地址。
-                a.btn.btn-default.btn-sm(href="/xiaoxiong/addr-create-page/#{user_open_id}") 添加
+                a.btn.btn-default.btn-sm(href="/xiaoxiong/addr-create-page/#{open_id}") 添加
         - else
             - each addr,index in addr_list
                 .panel.panel-info
-                    .panel-heading #{addr.name} #{addr.tel}
-                    .panel-body #{addr.area} #{addr.detail}
+                    .panel-heading #{addr.userName} #{addr.telNumber}
+                    .panel-body #{addr.addressCitySecondStageName} #{addr.addressCountiesThirdStageName} #{addr.addressDetailInfo}
                     .panel-footer.clearfix
-                        button.btn.btn-default.btn-sm.pull-left.select-primary(data-url="/xiaoxiong/addr/#{addr._id}/user/#{user_open_id}") 选择
-                        button.btn.btn-danger.btn-sm.pull-right(data-url="/xiaoxiong/addr/#{addr._id}/user/#{user_open_id}") 删除
-                        a.btn.btn-default.btn-sm.pull-right.gap-right(href="/xiaoxiong/addr/#{addr._id}/user/#{user_open_id}") 修改
+                        button.btn.btn-default.btn-sm.pull-left.select-primary(data-url="/xiaoxiong/addr/#{addr._id}/user/#{open_id}") 选择
+                        button.btn.btn-danger.btn-sm.pull-right(data-url="/xiaoxiong/addr/#{addr._id}/user/#{open_id}") 删除
+                        a.btn.btn-default.btn-sm.pull-right.gap-right(href="/xiaoxiong/addr/#{addr._id}/user/#{open_id}") 修改
 append script
     script(src="/xiaoxiong/js/addr_list.js")                    
 

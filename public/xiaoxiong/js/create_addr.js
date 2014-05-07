@@ -4,7 +4,7 @@
 
         $form.submit(function(event) {
             var $self   = $(this),
-                open_id = $self.find('input[name="user_open_id"]').val();
+                open_id = $self.find('input[name="open_id"]').val();
 
             $.ajax({
                 url     : "/xiaoxiong/addr",

@@ -6,19 +6,19 @@ append body
     .container-fluid
         h1 添加地址
         form#create-addr-form(role="form")
-            input(type="hidden", name="user_open_id", value="#{user_open_id}")
+            input(type="hidden", name="open_id", value="#{open_id}")
             .form-group
-                label(for="name") 收货人
-                input.form-control(type="text", name="name", value="", required)
+                label(for="user_name") 收货人
+                input.form-control(type="text", name="user_name", value="", required)
             .form-group
-                label(for="tel") 电话
-                input.form-control(type="number", name="tel", value="", required)
+                label(for="tel_number") 电话
+                input.form-control(type="number", name="tel_number", value="", required)
             .form-group
                 label(for="area") 地区
-                input.form-control(type="text", name="area", placeholder="深圳", value="深圳", required)
+                input.form-control(type="text", name="area", placeholder="深圳龙岗区", value="深圳龙岗区", required)
             .form-group
-                label(for="detail") 详细地址
-                input.form-control(type="text", name="detail", value="", required)
+                label(for="address_detail_info") 详细地址
+                input.form-control(type="text", name="address_detail_info", value="", required)
             button.btn.btn-primary.btn-block(type="submit") 提交
 
 append script
