@@ -69,10 +69,11 @@ exports.list_page = function(req, res) {
 
 exports.create = function(req, res) {
     var doc = {
-        open_id             : req.body.open_id,
-        userName            : req.body.user_name,
-        telNumber           : req.body.tel_number,
-        addressDetailInfo   : req.body.address_detail_info,
+        open_id                         : req.body.open_id,
+        userName                        : req.body.userName,
+        telNumber                       : req.body.telNumber,
+        addressCountiesThirdStageName   : req.body.addressCountiesThirdStageName,
+        addressDetailInfo               : req.body.addressDetailInfo,
     }
 
     m_addr.create(doc, function(err) {
@@ -89,8 +90,8 @@ exports.edit_page = function(req, res) {
 
     m_addr.findById(addr_id).exec(function(err, result) {
         res.render('xiaoxiong/edit_addr', {
-            user_open_id : req.params.open_id,
-            addr         : result,
+            open_id : req.params.open_id,
+            addr    : result,
         })
     })
 }
@@ -98,10 +99,11 @@ exports.edit_page = function(req, res) {
 exports.edit = function (req, res) {
     var addr_id = req.params.addr_id,
         doc = {
-            userName            : req.body.user_name,
-            telNumber           : req.body.tel_number,
-            addressDetailInfo   : req.body.address_detail_info,
-            last_used_at        : Date.now()
+            userName                        : req.body.userName,
+            telNumber                       : req.body.telNumber,
+            addressCountiesThirdStageName   : req.body.addressCountiesThirdStageName,
+            addressDetailInfo               : req.body.addressDetailInfo,
+            last_used_at                    : Date.now()
         };
         
     for (var key in doc) {
