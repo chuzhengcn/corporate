@@ -74,6 +74,8 @@ exports.create = function(req, res) {
         telNumber                       : req.body.telNumber,
         addressCountiesThirdStageName   : req.body.addressCountiesThirdStageName,
         addressDetailInfo               : req.body.addressDetailInfo,
+        last_used_at                    : Date.now(),
+        created_at                      : Date.now(),
     }
 
     m_addr.create(doc, function(err) {

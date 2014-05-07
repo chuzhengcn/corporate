@@ -1,5 +1,7 @@
 extends layout
 
+append var
+
 append head
 
 append body
@@ -19,12 +21,8 @@ append body
             .form-group
                 label(for="addressCountiesThirdStageName") 区
                 select.form-control(name="addressCountiesThirdStageName")
-                    option(value="罗湖") 罗湖
-                    option(value="福田") 福田
-                    option(value="南山") 南山
-                    option(value="盐田") 盐田
-                    option(value="宝安") 宝安
-                    option(value="龙岗") 龙岗
+                    - each stageName in addressCountiesThirdStageName
+                        option(value="#{stageName}") #{stageName}
             .form-group
                 label(for="addressDetailInfo") 详细地址
                 input.form-control(type="text", name="addressDetailInfo", data-warning="请填写详细地址", value="", required)

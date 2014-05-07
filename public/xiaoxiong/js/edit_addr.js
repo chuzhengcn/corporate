@@ -5,7 +5,21 @@
         $form.submit(function(event) {
             var $self   = $(this),
                 addr_id = $self.find('input[name="addr_id"]').val(),
-                open_id = $self.find('input[name="user_open_id"]').val();
+                open_id = $self.find('input[name="open_id"]').val();
+
+            var is_valid = true
+            
+            $self.find("input").each(function() {
+                if ($.trim($(this).val()).length === 0) {
+                    is_valid = false
+                    alert($(this).data("warning"))
+                    return false
+                }
+            })
+
+            if (!is_valid) {
+                return
+            }
 
             $.ajax({
                 url     : "/xiaoxiong/addr/" + addr_id + "/user/" + open_id,

@@ -11,8 +11,8 @@ var addr_schema = new Schema({
     addressCountiesThirdStageName   : String,
     addressDetailInfo               : String,
     nationalCode                    : {type : String, default : "86"},
-    last_used_at                    : {type : Number, default : Date.now()},
-    created_at                      : {type : Number, default : Date.now()},
+    last_used_at                    : Number,
+    created_at                      : Number,
 })
 
 addr_schema.index({ open_id : 1})
