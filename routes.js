@@ -1,17 +1,19 @@
-var feiye_index             = require('./feiye/c_index'),
-    lib_weixin              = require('./lib/c_weixin'),
-    xiaoxiong_index         = require('./xiaoxiong/c_index'),
-    xiaoxiong_addr          = require('./xiaoxiong/c_addr'),
-    xiaoxiong_recipe        = require('./xiaoxiong/c_recipe'),
-    xiaoxiong_menu          = require('./xiaoxiong/c_menu'),
-    xiaoxiong_cart          = require('./xiaoxiong/c_cart'),
-    xiaoxiong_order         = require('./xiaoxiong/c_order'),
-    xiaoxiong_admin_index   = require('./xiaoxiong/admin/c_index'),
-    xiaoxiong_admin_upload  = require('./xiaoxiong/admin/c_upload'),
-    xiaoxiong_admin_login   = require('./xiaoxiong/admin/c_login'),
-    xiaoxiong_admin_recipe  = require('./xiaoxiong/admin/c_recipe'),
-    xiaoxiong_admin_menu    = require('./xiaoxiong/admin/c_menu'),
-    xiaoxiong_admin_order   = require('./xiaoxiong/admin/c_order');
+var feiye_index                     = require('./feiye/c_index'),
+    lib_weixin                      = require('./lib/c_weixin'),
+    xiaoxiong_index                 = require('./xiaoxiong/c_index'),
+    xiaoxiong_addr                  = require('./xiaoxiong/c_addr'),
+    xiaoxiong_recipe                = require('./xiaoxiong/c_recipe'),
+    xiaoxiong_menu                  = require('./xiaoxiong/c_menu'),
+    xiaoxiong_cart                  = require('./xiaoxiong/c_cart'),
+    xiaoxiong_order                 = require('./xiaoxiong/c_order'),
+
+    xiaoxiong_admin_product_type    = require('./xiaoxiong/admin/c_product_type'),
+    xiaoxiong_admin_index           = require('./xiaoxiong/admin/c_index'),
+    xiaoxiong_admin_upload          = require('./xiaoxiong/admin/c_upload'),
+    xiaoxiong_admin_login           = require('./xiaoxiong/admin/c_login'),
+    xiaoxiong_admin_recipe          = require('./xiaoxiong/admin/c_recipe'),
+    xiaoxiong_admin_menu            = require('./xiaoxiong/admin/c_menu'),
+    xiaoxiong_admin_order           = require('./xiaoxiong/admin/c_order');
 
 function init_routes(app) {
     app.get('/', feiye_index.index);
@@ -41,6 +43,9 @@ function init_routes(app) {
     app.get('/xiaoxiong/orders/user/:open_id', xiaoxiong_order.list)
 
 
+    
+
+
     // xiaoxiong admin
     app.post('/xiaoxiong-admin/upload/thumbnail', xiaoxiong_admin_upload.thumbnail)
     app.post('/xiaoxiong-admin/upload/editor', xiaoxiong_admin_upload.editor)
@@ -63,6 +68,11 @@ function init_routes(app) {
     app.put('/xiaoxiong-admin/menus/:id', xiaoxiong_admin_menu.edit)
 
     app.get('/xiaoxiong-admin/orders', xiaoxiong_admin_order.list)
+
+    app.get('/xiaoxiong-admin/product-types', xiaoxiong_admin_product_type.top_list)
+    app.post('/xiaoxiong-admin/product-types', xiaoxiong_admin_product_type.create)
+    app.get('/xiaoxiong-admin/product-types/:id', xiaoxiong_admin_product_type.info)
+    app.put('/xiaoxiong-admin/product-types/:id', xiaoxiong_admin_product_type.edit)
 }
 
 exports = module.exports = init_routes;

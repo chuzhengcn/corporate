@@ -1,0 +1,69 @@
+extends layout
+
+append head
+
+append body
+    .navbar.navbar-inverse
+        .container
+            include header
+            +header({"4" : "active"})
+    .container
+        .page-header
+            h3 产品分类
+                button.btn.btn-primary.pull-right(data-toggle="modal", type="button", data-target="#add_type_modal") 添加类别
+        ol.breadcrumb
+            li
+                a(href="/xiaoxiong-admin/product-types") 顶层分类
+            - if (parents)
+                - each parent, index in parents
+                    - if (index === parents.length -1)
+                        li.active #{parent.title}
+                    - else
+                        li
+                            a(href="/xiaoxiong-admin/product-types/#{parent._id}") #{parent.title}
+        .panel.panel-default
+            .panel-heading 列表
+            table.table
+                tr
+                    th 名称
+                    th 操作
+                - each type in product_types
+                    tr
+                        td #{type.title}
+                        td
+                            a(href="/xiaoxiong-admin/product-types/#{type._id}") 查看
+                            |    
+                            a.edit_type_btn(href="/xiaoxiong-admin/product-types/#{type._id}") 编辑
+append modal
+    #add_type_modal.modal.fade(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type="button", data-dismiss="modal", aria-hidden="true") &times;
+                    h4.modal-title 添加类别
+                .modal-body
+                    form#add_type_form(role="form", method="post", action="/xiaoxiong-admin/product-types")
+                        - if (cur_type)
+                            input(type="hidden", name="parent_type", value="#{cur_type._id}")
+                        .form-group
+                            label(for="title") 名称
+                            input.form-control(type="text", value="", name="title", required)
+                .modal-footer
+                    button.btn.btn-default(type="button", data-dismiss="modal") 关闭
+                    button.btn.btn-primary(type="submit", form="add_type_form", data-loading-text="saving...") 保存
+    #edit_type_modal.modal.fade(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type="button", data-dismiss="modal", aria-hidden="true") &times;
+                    h4.modal-title 编辑类别
+                .modal-body
+                    form#edit_type_form(role="form", method="put", action="#")
+                        .form-group
+                            label(for="title") 名称
+                            input.form-control(type="text", value="", name="title", required)
+                .modal-footer
+                    button.btn.btn-default(type="button", data-dismiss="modal") 关闭
+                    button.btn.btn-primary(type="submit", form="edit_type_form", data-loading-text="saving...") 保存
+append script
+    script(src="/xiaoxiong/admin/js/product-type.js")

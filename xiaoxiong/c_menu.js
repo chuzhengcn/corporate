@@ -3,11 +3,10 @@ var m_menu      = require("./m_menu").Menu,
     lib_util    = require("../lib/util"),
     weixin      = require("../lib/c_weixin"),
     my_open_id  = weixin.my_open_id,
-    domain      = "http://www.feiyesoft.com";
+    domain      = weixin.domain;
 
 exports.send_event_today_menu_response = function(req, res) {
-    var user_open_id            = req.weixin_user_msg.FromUserName[0],
-        encypted_user_open_id   = lib_util.encipher(user_open_id);
+    var open_id = req.weixin_user_msg.FromUserName[0];
 
     var template =  '<xml>' +
                         '<ToUserName><![CDATA[%s]]></ToUserName>' +
@@ -29,9 +28,9 @@ exports.send_event_today_menu_response = function(req, res) {
 
         if (!doc) {
             menus = [{
-                title : '今日暂无菜单',
+                title : '今日暂无水果推荐',
                 pic_url : "#",
-                description : '#',
+                description : '',
                 url : "#"
             }];
         } else {

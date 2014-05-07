@@ -1,0 +1,1 @@
+var m_product      = require("./m_product").Product;
