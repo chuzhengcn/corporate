@@ -8,6 +8,7 @@ var util        = require("util"),
 
 // 回复我的地址响应 ------------------------------------------------------------------
 function send_event_my_addr_response(req, res) {
+    console.log('ddd')
     var open_id                 = req.weixin_user_msg.FromUserName[0],
         reply_content           = "",
         content                 = "",
