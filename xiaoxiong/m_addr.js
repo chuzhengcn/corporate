@@ -2,13 +2,17 @@ var mongoose = require('mongoose'),
     Schema   = mongoose.Schema;
 
 var addr_schema = new Schema({
-    open_id         : String,
-    tel             : String,
-    name            : String,
-    postcode        : Number,
-    area            : String,
-    detail          : String,
-    last_used_at    : Number
+    open_id                         : String,
+    userName                        : String,
+    telNumber                       : String,
+    addressPostalCode               : {type : Number, default : 518000}
+    proviceFirstStageName           : {type : String, default : "广东"},
+    addressCitySecondStageName      : {type : String, default : "深圳"},
+    addressCountiesThirdStageName   : String,
+    addressDetailInfo               : String,
+    nationalCode                    : {type : String, default : "86"},
+    last_used_at                    : {type : Number, default : Date.now()},
+    created_at                      : {type : Number, default : Date.now()},
 })
 
 addr_schema.index({ open_id : 1})
