@@ -32,13 +32,12 @@ exports.send_event_my_addr_response = function (req, res) {
         }
 
         if (!doc) {
-            content = '您还没有收货地址。\t\r\t\r <a href="' + create_addr_url + '">现在添加</a>';
+            content = '您还没有收货地址。\t\r<a href="' + create_addr_url + '">现在添加</a>';
         } else {
-            content = "您的常用地址：\t\r " + 
-                        doc.userName + "\t\r" +
-                        doc.telNumber + " \t\r" + 
+            content = "您的常用地址：\t\r" + 
+                        doc.userName + " " + doc.telNumber + "\t\r" +
                         doc.addressCitySecondStageName + doc.addressCountiesThirdStageName + " " + 
-                        doc.addressDetailInfo + "。\t\r <a href='" + all_addr_page + "'>修改</a>";
+                        doc.addressDetailInfo + "\t\r<a href='" + all_addr_page + "'>修改</a>";
         }
 
         reply_content = util.format(template, open_id, my_open_id, now, content)
