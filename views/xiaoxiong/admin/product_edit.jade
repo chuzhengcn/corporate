@@ -11,6 +11,7 @@ append body
         .page-header
             h3 编辑产品
                 a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/products") 返回所有产品
+                a#remove-product-btn.btn.btn-danger.pull-right.gap-right(href="/xiaoxiong-admin/products/#{product._id}") 删除
         form#edit-product-form(role="form", method="put", action="/xiaoxiong-admin/products/#{product._id}")
             .form-group
                 label(for="title") 名称

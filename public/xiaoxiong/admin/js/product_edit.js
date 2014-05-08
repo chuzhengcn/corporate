@@ -89,5 +89,26 @@
                 cb(data.children)
             })
         }
+
+        $('#remove-product-btn').click(function(event) {
+            event.preventDefault()
+
+            if (!confirm("确认删除?")) {
+                return
+            }
+
+            var self = $(this);
+
+            $.ajax({
+                url : self.attr("href"),
+                type : "delete"
+            }).done(function(data) {
+                if (data.ok !== 1) {
+                    return alert('删除失败')
+                }
+
+                location.href = "/xiaoxiong-admin/products";
+            })
+        })
     })
 })();
