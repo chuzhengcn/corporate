@@ -78,3 +78,33 @@ exports.edit = function(req, res) {
         })
     })
 }
+
+exports.children = function(req, res) {
+    login.check_login_and_send(req, res, function() {
+        var id = req.params.id;
+
+        m_product_type.find({parent_type : id, remove : "no"}, null, {sort : {modify_at : -1}}, function(err, docs) {
+            if (err) {
+                console.log(err)
+                res.send({ok : 0})
+                return
+            }
+
+            res.send({ok : 1, children : docs})
+        })        
+    })
+}
+
+exports.remove = function(req, res) {
+    login.check_login_and_send(req, res, function() {
+        var id = req.params.id;
+
+        m_product_type.findByIdAndUpdate(id, {remove : "yes"}, function(err) {
+            if (err) {
+                return res.send({ok : 0})
+            }
+
+            res.send({ok : 1})
+        })
+    })
+}

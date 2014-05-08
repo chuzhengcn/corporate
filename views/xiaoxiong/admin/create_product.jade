@@ -9,12 +9,17 @@ append body
             +header({"1" : "active"})
     .container
         .page-header
-            h3 添加食谱
-                a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/recipes") 返回所有食谱
-        form#create-recipe-form(role="form", method="post", action="/xiaoxiong-admin/recipes")
+            h3 添加产品
+                a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/products") 返回所有产品
+        form#create-product-form(role="form", method="post", action="/xiaoxiong-admin/products")
             .form-group
                 label(for="title") 名称
                 input.form-control(type="text", name="title", value="", required)
+            .form-group.auto_type
+                label(for="type") 类别
+                select.form-control(name="type")
+                    - each top_type in top_type_list
+                        option(value="#{top_type._id}") #{top_type.title}
             .form-group
                 label(for="original_price") 原价
                 input.form-control(type="number", min="0.01", step="0.01", name="original_price", value="", required)
@@ -32,11 +37,12 @@ append body
             
             button.btn.btn-primary.btn-block(type="submit") 提交
 
+append hidden
 append script
     script(src="/vendor/jquery.ui.widget.js")
     script(src="/vendor/jquery.iframe-transport.js")
     script(src="/vendor/jquery.fileupload.js")
     script(charset="utf-8", src="/vendor/kindeditor-4.1.10/kindeditor-min.js")
     script(charset="utf-8",src="/vendor/kindeditor-4.1.10/lang/zh_CN.js")
-    script(src="/xiaoxiong/admin/js/create_recipe.js")        
+    script(src="/xiaoxiong/admin/js/create_product.js")        
 

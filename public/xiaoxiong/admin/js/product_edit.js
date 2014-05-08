@@ -1,7 +1,9 @@
 (function () {
     $(function() {
         var editor,
-            $form = $('#create-recipe-form');
+            $form = $('#edit-product-form');
+
+        $('#fileupload_preview').show();
 
         KindEditor.ready(function(K) {
             editor = K.create('#content-editor', {
@@ -33,24 +35,59 @@
         $form.submit(function(event) {
             var $self   = $(this);
             editor.sync()
-
+            
             $.ajax({
                 url     : $self.attr('action'),
                 type    : $self.attr('method'),
                 data    : $self.serialize(),
             }).done(function(data) {
                 if (data.ok !== 1) {
-                    return alert('添加菜谱错误，稍后再试')
+                    return alert('更新产品错误，稍后再试')
                 }
 
-                alert('添加菜谱成功')
+                alert('更新产品成功')
 
                 setTimeout(function() {
-                    location.href = '/xiaoxiong-admin/recipes' 
+                    location.href = $self.attr('action') 
                 })
             })
 
             event.preventDefault()
         })
+
+        $('.auto_type').delegate("select", "change", function(event) {
+            var cur_select = $(this),
+                index      = $('.auto_type select').index(this),
+                type_id = cur_select.val();
+
+            search_children(type_id, function(children) {
+                $('.auto_type select:gt('+ index +')').remove()
+
+                if (children.length < 1) {
+                    return
+                }
+
+                $('.auto_type').append("<select name='type' class='form-control'></select>")
+
+                children.forEach(function(item) {
+                    $('.auto_type select:last').append("<option value='" + item._id + "'>" + item.title +"</option>")
+                })
+
+                $('.auto_type select:last').change()
+            })
+        })
+
+        function search_children(type_id, cb) {
+            $.ajax({
+                "type" : "get",
+                "url"  : "/xiaoxiong-admin/products-types-children/" + type_id,
+            }).done(function(data) {
+                if (data.ok !== 1) {
+                    return alert('获取子类别出错')
+                }
+
+                cb(data.children)
+            })
+        }
     })
 })();

@@ -3,14 +3,14 @@ var async = require('async'),
     Schema   = mongoose.Schema;
 
 var recipe_schema = new Schema({
-    title : String,
-    content : String,
-    thumbnail: String,
-    original_price: Number,
-    price: Number,
-    create_date : String,
-    create_at : Number,
-    modify_at : Number,
+    title           : String,
+    content         : String,
+    thumbnail       : String,
+    original_price  : Number,
+    price           : Number,
+    create_date     : String,
+    create_at       : Number,
+    modify_at       : Number,
 })
 
 recipe_schema.index({ title : 1})

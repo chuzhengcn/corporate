@@ -34,6 +34,8 @@ append body
                             a(href="/xiaoxiong-admin/product-types/#{type._id}") 查看
                             |    
                             a.edit_type_btn(href="/xiaoxiong-admin/product-types/#{type._id}") 编辑
+                            |  
+                            a.remove_type_btn(href="/xiaoxiong-admin/product-types/#{type._id}") 删除
 append modal
     #add_type_modal.modal.fade(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")
         .modal-dialog

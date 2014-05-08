@@ -9,10 +9,10 @@ append body
             +header({"1" : "active"})
     .container
         .page-header
-            h3 所有食谱
-                a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/recipes-create") 添加菜谱
+            h3 所有产品
+                a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/products-create") 添加产品
         .panel.panel-default
-            .panel-heading 食谱列表
+            .panel-heading 产品列表
                 span.badge.pull-right #{current_page} / #{total_page}
             table.table
                 tr
@@ -21,19 +21,19 @@ append body
                     th 原价
                     th 现价
                     th 操作
-                - each recipe,index in recipe_list
+                - each product,index in product_list
                     tr
                         td
-                            img.img-thumbnail.thumbnail_in_table(src="#{recipe.thumbnail}")
-                        td #{recipe.title}
+                            img.img-thumbnail.thumbnail_in_table(src="#{product.thumbnail}")
+                        td #{product.title}
                         td
-                            span.label.label-default #{(recipe.original_price / 100).toFixed(2)} 元
+                            span.label.label-default #{(product.original_price / 100).toFixed(2)} 元
                         td
-                            span.label.label-info #{(recipe.price / 100).toFixed(2)} 元
+                            span.label.label-info #{(product.price / 100).toFixed(2)} 元
                         td
                             .btn-group
-                                a.btn.btn-default(href="/xiaoxiong-admin/recipes/#{recipe._id}") 详情
-                                a.btn.btn-default(href="/xiaoxiong-admin/recipes-edit/#{recipe._id}") 编辑
+                                a.btn.btn-default(href="/xiaoxiong-admin/products/#{product._id}") 详情
+                                a.btn.btn-default(href="/xiaoxiong-admin/products-edit/#{product._id}") 编辑
         ul.pager
             - if (current_page === 1)
                 li.previous.disabled

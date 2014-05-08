@@ -45,5 +45,27 @@
                 location.reload()
             })
         })
+
+        $('.remove_type_btn').click(function(event) {
+            event.preventDefault()
+            
+            if (!confirm('确认删除?')) {
+                return
+            }
+
+            var url = $(this).attr("href");
+
+            $.ajax({
+                type : "delete",
+                url  : url,
+            }).done(function(data) {
+                if (data.ok !== 1) {
+                    return
+                }
+
+                alert('删除成功')
+                location.reload()
+            })
+        })
     })
 })()

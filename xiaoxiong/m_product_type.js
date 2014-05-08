@@ -7,13 +7,14 @@ var product_type_schema = new Schema({
     create_date         : String,
     create_at           : Number,
     modify_at           : Number,
-    parent_type         : {type : String, default : "no_parent"}
+    parent_type         : {type : String, default : "no_parent"},
+    remove              : {type : String, default : "no"},
 })
 
 product_type_schema.index({ title : 1})
 
 product_type_schema.static("find_top_level", function (cb) {
-    this.find({parent_type : "no_parent"}, null, {sort : {modify_at : -1}}, function(err, docs) {
+    this.find({parent_type : "no_parent", remove : "no"}, null, {sort : {modify_at : -1}}, function(err, docs) {
         cb(err, docs)
     })
 })
@@ -43,7 +44,7 @@ product_type_schema.static("find_self_and_children", function (id, cb) {
                         top = true
                     }
 
-                    bread_result.push(doc)
+                    bread_result.unshift(doc)
                     target = doc.parent_type
                     until_callback()
                 })
@@ -60,6 +61,32 @@ product_type_schema.static("find_self_and_children", function (id, cb) {
     function(err, result) {
         cb(err, result)
     })
+})
+
+product_type_schema.static("find_type_bread", function(id, cb) {
+    var self = this,
+        top = false,
+        target = id,
+        bread_result = [];
+
+    async.doUntil(function(until_callback) {
+        self.findById(target, function(err, doc) {
+            if (err || !doc) {
+                return cb(err)
+            }
+
+            if (doc.parent_type === 'no_parent') {
+                top = true
+            }
+
+            bread_result.unshift(doc)
+            target = doc.parent_type
+            until_callback()
+        })
+    }, function() {return top}, function(err) {
+        cb(err, bread_result)
+    })
+
 })
 
 exports.ProductType = mongoose.model('product_types', product_type_schema)

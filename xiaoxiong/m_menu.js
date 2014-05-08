@@ -6,13 +6,13 @@ var async = require('async'),
     Schema   = mongoose.Schema;
 
 var menu_schema = new Schema({
-    title   : String,
-    content : Array,   
-    top     : Array, 
-    publish_date : String,
-    create_date : String,
-    create_at : Number,
-    modify_at : Number,
+    title           : String,
+    content         : Array,   
+    top             : Array, 
+    publish_date    : String,
+    create_date     : String,
+    create_at       : Number,
+    modify_at       : Number,
 })
 
 menu_schema.index({ publish_date : 1})

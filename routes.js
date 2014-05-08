@@ -7,11 +7,11 @@ var feiye_index                     = require('./feiye/c_index'),
     xiaoxiong_cart                  = require('./xiaoxiong/c_cart'),
     xiaoxiong_order                 = require('./xiaoxiong/c_order'),
 
+    xiaoxiong_admin_product         = require('./xiaoxiong/admin/c_product'),
     xiaoxiong_admin_product_type    = require('./xiaoxiong/admin/c_product_type'),
     xiaoxiong_admin_index           = require('./xiaoxiong/admin/c_index'),
     xiaoxiong_admin_upload          = require('./xiaoxiong/admin/c_upload'),
     xiaoxiong_admin_login           = require('./xiaoxiong/admin/c_login'),
-    xiaoxiong_admin_recipe          = require('./xiaoxiong/admin/c_recipe'),
     xiaoxiong_admin_menu            = require('./xiaoxiong/admin/c_menu'),
     xiaoxiong_admin_order           = require('./xiaoxiong/admin/c_order');
 
@@ -53,12 +53,12 @@ function init_routes(app) {
     app.get('/xiaoxiong-admin/login', xiaoxiong_admin_login.index)
     app.post('/xiaoxiong-admin/login', xiaoxiong_admin_login.login)
 
-    app.get('/xiaoxiong-admin/recipes', xiaoxiong_admin_recipe.index)
-    app.get('/xiaoxiong-admin/recipes-create', xiaoxiong_admin_recipe.create_page)
-    app.post('/xiaoxiong-admin/recipes', xiaoxiong_admin_recipe.create)
-    app.get('/xiaoxiong-admin/recipes/:id', xiaoxiong_admin_recipe.info)
-    app.get('/xiaoxiong-admin/recipes-edit/:id', xiaoxiong_admin_recipe.edit_page)
-    app.put('/xiaoxiong-admin/recipes/:id', xiaoxiong_admin_recipe.edit)
+    app.get('/xiaoxiong-admin/products', xiaoxiong_admin_product.index)
+    app.get('/xiaoxiong-admin/products-create', xiaoxiong_admin_product.create_page)
+    app.post('/xiaoxiong-admin/products', xiaoxiong_admin_product.create)
+    app.get('/xiaoxiong-admin/products/:id', xiaoxiong_admin_product.info)
+    app.get('/xiaoxiong-admin/products-edit/:id', xiaoxiong_admin_product.edit_page)
+    app.put('/xiaoxiong-admin/products/:id', xiaoxiong_admin_product.edit)
 
     app.get('/xiaoxiong-admin/menus', xiaoxiong_admin_menu.index)
     app.get('/xiaoxiong-admin/menus-create', xiaoxiong_admin_menu.create_page)
@@ -73,6 +73,8 @@ function init_routes(app) {
     app.post('/xiaoxiong-admin/product-types', xiaoxiong_admin_product_type.create)
     app.get('/xiaoxiong-admin/product-types/:id', xiaoxiong_admin_product_type.info)
     app.put('/xiaoxiong-admin/product-types/:id', xiaoxiong_admin_product_type.edit)
+    app.delete('/xiaoxiong-admin/product-types/:id', xiaoxiong_admin_product_type.remove)
+    app.get('/xiaoxiong-admin/products-types-children/:id', xiaoxiong_admin_product_type.children)
 }
 
 exports = module.exports = init_routes;
