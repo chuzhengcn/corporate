@@ -37,7 +37,7 @@ menu_schema.static("find_by_page", function (page, cb) {
     })
 })
 
-menu_schema.static('find_by_id_and_recipes', function(id, cb) {
+menu_schema.static('find_by_id_and_products', function(id, cb) {
     var self = this;
 
     async.waterfall([
@@ -48,11 +48,11 @@ menu_schema.static('find_by_id_and_recipes', function(id, cb) {
         },
 
         function(doc, calllback) {
-            m_recipe.find({_id : {$in : doc.content}}, function(err, recipe_docs) {
+            m_product.find({_id : {$in : doc.content}}, function(err, product_docs) {
                 if (err) {
                     return calllback(err)
                 }
-                doc.recipes = recipe_docs
+                doc.products = product_docs
                 calllback(null, doc)
             })
         }
@@ -71,11 +71,11 @@ menu_schema.static('find_today', function(cb) {
             return cb(null, null)
         }
         
-        m_recipe.find({_id : {$in : doc.content}}, function(err, recipe_docs) {
+        m_product.find({_id : {$in : doc.content}}, function(err, product_docs) {
             if (err) {
                 return cb(err)
             }
-            doc.recipes = recipe_docs
+            doc.products = product_docs
             cb(null, doc)
         })
     })

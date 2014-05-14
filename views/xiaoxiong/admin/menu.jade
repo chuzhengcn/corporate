@@ -9,16 +9,16 @@ append body
             +header({"2" : "active"})
     .container
         .page-header
-            h3 所有菜单
-                a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/menus-create") 创建菜单
+            h3 所有推荐列表
+                a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/menus-create") 创建列表
         .panel.panel-default
-            .panel-heading 菜单列表
+            .panel-heading 推荐列表
                 span.badge.pull-right #{current_page} / #{total_page}
             table.table
                 tr
                     th 标题
                     th 日期
-                    th 食谱数
+                    th 产品数
                     th 操作
                 - each menu,index in menu_list
                     tr

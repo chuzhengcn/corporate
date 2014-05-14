@@ -1,9 +1,9 @@
 (function () {
     $(function() {
         var $form = $('#create-menu-form'),
-            $selected_recipes_input = $('#selected-recipes-input'),
-            $selected_recipes = $("#selected-recipes"),
-            input_item = '<input type="hidden" name="recipe" />';
+            $selected_product_input = $('#selected-product-input'),
+            $selected_product = $("#selected-product"),
+            input_item = '<input type="hidden" name="product" />';
 
         $form.submit(function(event) {
             var $self   = $(this);
@@ -14,10 +14,10 @@
                 data    : $self.serialize(),
             }).done(function(data) {
                 if (data.ok !== 1) {
-                    return alert('添加菜单错误，稍后再试')
+                    return alert('添加列表错误，稍后再试')
                 }
 
-                alert('添加菜单成功')
+                alert('添加推荐列表成功')
 
                 setTimeout(function() {
                     location.href = '/xiaoxiong-admin/menus' 
@@ -27,26 +27,26 @@
             event.preventDefault()
         })
 
-        $(".list-group").delegate('.select-recipe-btn', 'click', function(event) {
+        $(".list-group").delegate('.select-product-btn', 'click', function(event) {
             var id = $(this).data('id');
 
-            $(this).parent().parent().clone().find('.select-recipe-btn')
-                .removeClass('select-recipe-btn').addClass('remove-recipe-btn').html('删除').end().appendTo($selected_recipes)
+            $(this).parent().parent().clone().find('.select-product-btn')
+                .removeClass('select-product-btn').addClass('remove-product-btn').html('删除').end().appendTo($selected_product)
 
-            $selected_recipes_input.append(input_item).find("input:last").val(id)
+            $selected_product_input.append(input_item).find("input:last").val(id)
         })
 
-        $selected_recipes.delegate('.remove-recipe-btn', 'click', function(event) {
+        $selected_product.delegate('.remove-product-btn', 'click', function(event) {
             var id  = $(this).data('id');
 
-            $selected_recipes_input.find("input[value='" + id + "']").remove();
+            $selected_product_input.find("input[value='" + id + "']").remove();
 
             $(this).parent().parent().fadeOut()
 
             event.preventDefault()
         })
 
-        $("#search-recipe-btn").click(function(event) {
+        $("#search-product-btn").click(function(event) {
             alert('开发中')
             event.preventDefault()
         })
