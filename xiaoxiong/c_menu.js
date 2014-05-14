@@ -34,12 +34,12 @@ exports.send_event_today_menu_response = function(req, res) {
                 url : "#"
             }];
         } else {
-            menus = doc.recipes.map(function(item, index) {
+            menus = doc.products.map(function(item, index) {
                 return {
                     title : item.title,
                     pic_url : item.thumbnail,
                     description : item.content,
-                    url : domain + '/xiaoxiong/recipes/' + item._id + "/user/" + encypted_user_open_id
+                    url : domain + '/xiaoxiong/products/' + item._id + "/user/" + open_id
                 }
             })
         }
@@ -63,12 +63,12 @@ exports.send_event_today_menu_response = function(req, res) {
 }
 
 exports.today_menu = function(req, res) {
-    var user_open_id = req.params.open_id;
+    var open_id = req.params.open_id;
 
     m_menu.find_today(function(err, doc) {
         res.render('xiaoxiong/menu', {
             menu : doc,
-            user_open_id : user_open_id,
+            open_id : open_id,
         })
     })
 }

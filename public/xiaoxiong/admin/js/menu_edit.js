@@ -1,9 +1,9 @@
 (function () {
     $(function() {
         var $form = $('#edit-menu-form'),
-            $selected_recipes_input = $('#selected-recipes-input'),
-            $selected_recipes = $("#selected-recipes"),
-            input_item = '<input type="hidden" name="recipe" />';
+            $selected_products_input = $('#selected-products-input'),
+            $selected_products = $("#selected-products"),
+            input_item = '<input type="hidden" name="product" />';
 
         $form.submit(function(event) {
             var $self   = $(this);
@@ -27,26 +27,26 @@
             event.preventDefault()
         })
 
-        $(".list-group").delegate('.select-recipe-btn', 'click', function(event) {
+        $(".list-group").delegate('.select-product-btn', 'click', function(event) {
             var id = $(this).data('id');
 
-            $(this).parent().parent().clone().find('.select-recipe-btn')
-                .removeClass('select-recipe-btn').addClass('remove-recipe-btn').html('删除').end().appendTo($selected_recipes)
+            $(this).parent().parent().clone().find('.select-product-btn')
+                .removeClass('select-product-btn').addClass('remove-product-btn').html('删除').end().appendTo($selected_products)
 
-            $selected_recipes_input.append(input_item).find("input:last").val(id)
+            $selected_products_input.append(input_item).find("input:last").val(id)
         })
 
-        $selected_recipes.delegate('.remove-recipe-btn', 'click', function(event) {
+        $selected_products.delegate('.remove-product-btn', 'click', function(event) {
             var id  = $(this).data('id');
 
-            $selected_recipes_input.find("input[value='" + id + "']").remove();
+            $selected_products_input.find("input[value='" + id + "']").remove();
 
             $(this).parent().parent().fadeOut()
 
             event.preventDefault()
         })
 
-        $("#search-recipe-btn").click(function(event) {
+        $("#search-product-btn").click(function(event) {
             alert('开发中')
             event.preventDefault()
         })

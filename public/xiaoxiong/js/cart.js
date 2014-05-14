@@ -16,25 +16,25 @@
 
             data.cart.forEach(function(item) {
                 amount += item.amount
-                total_price += item.recipe.price * item.amount
+                total_price += item.product.price * item.amount
             })
 
             $amount.html(amount)
             $price.html((total_price / 100).toFixed(2))
 
 
-            $('.cart .no-recipe').addClass("hidden")
-            $('.cart .have-recipe').removeClass("hidden")
+            $('.cart .no-product').addClass("hidden")
+            $('.cart .have-product').removeClass("hidden")
         })
 
         // 加入购物车
         $(".add-cart-btn").click(function(event) {
-            var recipe_id = $(this).data("recipeid");
+            var product_id = $(this).data("productid");
 
             $.ajax({
                 type : "post",
                 url  : "/xiaoxiong/cart/" + open_id,
-                data : {recipe_id : recipe_id},
+                data : {product_id : product_id},
             }).done(function(data) {
                 if (data.ok !== 1) {
                     return alert("加入购物车失败，请重试")

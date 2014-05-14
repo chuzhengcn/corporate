@@ -1,0 +1,21 @@
+extends layout
+
+append head
+
+append body
+    .container-fluid.padding-bottom(data-openid="#{open_id}")
+        .panel.panel-default
+            .panel-heading.clearfix
+                a.btn.btn-default.pull-left(href="/xiaoxiong/menus-today/user/#{open_id}") 
+                    | 今日所有产品
+                span.label.label-info.pull-right #{(product.price / 100).toFixed(2)}元
+            .panel-body
+                h3 #{product.title}
+                p.text-center
+                    img.img-thumbnail(src="#{product.thumbnail}")
+                | !{product.content}
+            .panel-footer.clearfix
+                button.btn.btn-primary.pull-right.add-cart-btn(data-productid="#{product._id}") 加入购物车
+        include include_cart
+append script
+    script(src="/xiaoxiong/js/cart.js")

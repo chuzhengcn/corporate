@@ -76,13 +76,13 @@ exports.edit_page = function(req, res) {
     login.check_login_and_send(req, res, function() {
         var id = req.params.id;
 
-        m_recipe.find_newest_by_create_at(20, function(err, create_docs) {
-            m_recipe.find_newest_by_modify_at(20, function(err, modify_docs) {
-                m_menu.find_by_id_and_recipes(id, function(err, doc) {
+        m_product.find_newest_by_create_at(20, function(err, create_docs) {
+            m_product.find_newest_by_modify_at(20, function(err, modify_docs) {
+                m_menu.find_by_id_and_products(id, function(err, doc) {
                     res.render('xiaoxiong/admin/menu_edit', {
                         menu : doc,
-                        newest_recipes : create_docs,
-                        modify_recipes : modify_docs
+                        newest_products : create_docs,
+                        modify_products : modify_docs
                     })
                 })
             })
@@ -96,7 +96,7 @@ exports.edit = function(req, res) {
             now = Date.now(),
             doc = {
                 title   : req.body.title,
-                content : req.body.recipe,    
+                content : req.body.product,    
                 publish_date : req.body.publish_date,
                 modify_at : now,
             };

@@ -3,9 +3,11 @@ var feiye_index                     = require('./feiye/c_index'),
     xiaoxiong_index                 = require('./xiaoxiong/c_index'),
     xiaoxiong_addr                  = require('./xiaoxiong/c_addr'),
     xiaoxiong_recipe                = require('./xiaoxiong/c_recipe'),
+    xiaoxiong_product               = require('./xiaoxiong/c_product'),
     xiaoxiong_menu                  = require('./xiaoxiong/c_menu'),
     xiaoxiong_cart                  = require('./xiaoxiong/c_cart'),
     xiaoxiong_order                 = require('./xiaoxiong/c_order'),
+
 
     xiaoxiong_admin_product         = require('./xiaoxiong/admin/c_product'),
     xiaoxiong_admin_product_type    = require('./xiaoxiong/admin/c_product_type'),
@@ -33,6 +35,7 @@ function init_routes(app) {
     app.get('/xiaoxiong/menus-today/user/:open_id', xiaoxiong_menu.today_menu)
 
     app.get('/xiaoxiong/recipes/:id/user/:open_id', xiaoxiong_recipe.info)
+    app.get('/xiaoxiong/products/:id/user/:open_id', xiaoxiong_product.info)
 
     app.get('/xiaoxiong/cart/:open_id', xiaoxiong_cart.index)
     app.post('/xiaoxiong/cart/:open_id', xiaoxiong_cart.create)

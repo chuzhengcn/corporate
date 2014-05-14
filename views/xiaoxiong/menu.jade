@@ -3,18 +3,18 @@ extends layout
 append head
 
 append body
-    .container-fluid.padding-bottom(data-openid="#{user_open_id}")
-            h3(data-openid="#{user_open_id}") 今日菜谱
+    .container-fluid.padding-bottom(data-openid="#{open_id}")
+            h3(data-openid="#{open_id}") 今日菜谱
             - if (menu)
-                - each recipe in menu.recipes
+                - each product in menu.products
                     .panel.panel-default
-                        .panel-heading #{recipe.title}
+                        .panel-heading #{product.title}
                         .panel-body
-                            a(href="/xiaoxiong/recipes/#{recipe._id}/user/#{user_open_id}")
-                                img.img-rounded.img-responsive(src="#{recipe.thumbnail}")
+                            a(href="/xiaoxiong/products/#{product._id}/user/#{open_id}")
+                                img.img-rounded.img-responsive(src="#{product.thumbnail}")
                         .panel-footer.clearfix
-                            span.label.label-info.pull-left 现价：#{(recipe.price / 100).toFixed(2)} 元
-                            button.btn.btn-primary.btn-sm.pull-right.add-cart-btn(data-recipeid="#{recipe._id}")  加入购物车
+                            span.label.label-info.pull-left 现价：#{(product.price / 100).toFixed(2)} 元
+                            button.btn.btn-primary.btn-sm.pull-right.add-cart-btn(data-productid="#{product._id}")  加入购物车
             - else
                 .alert.alert-warning 今日暂无供应
         include include_cart

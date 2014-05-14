@@ -8,7 +8,7 @@ var async = require('async'),
 var menu_schema = new Schema({
     title           : String,
     content         : Array,   
-    top             : Array, 
+    top             : {type : Array, default : []}, 
     publish_date    : String,
     create_date     : String,
     create_at       : Number,
