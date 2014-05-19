@@ -8,8 +8,8 @@ append body
             +header({"2" : "active"})
     .container
         .page-header
-            h3 修改菜单
-                a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/menus") 返回所有菜单
+            h3 修改推荐列表
+                a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/menus") 返回所有推荐列表
         .row
             .col-md-6
                 ul.nav.nav-tabs.nav-justified.gap-bottom
@@ -31,6 +31,8 @@ append body
                                         span.label.label-info 现价：#{(product.price / 100).toFixed(2)} 元
                                     .pull-right
                                         button.btn.btn-default.select-product-btn(data-id="#{product._id}") 选择
+                                    .pull-right
+                                        button.btn.btn-default.set-top-product-btn(data-id="#{product._id}") 推荐
                     #modify-product.tab-pane
                         .list-group
                             - each product in modify_products
@@ -42,9 +44,11 @@ append body
                                         span.label.label-info 现价：#{(product.price / 100).toFixed(2)} 元
                                     .pull-right
                                         button.btn.btn-default.select-product-btn(data-id="#{product._id}") 选择
+                                    .pull-right
+                                        button.btn.btn-default.set-top-product-btn(data-id="#{product._id}") 推荐
                     #search-product.tab-pane
                         .input-group.gap-bottom
-                            input#search-input.form-control(type="text", placeholder="菜谱标题")
+                            input#search-input.form-control(type="text", placeholder="产品标题")
                             span.input-group-btn
                                 button#search-product-btn.btn.btn-default 搜索
                         .list-group
@@ -56,8 +60,22 @@ append body
                     .form-group
                         label(for="publish_date")
                         input.form-control(type="date", name="publish_date", value="#{menu.publish_date}", required)
+                    #top-products-input.form-group
+                        label(for="top") 推荐
+                        - each top_product in menu.top
+                            input(type="hidden", name="top", value="#{top_product._id}")
+                    #top-products.list-group
+                        - each top_product in menu.top
+                            li.list-group-item.clearfix
+                                img.img-thumbnail.pull-left.thumbnail_in_list.gap-right(src="#{top_product.thumbnail}")
+                                .pull-left
+                                    h5 #{top_product.title}
+                                    span.label.label-default.gap-right 原价： #{(top_product.original_price / 100).toFixed(2)} 元
+                                    span.label.label-info 现价：#{(top_product.price / 100).toFixed(2)} 元
+                                .pull-right
+                                    button.btn.btn-default.remove-product-btn(data-id="#{top_product._id}") 删除
                     #selected-products-input.form-group
-                        label(for="product") 食谱
+                        label(for="product") 产品
                         - each product in menu.products
                             input(type="hidden", name="product", value="#{product._id}")
                     #selected-products.list-group

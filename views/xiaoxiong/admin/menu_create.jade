@@ -31,6 +31,8 @@ append body
                                         span.label.label-info 现价：#{(product.price / 100).toFixed(2)} 元
                                     .pull-right
                                         button.btn.btn-default.select-product-btn(data-id="#{product._id}") 选择
+                                    .pull-right
+                                        button.btn.btn-default.set-top-product-btn(data-id="#{product._id}") 推荐
                     #modify-product.tab-pane
                         .list-group
                             - each product in modify_products
@@ -42,6 +44,8 @@ append body
                                         span.label.label-info 现价：#{(product.price / 100).toFixed(2)} 元
                                     .pull-right
                                         button.btn.btn-default.select-product-btn(data-id="#{product._id}") 选择
+                                    .pull-right
+                                        button.btn.btn-default.set-top-product-btn(data-id="#{product._id}") 推荐
                     #search-product.tab-pane
                         .input-group.gap-bottom
                             input#search-input.form-control(type="text", placeholder="产品标题")
@@ -56,6 +60,9 @@ append body
                     .form-group
                         label(for="publish_date")
                         input.form-control(type="date", name="publish_date", value="", required)
+                    #top-products-input.form-group
+                        label(for="top") 推荐
+                    #top-products.list-group
                     #selected-product-input.form-group
                         label(for="product") 产品
                     #selected-product.list-group

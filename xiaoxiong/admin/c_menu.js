@@ -41,12 +41,13 @@ exports.create = function(req, res) {
         var now = Date.now(),
             doc = {
                 title   : req.body.title,
-                content : req.body.product,    
+                content : [].concat(req.body.top),    
+                top     : [].concat(req.body.product),
                 publish_date : req.body.publish_date,
                 create_date : moment(now).format("YYYY-MM-DD"),
                 create_at : now,
                 modify_at : now,
-            }
+            };
 
         m_menu.create(doc, function(err) {
             if (err) {
@@ -96,7 +97,8 @@ exports.edit = function(req, res) {
             now = Date.now(),
             doc = {
                 title   : req.body.title,
-                content : req.body.product,    
+                top : [].concat(req.body.top),
+                content : [].concat(req.body.product),
                 publish_date : req.body.publish_date,
                 modify_at : now,
             };

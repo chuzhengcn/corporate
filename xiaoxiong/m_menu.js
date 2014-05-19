@@ -55,6 +55,16 @@ menu_schema.static('find_by_id_and_products', function(id, cb) {
                 doc.products = product_docs
                 calllback(null, doc)
             })
+        },
+
+        function(doc, calllback) {
+            m_product.find({_id : {$in : doc.top}}, function(err, top_docs) {
+                if (err) {
+                    return calllback(err)
+                }
+                doc.top = top_docs
+                calllback(null, doc)
+            })
         }
     ],
     function(err, reslut) {
@@ -74,6 +84,25 @@ menu_schema.static('find_today', function(cb) {
             if (err) {
                 return cb(err)
             }
+            doc.products = product_docs
+            cb(null, doc)
+        })
+    })
+})
+
+menu_schema.static('find_top_today', function(cb) {
+    var today     = moment().format("YYYY-MM-DD");
+
+    this.findOne({publish_date : today}, function(err, doc) {
+        if (!doc) {
+            return cb(null, null)
+        }
+
+        m_product.find({_id : {$in : doc.top}}, function(err, product_docs) {
+            if (err) {
+                return cb(err)
+            }
+
             doc.products = product_docs
             cb(null, doc)
         })

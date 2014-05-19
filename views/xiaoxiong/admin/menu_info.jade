@@ -9,7 +9,7 @@ append body
     .container
         .page-header
             h3 #{menu.publish_date}
-                a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/menus") 返回所有菜单
+                a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/menus") 返回所有推荐列表
                 a.btn.btn-default.pull-right.gap-right(href="/xiaoxiong-admin/menus-edit/#{menu._id}") 修改
         p #{menu.title} 
         .list-group
@@ -21,5 +21,5 @@ append body
                         span.label.label-default.gap-right 原价： #{(product.original_price / 100).toFixed(2)} 元
                         span.label.label-info 现价：#{(product.price / 100).toFixed(2)} 元
                     .pull-right
-                        a.btn.btn-default(href="/xiaoxiong-admin/product/#{product._id}", target="_blank") 详情
+                        a.btn.btn-default(href="/xiaoxiong-admin/products/#{product._id}", target="_blank") 详情
 append script

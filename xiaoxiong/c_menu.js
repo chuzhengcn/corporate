@@ -23,7 +23,7 @@ exports.send_event_today_menu_response = function(req, res) {
                             "<Url><![CDATA[%s]]></Url>" +
                         "</item>";
 
-    m_menu.find_today(function(err, doc) {
+    m_menu.find_top_today(function(err, doc) {
         var menus;
 
         if (!doc) {
@@ -38,8 +38,8 @@ exports.send_event_today_menu_response = function(req, res) {
                 return {
                     title : item.title,
                     pic_url : item.thumbnail,
-                    description : item.content,
-                    url : domain + '/xiaoxiong/products/' + item._id + "/user/" + open_id
+                    description : "查看今日所有水果",
+                    url : domain + '/xiaoxiong/products/user/' + open_id
                 }
             })
         }

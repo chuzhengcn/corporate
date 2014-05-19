@@ -3,7 +3,10 @@
         var $form = $('#create-menu-form'),
             $selected_product_input = $('#selected-product-input'),
             $selected_product = $("#selected-product"),
-            input_item = '<input type="hidden" name="product" />';
+            $top_selected_products_input = $('#top-products-input'),
+            $top_products = $("#top-products"),
+            input_item = '<input type="hidden" name="product" />',
+            input_item_top = '<input type="hidden" name="top" />';
 
         $form.submit(function(event) {
             var $self   = $(this);
@@ -31,15 +34,36 @@
             var id = $(this).data('id');
 
             $(this).parent().parent().clone().find('.select-product-btn')
-                .removeClass('select-product-btn').addClass('remove-product-btn').html('删除').end().appendTo($selected_product)
+                .removeClass('select-product-btn').addClass('remove-product-btn').html('删除').end()
+                .find('.set-top-product-btn').remove().end().appendTo($selected_product)
 
             $selected_product_input.append(input_item).find("input:last").val(id)
+        })
+
+        $(".list-group").delegate('.set-top-product-btn', 'click', function(event) {
+            var id = $(this).data('id');
+
+            $(this).parent().parent().clone().find('.set-top-product-btn')
+                .removeClass('set-top-product-btn').addClass('remove-top-product-btn').html('删除').end()
+                .find('.select-product-btn').remove().end().appendTo($top_products)
+
+            $top_selected_products_input.append(input_item_top).find("input:last").val(id)
         })
 
         $selected_product.delegate('.remove-product-btn', 'click', function(event) {
             var id  = $(this).data('id');
 
             $selected_product_input.find("input[value='" + id + "']").remove();
+
+            $(this).parent().parent().fadeOut()
+
+            event.preventDefault()
+        })
+
+        $top_products.delegate('.remove-product-btn', 'click', function(event) {
+            var id  = $(this).data('id');
+
+            $top_selected_products_input.find("input[value='" + id + "']").remove();
 
             $(this).parent().parent().fadeOut()
 
