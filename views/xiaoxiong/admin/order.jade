@@ -23,10 +23,10 @@ append body
                 - each order,index in orders
                     tr
                         td #{order.create_time}
-                        td #{order.addr.name} #{order.addr.tel}
+                        td #{order.addr.userName} #{order.addr.telNumber}
                         td
-                            - each recipe in order.recipes
-                                | #{recipe.title} X #{recipe.amount} <br/>
+                            - each product in order.products
+                                | #{product.title} X #{product.amount} <br/>
                         td #{order.pay}
                         td
                             .btn-group
