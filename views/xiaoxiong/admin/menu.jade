@@ -18,13 +18,15 @@ append body
                 tr
                     th 标题
                     th 日期
+                    th 推荐数
                     th 产品数
                     th 操作
                 - each menu,index in menu_list
                     tr
                         td #{menu.title}
                         td #{menu.publish_date}
-                        td #{menu.content.length ＋ menu.top.length}
+                        td #{menu.top.length}
+                        td #{menu.content.length}
                         td
                             .btn-group
                                 a.btn.btn-default(href="/xiaoxiong-admin/menus/#{menu._id}") 详情
