@@ -5,7 +5,8 @@ var weixin      = require("../lib/c_weixin"),
     lib_util    = require("../lib/util"),
     m_cart      = require("./m_cart").Cart,
     m_order     = require("./m_order").Order,
-    m_recipe    = require("./m_recipe").Recipe;
+    m_recipe    = require("./m_recipe").Recipe,
+    m_product   = require("./m_product").Product; 
 
 
 exports.send_event_my_order_response = function(req, res) {
@@ -37,7 +38,7 @@ exports.send_event_my_order_response = function(req, res) {
                 products += item.title + " "
             })
 
-            content = "您的最近一次订单：[" + doc.create_date +"] " + recipes + ", 总价： " + (doc.price/100).toFixed(2) + "元。\n" +
+            content = "您的最近一次订单：[" + doc.create_date +"] " + products + ", 总价： " + (doc.price/100).toFixed(2) + "元。\n" +
                       "<a href='" + all_user_order_page + "'>全部订单</a>"; 
         }
 

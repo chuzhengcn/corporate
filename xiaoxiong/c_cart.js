@@ -32,7 +32,11 @@ exports.page = function(req, res) {
 
     m_addr.find_last_used(open_id, function(err, addr_doc) {
         if (err) {
-            console.log(err)
+            return console.log(err)
+        }
+
+        if (!addr_doc) {
+            return res.redirect("/xiaoxiong/xiaoxiong/addr-create-page/" + open_id)
         }
 
         m_cart.find_cart_with_product_by_openid(open_id, function(err, doc) {

@@ -15,8 +15,8 @@ append body
                     - else
                         .well
                             h5 
-                                strong #{addr.name} #{addr.tel}
-                            p #{addr.area} #{addr.detail}
+                                strong #{addr.userName} #{addr.telNumber}
+                            p #{addr.addressCitySecondStageName} #{addr.addressCountiesThirdStageName} #{addr.addressDetailInfo}
                             p
                                 a.btn.btn-primary.btn-sm(href="/xiaoxiong/addr/#{open_id}") 修改
                 table#cart-table.table
