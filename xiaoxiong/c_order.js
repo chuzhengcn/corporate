@@ -38,7 +38,7 @@ exports.send_event_my_order_response = function(req, res) {
                 products += item.title + " "
             })
 
-            content = "您的最近一次订单：[" + doc.create_date +"] " + products + ", 总价： " + (doc.price/100).toFixed(2) + "元。\n" +
+            content = "您的最近一次订单：\n\r[" + doc.create_date +"] " + products + ", \n\r总价： " + (doc.price/100).toFixed(2) + "元。\n\r" +
                       "<a href='" + all_user_order_page + "'>全部订单</a>"; 
         }
 
