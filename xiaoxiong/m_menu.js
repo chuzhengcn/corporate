@@ -63,8 +63,7 @@ menu_schema.static('find_by_id_and_products', function(id, cb) {
 })
 
 menu_schema.static('find_today', function(cb) {
-    var limit_num = 10,
-        today     = moment().format("YYYY-MM-DD");
+    var today     = moment().format("YYYY-MM-DD");
 
     this.findOne({publish_date : today}, function(err, doc) {
         if (!doc) {
