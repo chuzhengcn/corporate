@@ -15,7 +15,7 @@ append body
                             h4.clearfix #{order.create_date}
                                 span.label.label-primary.pull-right #{order.status} 
                         .panel-body
-                            p 收货人：#{order.addr.name} #{order.addr.tel}
+                            p 收货人：#{order.addr.userName} #{order.addr.telNumber}
 
                             p
                                 - each product in order.products
