@@ -21,6 +21,6 @@ append body
                                 - each product in order.products
                                     span.gap-right #{product.title} 
                         .panel-footer.clearfix
-                            span.gap-right 共 #{order.product.length} 件商品
+                            span.gap-right 共 #{order.products.length} 件商品
                             span.label.label-info 总计：#{(order.price / 100).toFixed(2)} 元
 append script

@@ -33,12 +33,12 @@ exports.send_event_my_order_response = function(req, res) {
         if (!doc) {
             content = '您还没有订单。';
         } else {
-            var products ="";
+            var products = "";
             doc.products.forEach(function(item) {
-                products += item.title + " "
+                products += item.title + ","
             })
 
-            content = "您的最近一次订单：\n\r[" + doc.create_date +"] " + products + ", \n\r总价： " + (doc.price/100).toFixed(2) + "元。\n\r" +
+            content = "您的最近一次订单：\n\r[" + doc.create_date +"] " + products.slice(0, -1) + "\n\r总价： " + (doc.price/100).toFixed(2) + "元。\n\r" +
                       "<a href='" + all_user_order_page + "'>全部订单</a>"; 
         }
 
