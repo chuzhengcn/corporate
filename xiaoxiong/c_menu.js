@@ -38,8 +38,8 @@ exports.send_event_today_menu_response = function(req, res) {
                 return {
                     title : item.title,
                     pic_url : item.thumbnail,
-                    description : "查看今日所有水果",
-                    url : domain + '/xiaoxiong/products/user/' + open_id
+                    description : "点击查看今日所有水果",
+                    url : domain + '/xiaoxiong/menus-today/user/' + open_id
                 }
             })
         }

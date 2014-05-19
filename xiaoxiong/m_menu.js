@@ -79,12 +79,36 @@ menu_schema.static('find_today', function(cb) {
         if (!doc) {
             return cb(null, null)
         }
-        
-        m_product.find({_id : {$in : doc.content}}, function(err, product_docs) {
+
+        async.parallel({
+            products : function(calllback) {
+                m_product.find({_id : {$in : doc.content}}, function(err, product_docs) {
+                    if (err) {
+                        return cb(err)
+                    }
+
+                    cb(null, product_docs)
+                })
+            },
+
+            top: function(calllback) {
+                m_product.find({_id : {$in : doc.top}}, function(err, product_docs) {
+                    if (err) {
+                        return cb(err)
+                    }
+                    
+                    cb(null, product_docs)
+                })
+            },
+        },
+        function(err, reslut) {
             if (err) {
                 return cb(err)
             }
-            doc.products = product_docs
+
+            doc.products = reslut.products;
+            doc.top = reslut.top;
+
             cb(null, doc)
         })
     })
