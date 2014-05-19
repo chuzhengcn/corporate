@@ -15,7 +15,7 @@
             }
 
             data.cart.forEach(function(item) {
-                var item_price = item.recipe.price * item.amount;
+                var item_price = item.product.price * item.amount;
 
                 $cart_table.append('<tr data-id="' +
                     item.product_id + 
