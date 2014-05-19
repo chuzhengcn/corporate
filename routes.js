@@ -34,13 +34,12 @@ function init_routes(app) {
 
     app.get('/xiaoxiong/menus-today/user/:open_id', xiaoxiong_menu.today_menu)
 
-    app.get('/xiaoxiong/recipes/:id/user/:open_id', xiaoxiong_recipe.info)
     app.get('/xiaoxiong/products/:id/user/:open_id', xiaoxiong_product.info)
 
     app.get('/xiaoxiong/cart/:open_id', xiaoxiong_cart.index)
     app.post('/xiaoxiong/cart/:open_id', xiaoxiong_cart.create)
     app.get('/xiaoxiong/cart-page/:open_id', xiaoxiong_cart.page)
-    app.delete('/xiaoxiong/cart/:recipe_id/user/:open_id', xiaoxiong_cart.remove_recipe)
+    app.delete('/xiaoxiong/cart/:recipe_id/user/:open_id', xiaoxiong_cart.remove_product)
 
     app.post('/xiaoxiong/orders/user/:open_id', xiaoxiong_order.create)
     app.get('/xiaoxiong/orders/user/:open_id', xiaoxiong_order.list)

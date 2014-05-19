@@ -4,8 +4,8 @@ append head
 
 append body
     .container-fluid
-        h3(data-openid="#{user_open_id}") 我的订单
-            a.btn.btn-default.pull-right(href="/xiaoxiong/menus-today/user/#{user_open_id}") 返回菜单
+        h3(data-openid="#{open_id}") 我的订单
+            a.btn.btn-default.pull-right(href="/xiaoxiong/menus-today/user/#{open_id}") 返回菜单
         - if (!orders || orders.length < 1)
             .alert.alert-warning 没有订单
         - else
@@ -18,9 +18,9 @@ append body
                             p 收货人：#{order.addr.name} #{order.addr.tel}
 
                             p
-                                - each recipe in order.recipes
-                                    span.gap-right #{recipe.title} 
+                                - each product in order.products
+                                    span.gap-right #{product.title} 
                         .panel-footer.clearfix
-                            span.gap-right 共 #{order.recipes.length} 件商品
+                            span.gap-right 共 #{order.product.length} 件商品
                             span.label.label-info 总计：#{(order.price / 100).toFixed(2)} 元
 append script

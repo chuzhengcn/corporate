@@ -3,7 +3,7 @@ extends layout
 append head
 
 append body
-    .container-fluid.padding-bottom(data-openid="#{user_open_id}")
+    .container-fluid.padding-bottom(data-openid="#{open_id}")
             .panel.panel-default
                 .panel-heading.clearfix.text-center 
                     h4 确认订单
@@ -11,14 +11,14 @@ append body
                     h5 收货地址
                     - if (!addr) 
                         .alert.alert-warning 你还没有收获地址。
-                            a.btn.btn-primary.btn-sm(href="/xiaoxiong/addr-create-page/#{user_open_id}") 添加
+                            a.btn.btn-primary.btn-sm(href="/xiaoxiong/addr-create-page/#{open_id}") 添加
                     - else
                         .well
                             h5 
                                 strong #{addr.name} #{addr.tel}
                             p #{addr.area} #{addr.detail}
                             p
-                                a.btn.btn-primary.btn-sm(href="/xiaoxiong/addr/#{user_open_id}") 修改
+                                a.btn.btn-primary.btn-sm(href="/xiaoxiong/addr/#{open_id}") 修改
                 table#cart-table.table
                     tr
                         th 图片
@@ -27,7 +27,7 @@ append body
                         th 价格
                         th 操作
                 .panel-footer.clearfix
-                    a.btn.btn-default.btn-sm.pull-left(href="/xiaoxiong/menus-today/user/#{user_open_id}") 继续挑选
+                    a.btn.btn-default.btn-sm.pull-left(href="/xiaoxiong/menus-today/user/#{open_id}") 继续挑选
                     button#create-order.btn.btn-primary.btn-sm.pull-right 
                         | 总计：
                         span#total-price

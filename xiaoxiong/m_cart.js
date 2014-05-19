@@ -1,41 +1,41 @@
 var async = require('async'),   
     moment = require('moment'), 
-    m_recipe = require("./m_recipe").Recipe,
-    mongoose = require('mongoose'),
-    Schema   = mongoose.Schema;
+    m_product = require("./m_product").Product,
+    mongoose  = require('mongoose'),
+    Schema    = mongoose.Schema;
 
 var cart_schema = new Schema({
-    user_open_id    : String,
-    recipe_id       : String, 
+    open_id         : String,
+    product_id      : String, 
     amount          : Number,   
     create_date     : String,
     create_at       : Number,
 })
 
-cart_schema.index({ user_open_id : 1, recipe_id : 1})
+cart_schema.index({ open_id : 1, product_id : 1})
 
-cart_schema.static("find_cart_with_recipe_by_openid", function(open_id, cb) {
+cart_schema.static("find_cart_with_product_by_openid", function(open_id, cb) {
     var self = this;
 
-    self.find({user_open_id : open_id}, null, {sort : {create_at : -1}}, function(err, cart_docs) {
+    self.find({open_id : open_id}, null, {sort : {create_at : -1}}, function(err, cart_docs) {
         if (err) {
             return cb(err)
         }
 
-        var recipe_ids = cart_docs.map(function(item) {
-            return item.recipe_id
+        var product_ids = cart_docs.map(function(item) {
+            return item.product_id
         })
 
-        m_recipe.find({_id : {$in : recipe_ids}}, function(err, recipe_docs) {
+        m_product.find({_id : {$in : product_ids}}, function(err, product_docs) {
             if (err) {
                 return cb(err)
             }
 
             cart_docs = cart_docs.map(function(cart_item) {
-                recipe_docs.forEach(function(recipe_item) {
-                    if (recipe_item._id.toString() === cart_item.recipe_id) {
+                product_docs.forEach(function(product_item) {
+                    if (product_item._id.toString() === cart_item.product_id) {
                         cart_item = cart_item.toJSON()
-                        cart_item.recipe = recipe_item
+                        cart_item.product = product_item
                     }
                 })
 
@@ -47,17 +47,17 @@ cart_schema.static("find_cart_with_recipe_by_openid", function(open_id, cb) {
     })
 })
 
-cart_schema.static('add_one_recipe', function(doc, cb) {
+cart_schema.static('add_one_product', function(doc, cb) {
     var self = this,
         now  = Date.now();
 
-    self.count({user_open_id : doc.user_open_id, recipe_id : doc.recipe_id}, function(err, num) {
+    self.count({open_id : doc.open_id, product_id : doc.product_id}, function(err, num) {
         if (err) {
             return cb(err)
         }
 
         if (num !== 0) {
-            self.findOneAndUpdate({user_open_id : doc.user_open_id, recipe_id : doc.recipe_id}, {$inc : {amount : 1}}, function(err, doc) {
+            self.findOneAndUpdate({open_id : doc.open_id, product_id : doc.product_id}, {$inc : {amount : 1}}, function(err, doc) {
                 cb(err, doc)
             })
         } else {
@@ -73,7 +73,7 @@ cart_schema.static('add_one_recipe', function(doc, cb) {
 })
 
 cart_schema.static("remove_cart_by_openid", function(open_id, cb) {
-    this.remove({user_open_id : open_id}, function(err) {
+    this.remove({open_id : open_id}, function(err) {
         cb(err)
     })
 })

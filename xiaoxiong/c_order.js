@@ -9,13 +9,12 @@ var weixin      = require("../lib/c_weixin"),
 
 
 exports.send_event_my_order_response = function(req, res) {
-    var user_open_id            = req.weixin_user_msg.FromUserName[0],
-        encypted_user_open_id   = lib_util.encipher(user_open_id),
+    var open_id                 = req.weixin_user_msg.FromUserName[0],
         reply_content           = "",
         content                 = "",
         error_text              = "获取订单出错，请重试",
         now                     = Date.now(),
-        all_user_order_page     = domain + "/xiaoxiong/orders/user/" + encypted_user_open_id,
+        all_user_order_page     = domain + "/xiaoxiong/orders/user/" + open_id,
         template                = '<xml>' +
                                     '<ToUserName><![CDATA[%s]]></ToUserName>' +
                                     '<FromUserName><![CDATA[%s]]></FromUserName>' +
@@ -24,7 +23,7 @@ exports.send_event_my_order_response = function(req, res) {
                                     '<Content><![CDATA[%s]]></Content>' + 
                                   '</xml>';
 
-    m_order.find_user_lasted_order(user_open_id, function(err, doc) {
+    m_order.find_user_lasted_order(open_id, function(err, doc) {
         if (err) {
             content = error_text
             console.log(err)
@@ -33,25 +32,25 @@ exports.send_event_my_order_response = function(req, res) {
         if (!doc) {
             content = '您还没有订单。';
         } else {
-            var recipes ="";
-            doc.recipes.forEach(function(item) {
-                recipes += item.title + " "
+            var products ="";
+            doc.products.forEach(function(item) {
+                products += item.title + " "
             })
 
             content = "您的最近一次订单：[" + doc.create_date +"] " + recipes + ", 总价： " + (doc.price/100).toFixed(2) + "元。\n" +
                       "<a href='" + all_user_order_page + "'>全部订单</a>"; 
         }
 
-        reply_content = util.format(template, user_open_id, my_open_id, now, content)
+        reply_content = util.format(template, open_id, my_open_id, now, content)
         res.type('xml')
         res.send(reply_content)
     })
 }
 
 exports.create = function (req, res) {
-    var user_open_id = lib_util.decipher(req.params.open_id);
+    var open_id = req.params.open_id;
 
-    m_order.create_order(user_open_id, function(err, docs) {
+    m_order.create_order(open_id, function(err, docs) {
         if (err) {
             return res.send({ok : 0})
         }
@@ -61,12 +60,12 @@ exports.create = function (req, res) {
 }
 
 exports.list = function(req, res) {
-    var user_open_id = lib_util.decipher(req.params.open_id),
-        page         = req.query.page;
+    var open_id = req.params.open_id,
+        page    = req.query.page;
 
-    m_order.user_list(user_open_id, page, function(err, docs) {
+    m_order.user_list(open_id, page, function(err, docs) {
         res.render('xiaoxiong/order_list', {
-            user_open_id : req.params.open_id,
+            open_id : req.params.open_id,
             orders : docs
         })
     })

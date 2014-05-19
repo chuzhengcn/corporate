@@ -3,12 +3,13 @@ var mongoose = require('mongoose'),
     async    = require("async"),
     moment   = require("moment"),
     m_recipe = require("./m_recipe").Recipe,
+    m_product = require("./m_product").Product,
     m_cart   = require("./m_cart").Cart,
     m_addr   = require("./m_addr").Addr;
 
 var order_schema = new Schema({
     open_id         : String,
-    recipes         : [Schema.Types.Mixed],
+    products        : [Schema.Types.Mixed],
     addr            : Schema.Types.Mixed,
     status          : Number,
     price           : Number,
@@ -152,8 +153,8 @@ order_schema.static('create_order', function (open_id, cb) {
             })
         },
 
-        recipes : function(callback) {
-            m_cart.find_cart_with_recipe_by_openid(open_id, function(err, cart_docs) {
+        products : function(callback) {
+            m_cart.find_cart_with_product_by_openid(open_id, function(err, cart_docs) {
                 if (err) {
                     return callback(err)
                 }
@@ -163,11 +164,11 @@ order_schema.static('create_order', function (open_id, cb) {
                 }
 
                 cart_docs = cart_docs.map(function(item) {
-                    price += (item.recipe.price * item.amount)
+                    price += (item.product.price * item.amount)
                     return {
-                        recipe_id   : item.recipe_id,
-                        title       : item.recipe.title,
-                        price       : item.recipe.price,
+                        product_id   : item.product_id,
+                        title       : item.product.title,
+                        price       : item.product.price,
                         amount      : item.amount
                     }
                 })
@@ -182,7 +183,7 @@ order_schema.static('create_order', function (open_id, cb) {
 
         var doc = {
             open_id : open_id,
-            recipes : result.recipes,
+            products : result.products,
             addr    : result.addr,
             price   : price,
             status  : 1,

@@ -18,11 +18,11 @@
                 var item_price = item.recipe.price * item.amount;
 
                 $cart_table.append('<tr data-id="' +
-                    item.recipe_id + 
+                    item.product_id + 
                     '"><td><img class="thumbnail_in_list" src="' +
-                    item.recipe.thumbnail + 
+                    item.product.thumbnail + 
                     '"/></td><td>' +
-                    item.recipe.title +
+                    item.product.title +
                     '</td><td>' +
                     item.amount +
                     '</td><td>' +
@@ -39,7 +39,7 @@
         // 删除购物车商品
         $cart_table.delegate(".remove-cart-item-btn", "click", function(event) {
             var $this_item = $(this).parent().parent();
-            var recipe_id = $this_item.data('id');
+            var product_id = $this_item.data('id');
 
             var sure = confirm("确定删除?")
 
@@ -48,7 +48,7 @@
             }
 
             $.ajax({
-                url : "/xiaoxiong/cart/" + recipe_id + "/user/" + open_id,
+                url : "/xiaoxiong/cart/" + product_id + "/user/" + open_id,
                 type : "delete"
             }).done(function(data) {
                 if (data.ok !== 1) {
