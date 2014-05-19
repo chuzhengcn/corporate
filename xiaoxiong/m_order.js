@@ -145,10 +145,11 @@ order_schema.static('create_order', function (open_id, cb) {
                 }
 
                 callback(null, {
-                    name : addr_doc.name,
-                    tel  : addr_doc.tel,
-                    area : addr_doc.area,
-                    detail : addr_doc.detail,
+                    userName : addr_doc.userName,
+                    telNumber  : addr_doc.telNumber,
+                    addressCitySecondStageName : addr_doc.addressCitySecondStageName,
+                    addressCountiesThirdStageName : addr_doc.addressCountiesThirdStageName,
+                    addressDetailInfo : addr_doc.addressDetailInfo,
                 })
             })
         },
