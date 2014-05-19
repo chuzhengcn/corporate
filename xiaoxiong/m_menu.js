@@ -87,7 +87,7 @@ menu_schema.static('find_today', function(cb) {
                         return cb(err)
                     }
 
-                    cb(null, product_docs)
+                    calllback(null, product_docs)
                 })
             },
 
@@ -97,7 +97,7 @@ menu_schema.static('find_today', function(cb) {
                         return cb(err)
                     }
                     
-                    cb(null, product_docs)
+                    calllback(null, product_docs)
                 })
             },
         },

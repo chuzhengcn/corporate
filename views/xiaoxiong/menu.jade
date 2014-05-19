@@ -7,14 +7,14 @@ append body
             h3(data-openid="#{open_id}") 今日水果
             - if (menu)
                 - each top_product in menu.top
-                    .panel.panel-success
+                    .panel.panel-info
                         .panel-heading #{top_product.title}
                         .panel-body
                             a(href="/xiaoxiong/products/#{top_product._id}/user/#{open_id}")
                                 img.img-rounded.img-responsive(src="#{top_product.thumbnail}")
                         .panel-footer.clearfix
                             span.label.label-info.pull-left 现价：#{(top_product.price / 100).toFixed(2)} 元
-                            button.btn.btn-primary.btn-sm.pull-right.add-cart-btn(data-productid="#{product._id}")  加入购物车
+                            button.btn.btn-primary.btn-sm.pull-right.add-cart-btn(data-productid="#{top_product._id}")  加入购物车
                 - each product in menu.products
                     .panel.panel-default
                         .panel-heading #{product.title}
