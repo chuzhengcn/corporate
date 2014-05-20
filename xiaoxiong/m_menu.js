@@ -7,6 +7,8 @@ var async = require('async'),
 
 var menu_schema = new Schema({
     title           : String,
+    description     : {type : String, default : ""},
+    cover_img       : String,
     content         : Array,   
     top             : {type : Array, default : []}, 
     publish_date    : String,
@@ -133,7 +135,7 @@ menu_schema.static('find_top_today', function(cb) {
     })
 })
 
-menu_schema.static("find_today_top_recommend", function(cb) {
+menu_schema.static("find_today_no_product", function(cb) {
     var today = moment().format("YYYY-MM-DD");
 
     this.findOne({publish_date : today}, null, {sort : {modify_at : -1}}, function(err, doc) {
@@ -141,6 +143,7 @@ menu_schema.static("find_today_top_recommend", function(cb) {
             return cb(null, null)
         }
 
+        cb(err, doc)
 
     })
 })

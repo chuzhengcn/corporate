@@ -17,6 +17,7 @@ append body
             table.table
                 tr
                     th 标题
+                    th 封面
                     th 日期
                     th 推荐数
                     th 产品数
@@ -24,6 +25,8 @@ append body
                 - each menu,index in menu_list
                     tr
                         td #{menu.title}
+                        td
+                            img.img-thumbnail.cover-in-table(src="#{menu.cover_img}")
                         td #{menu.publish_date}
                         td #{menu.top.length}
                         td #{menu.content.length}

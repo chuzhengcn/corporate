@@ -41,6 +41,8 @@ exports.create = function(req, res) {
         var now = Date.now(),
             doc = {
                 title   : req.body.title,
+                description : req.body.description,
+                cover_img : req.body.cover_img,
                 content : [].concat(req.body.top),    
                 top     : [].concat(req.body.product),
                 publish_date : req.body.publish_date,
@@ -99,6 +101,8 @@ exports.edit = function(req, res) {
                 title   : req.body.title,
                 top : [].concat(req.body.top),
                 content : [].concat(req.body.product),
+                description : req.body.description,
+                cover_img : req.body.cover_img,
                 publish_date : req.body.publish_date,
                 modify_at : now,
             };

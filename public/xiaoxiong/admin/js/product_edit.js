@@ -23,7 +23,7 @@
                     alert('上传文件出错, 图片最大2m')
                 }
 
-                ('success', '上传文件成功', '')
+                // ('success', '上传文件成功', '')
 
                 // $('#fileupload').hide()
                 $('#fileupload_url').val(data.result.url)

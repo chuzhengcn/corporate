@@ -50,6 +50,7 @@ function init_routes(app) {
 
     // xiaoxiong admin
     app.post('/xiaoxiong-admin/upload/thumbnail', xiaoxiong_admin_upload.thumbnail)
+    app.post('/xiaoxiong-admin/upload/cover', xiaoxiong_admin_upload.cover)
     app.post('/xiaoxiong-admin/upload/editor', xiaoxiong_admin_upload.editor)
     app.get('/xiaoxiong-admin', xiaoxiong_admin_index.index)
     app.get('/xiaoxiong-admin/login', xiaoxiong_admin_login.index)

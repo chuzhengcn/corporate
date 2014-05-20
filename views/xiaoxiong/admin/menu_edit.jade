@@ -58,7 +58,15 @@ append body
                         label(for="title") 名称
                         input.form-control(type="text", name="title", value="#{menu.title}", required)
                     .form-group
-                        label(for="publish_date")
+                        label(for="description") 描述
+                        textarea.form-control(name="description") #{menu.description}
+                    .form-group
+                        label(for="cover_img") 封面图片
+                        input#fileupload.form-control(type="file", value="", name="cover", data-url="/xiaoxiong-admin/upload/cover")
+                        input#fileupload_url(type="hidden", name="cover_img", value="#{menu.cover_img}")
+                        img#fileupload_preview.img-responsive(src="#{menu.cover_img}")
+                    .form-group
+                        label(for="publish_date") 日期
                         input.form-control(type="date", name="publish_date", value="#{menu.publish_date}", required)
                     #top-products-input.form-group
                         label(for="top") 推荐
@@ -92,4 +100,7 @@ append body
 
 
 append script
+    script(src="/vendor/jquery.ui.widget.js")
+    script(src="/vendor/jquery.iframe-transport.js")
+    script(src="/vendor/jquery.fileupload.js")
     script(src="/xiaoxiong/admin/js/menu_edit.js")        

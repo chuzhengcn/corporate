@@ -8,10 +8,13 @@ append body
             +header({"2" : "active"})
     .container
         .page-header
-            h3 #{menu.publish_date}
+            h3 #{menu.title} 
+                small #{menu.publish_date}
                 a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/menus") 返回所有推荐列表
                 a.btn.btn-default.pull-right.gap-right(href="/xiaoxiong-admin/menus-edit/#{menu._id}") 修改
-        p #{menu.title} 
+        .well #{menu.description} 
+        img.img-responsive.img-thumbnail(src="#{menu.cover_img}")
+        h4 推荐
         .list-group
             - each top_product in menu.top
                 li.list-group-item.clearfix
@@ -21,7 +24,9 @@ append body
                         span.label.label-default.gap-right 原价： #{(top_product.original_price / 100).toFixed(2)} 元
                         span.label.label-info 现价：#{(top_product.price / 100).toFixed(2)} 元
                     .pull-right
-                        a.btn.btn-default(href="/xiaoxiong-admin/products/#{top_product._id}", target="_blank") 详情
+                        a.btn.btn-default(href="/xiaoxiong-admin/products/#{top_product._id}", target="_blank") 产品详情
+        h4 产品
+        .list-group
             - each product in menu.products
                 li.list-group-item.clearfix
                     img.img-thumbnail.pull-left.thumbnail_in_list.gap-right(src="#{product.thumbnail}")
@@ -30,5 +35,5 @@ append body
                         span.label.label-default.gap-right 原价： #{(product.original_price / 100).toFixed(2)} 元
                         span.label.label-info 现价：#{(product.price / 100).toFixed(2)} 元
                     .pull-right
-                        a.btn.btn-default(href="/xiaoxiong-admin/products/#{product._id}", target="_blank") 详情
+                        a.btn.btn-default(href="/xiaoxiong-admin/products/#{product._id}", target="_blank") 产品详情
 append script

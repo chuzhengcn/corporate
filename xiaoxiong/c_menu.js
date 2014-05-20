@@ -5,7 +5,7 @@ var m_menu      = require("./m_menu").Menu,
     my_open_id  = weixin.my_open_id,
     domain      = weixin.domain;
 
-exports.send_event_today_menu_response = function(req, res) {
+exports.send_event_today_menu_response_bak = function(req, res) {
     var open_id = req.weixin_user_msg.FromUserName[0];
 
     var template =  '<xml>' +
@@ -42,6 +42,61 @@ exports.send_event_today_menu_response = function(req, res) {
                     url : domain + '/xiaoxiong/menus-today/user/' + open_id
                 }
             })
+        }
+
+        var items = "";
+
+        menus.forEach(function(item) {
+            items += util.format(item_template, item.title, item.description, item.pic_url, item.url)
+        })
+
+        template = util.format(template, open_id, my_open_id, Date.now(), menus.length);
+
+        var insert_point = template.lastIndexOf('Articles') - 2
+
+        var reply_content = template.slice(0, insert_point) + items + template.slice(insert_point)
+
+        res.type('xml')
+        res.send(reply_content)
+
+    })
+}
+
+exports.send_event_today_menu_response = function(req, res) {
+    var open_id = req.weixin_user_msg.FromUserName[0];
+
+    var template =  '<xml>' +
+                        '<ToUserName><![CDATA[%s]]></ToUserName>' +
+                        '<FromUserName><![CDATA[%s]]></FromUserName>' +
+                        '<CreateTime>%d</CreateTime>' +
+                        '<MsgType><![CDATA[news]]></MsgType>' +
+                        '<ArticleCount><![CDATA[%d]]></ArticleCount>' + 
+                        '<Articles></Articles>' + 
+                    '</xml>';
+    var item_template = "<item>" +
+                            "<Title><![CDATA[%s]]></Title>" + 
+                            "<Description><![CDATA[%s]]></Description>" +
+                            "<PicUrl><![CDATA[%s]]></PicUrl>" +
+                            "<Url><![CDATA[%s]]></Url>" +
+                        "</item>";
+
+    m_menu.find_today_no_product(function(err, doc) {
+        var menus;
+
+        if (!doc) {
+            menus = [{
+                title : '今日暂无水果推荐',
+                pic_url : "#",
+                description : '',
+                url : "#"
+            }];
+        } else {
+            menus = [{
+                title : doc.title,
+                pic_url : doc.cover_img,
+                description : doc.description,
+                url : domain + '/xiaoxiong/menus-today/user/' + open_id
+            }];
         }
 
         var items = "";
