@@ -8,6 +8,8 @@
             input_item = '<input type="hidden" name="product" />',
             input_item_top = '<input type="hidden" name="top" />';
 
+        $('#fileupload_preview').show();
+
         $form.submit(function(event) {
             var $self   = $(this);
 

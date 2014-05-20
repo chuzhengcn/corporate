@@ -19,7 +19,7 @@ append body
                     .panel.panel-default
                         .panel-heading #{product.title}
                         .panel-body
-                            a.center-block(href="/xiaoxiong/products/#{product._id}/user/#{open_id}")
+                            a(href="/xiaoxiong/products/#{product._id}/user/#{open_id}")
                                 img.img-rounded.img-responsive(src="#{product.thumbnail}")
                         .panel-footer.clearfix
                             span.label.label-info.pull-left 现价：#{(product.price / 100).toFixed(2)} 元
