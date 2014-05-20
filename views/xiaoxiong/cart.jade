@@ -11,7 +11,7 @@ append body
                     h5 收货地址
                     - if (!addr) 
                         .alert.alert-warning 你还没有收获地址。
-                            a.btn.btn-primary.btn-sm(href="/xiaoxiong/addr-create-page/#{open_id}") 添加
+                            a.btn.btn-primary.btn-sm(href="/xiaoxiong/addr-create-page/#{open_id}?r=#{Math.random()}") 添加
                     - else
                         .well
                             h5 
