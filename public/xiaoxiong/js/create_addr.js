@@ -1,5 +1,6 @@
 (function () {
     $(function() {
+        alert(document.referrer)
         var $form = $('#create-addr-form');
 
         $form.submit(function(event) {
