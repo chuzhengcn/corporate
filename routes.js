@@ -39,7 +39,7 @@ function init_routes(app) {
     app.get('/xiaoxiong/cart/:open_id', xiaoxiong_cart.index)
     app.post('/xiaoxiong/cart/:open_id', xiaoxiong_cart.create)
     app.get('/xiaoxiong/cart-page/:open_id', xiaoxiong_cart.page)
-    app.delete('/xiaoxiong/cart/:recipe_id/user/:open_id', xiaoxiong_cart.remove_product)
+    app.delete('/xiaoxiong/cart/:product_id/user/:open_id', xiaoxiong_cart.remove_product)
 
     app.post('/xiaoxiong/orders/user/:open_id', xiaoxiong_order.create)
     app.get('/xiaoxiong/orders/user/:open_id', xiaoxiong_order.list)

@@ -30,6 +30,8 @@
 
                 alert('添加地址成功')
 
+                alert(document.referrer)
+
                 if (document.referrer.indexOf("cart") > -1) {
                     return location.href = document.referrer
                 }
