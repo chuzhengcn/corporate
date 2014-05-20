@@ -35,10 +35,6 @@ exports.page = function(req, res) {
             return console.log(err)
         }
 
-        if (!addr_doc) {
-            return res.redirect("/xiaoxiong/addr-create-page/" + open_id)
-        }
-
         m_cart.find_cart_with_product_by_openid(open_id, function(err, doc) {
             res.render('xiaoxiong/cart', {
                 open_id : req.params.open_id, 
