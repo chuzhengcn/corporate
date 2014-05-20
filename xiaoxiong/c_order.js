@@ -6,7 +6,8 @@ var weixin      = require("../lib/c_weixin"),
     m_cart      = require("./m_cart").Cart,
     m_order     = require("./m_order").Order,
     m_recipe    = require("./m_recipe").Recipe,
-    m_product   = require("./m_product").Product; 
+    m_product   = require("./m_product").Product,
+    m_addr      = require("./m_addr").Addr; 
 
 
 exports.send_event_my_order_response = function(req, res) {
@@ -51,12 +52,22 @@ exports.send_event_my_order_response = function(req, res) {
 exports.create = function (req, res) {
     var open_id = req.params.open_id;
 
-    m_order.create_order(open_id, function(err, docs) {
+    m_addr.find_last_used(open_id, function(err, addr_doc) {
         if (err) {
-            return res.send({ok : 0})
+            return console.log(err)
         }
 
-        res.send({ok : 1})
+        if (!addr_doc) {
+            return res.send({ok : 0, msg : "请添加收获地址"})
+        }
+
+        m_order.create_order(open_id, function(err, docs) {
+            if (err) {
+                return res.send({ok : 0})
+            }
+
+            res.send({ok : 1})
+        })
     })
 }
 

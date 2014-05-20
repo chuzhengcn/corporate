@@ -65,7 +65,7 @@
                 type : "post",
             }).done(function(data) {
                 if (data.ok !== 1) {
-                    return alert("创建订单失败, 稍后再试")
+                    return alert(data.msg)
                 }
                 alert("订单提交成功")
                 location.href = "/xiaoxiong/orders/user/" + open_id
