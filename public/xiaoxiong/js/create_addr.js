@@ -31,7 +31,7 @@
                 alert('添加地址成功')
 
                 if (document.referrer.indexOf("cart") > -1) {
-                    location.href = document.referrer
+                    return location.href = document.referrer
                 }
 
                 setTimeout(function() {
