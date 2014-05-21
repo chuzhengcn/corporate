@@ -70,6 +70,7 @@ function init_routes(app) {
 
     app.get('/xiaoxiong-admin/orders', xiaoxiong_admin_order.list)
     app.get('/xiaoxiong-admin/orders/:id', xiaoxiong_admin_order.info)
+    app.put('/xiaoxiong-admin/orders/:id', xiaoxiong_admin_order.edit)
 
     app.get('/xiaoxiong-admin/product-types', xiaoxiong_admin_product_type.top_list)
     app.post('/xiaoxiong-admin/product-types', xiaoxiong_admin_product_type.create)

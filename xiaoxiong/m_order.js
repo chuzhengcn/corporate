@@ -44,6 +44,32 @@ order_schema.static("find_user_lasted_order", function(open_id, cb) {
     })
 })
 
+order_schema.static("update_status_by_id", function(id, arg, cb) {
+    var update_doc = {};
+
+    Object.keys(arg).forEach(function(item) {
+        update_doc[item] = parseInt(arg[item])
+    })
+
+    for (var key in update_doc) {
+        if (typeof update_doc[key] === 'undefined') {
+            delete update_doc[key]
+        }
+
+        if (["pay","status"].indexOf(key) === -1) {
+            delete update_doc[key]
+        }
+
+        // warning : 必须检查客户端传来的参数名和参数值是否合法
+    }
+
+    console.log(update_doc)
+
+    this.findByIdAndUpdate(id, update_doc, function(err, doc) {
+        cb(err, doc)
+    })
+})
+
 order_schema.static("user_list", function(open_id, page, cb) {
     var current_page = parseInt(page) || 1,
         per_page     = 5,
