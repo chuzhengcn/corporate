@@ -19,18 +19,18 @@ var order_schema = new Schema({
     modify_at       : Number,
 })
 
-var order_status = {
+var order_status = exports.order_status = {
     "0" : "已取消",
     "1" : "已提交",
     "2" : "已确认",
     "3" : "正在采购",
     "4" : "采购完成",
-    "5" : "正在配菜",
+    "5" : "正在配货",
     "6" : "配送中",
     "7" : "配送完成",
 }
 
-var pay_status = {
+var pay_status = exports.pay_status = {
     "0" : "未付款",
     "1" : "已付款",
     "2" : "申请退款",

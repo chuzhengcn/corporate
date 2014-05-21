@@ -1,0 +1,68 @@
+extends layout
+
+append head
+
+append body
+    .navbar.navbar-inverse
+        .container
+            include header
+            +header({"3" : "active"})
+    .container
+        .page-header
+            h3 订单详情  #{order._id}
+                a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/orders") 返回所有订单
+                .btn-group.pull-right.gap-right
+                    button.btn.btn-default.dropdown-toggle(type="button", data-toggle="dropdown")
+                        | 修改收款状态
+                        span.caret
+                    ul.dropdown-menu(role="menu")
+                        li
+                            a(href="#") 未付款
+                        li
+                            a(href="#") 已付款
+                        li.divider
+                        li
+                            a(href="#") 申请退款
+                        li
+                            a(href="#") 退款中
+                        li
+                            a(href="#") 退款完成
+                .btn-group.pull-right.gap-right
+                    button.btn.btn-default.dropdown-toggle(type="button", data-toggle="dropdown")
+                        | 修改订单状态
+                        span.caret
+                    ul.dropdown-menu(role="menu")
+                        li
+                            a(href="#") 已提交
+                        li
+                            a(href="#") 已确认
+                        li.divider
+                        li
+                            a(href="#") 正在采购
+                        li
+                            a(href="#") 采购完成
+                        li.divider
+                        li
+                            a(href="#") 正在配货
+                        li
+                            a(href="#") 配送中
+                        li
+                            a(href="#") 配送完成
+                        li.divider
+                        li
+                            a(href="") 取消订单
+        .panel.panel-default
+            .panel-body
+        h4 订单产品
+        .well
+            ul
+                - each product in order.products
+                    li
+                        a(href="/xiaoxiong-admin/products/#{product.product_id}") #{product.title} x #{product.amount}
+        h4 收货地址
+        .well
+            | #{order.addr.userName} #{order.addr.telNumber}
+            br
+            | #{order.addr.addressCitySecondStageName} #{order.addr.addressCountiesThirdStageName} #{order.addr.addressDetailInfo}
+                
+append script

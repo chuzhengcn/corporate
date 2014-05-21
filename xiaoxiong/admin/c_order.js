@@ -19,3 +19,14 @@ exports.list = function(req, res) {
         })
     })
 }
+
+exports.info = function(req, res) {
+    var id = req.params.id;
+
+    m_order.findById(id, function(err, doc) {
+        console.log(doc)
+        res.render('xiaoxiong/admin/order_info', {
+            order : doc
+        })
+    })
+}

@@ -45,9 +45,6 @@ function init_routes(app) {
     app.get('/xiaoxiong/orders/user/:open_id', xiaoxiong_order.list)
 
 
-    
-
-
     // xiaoxiong admin
     app.post('/xiaoxiong-admin/upload/thumbnail', xiaoxiong_admin_upload.thumbnail)
     app.post('/xiaoxiong-admin/upload/cover', xiaoxiong_admin_upload.cover)
@@ -72,6 +69,7 @@ function init_routes(app) {
     app.put('/xiaoxiong-admin/menus/:id', xiaoxiong_admin_menu.edit)
 
     app.get('/xiaoxiong-admin/orders', xiaoxiong_admin_order.list)
+    app.get('/xiaoxiong-admin/orders/:id', xiaoxiong_admin_order.info)
 
     app.get('/xiaoxiong-admin/product-types', xiaoxiong_admin_product_type.top_list)
     app.post('/xiaoxiong-admin/product-types', xiaoxiong_admin_product_type.create)

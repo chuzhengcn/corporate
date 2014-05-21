@@ -15,21 +15,24 @@ append body
                 span.badge.pull-right #{current_page} / #{total_page}
             table.table
                 tr
+                    th 订单号
                     th 下单日期
                     th 收货人
-                    th 菜品
+                    th 产品
                     th 收款状态
-                    th 操作
+                    th 订单状态
                 - each order,index in orders
                     tr
+                        td 
+                            a(href="/xiaoxiong-admin/orders/#{order._id}", title="点击查看订单详情") #{order._id}
                         td #{order.create_time}
                         td #{order.addr.userName} #{order.addr.telNumber}
                         td
                             - each product in order.products
                                 | #{product.title} X #{product.amount} <br/>
                         td #{order.pay}
-                        td
-                            .btn-group
+                        td #{order.status}
+                        
         ul.pager
             - if (current_page === 1)
                 li.previous.disabled
