@@ -20,6 +20,5 @@ append body
             span.label.label-default.gap-right  原价： #{(product.original_price / 100).toFixed(2)} 元
             span.label.label-info  现价：#{(product.price / 100).toFixed(2)} 元
         .panel.panel-default
-            .panel-body
-                !{product.content}
+            .panel-body !{product.content}
 append script
