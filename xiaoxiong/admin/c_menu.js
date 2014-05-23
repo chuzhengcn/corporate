@@ -116,3 +116,17 @@ exports.edit = function(req, res) {
         })
     })
 }
+
+exports.remove = function(req, res) {
+    login.check_login_and_send(req, res, function() {
+        var id = req.params.id;
+            
+        m_menu.findByIdAndRemove(id, function(err) {
+            if (err) {
+                return res.send({ok : 0})
+            }
+
+            res.send({ok : 1})
+        })
+    })
+}

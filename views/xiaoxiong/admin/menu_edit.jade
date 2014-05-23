@@ -10,6 +10,7 @@ append body
         .page-header
             h3 修改推荐列表
                 a.btn.btn-primary.pull-right(href="/xiaoxiong-admin/menus") 返回所有推荐列表
+                button#remove-menu-btn.btn.btn-danger.pull-right.gap-right(data-id="#{menu._id}") 删除
         .row
             .col-md-6
                 ul.nav.nav-tabs.nav-justified.gap-bottom

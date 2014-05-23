@@ -10,6 +10,28 @@
 
         $('#fileupload_preview').show();
 
+        $("#remove-menu-btn").click(function(event) {
+            event.preventDefault()
+
+            if (!confirm("确认删除?")) {
+                return
+            }
+
+            var id = $(this).data("id")
+
+            $.ajax({
+                url : "/xiaoxiong-admin/menus/" + id,
+                type : "delete",
+            }).done(function(data) {
+                if (data.ok !== 1) {
+                    alert("删除失败")
+                } else {
+                    location.href= "/xiaoxiong-admin/menus"                    
+                }
+
+            })
+        })
+
         $form.submit(function(event) {
             var $self   = $(this);
 

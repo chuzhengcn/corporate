@@ -67,6 +67,7 @@ function init_routes(app) {
     app.get('/xiaoxiong-admin/menus/:id', xiaoxiong_admin_menu.info)
     app.get('/xiaoxiong-admin/menus-edit/:id', xiaoxiong_admin_menu.edit_page)
     app.put('/xiaoxiong-admin/menus/:id', xiaoxiong_admin_menu.edit)
+    app.delete('/xiaoxiong-admin/menus/:id', xiaoxiong_admin_menu.remove)
 
     app.get('/xiaoxiong-admin/orders', xiaoxiong_admin_order.list)
     app.get('/xiaoxiong-admin/orders/:id', xiaoxiong_admin_order.info)
