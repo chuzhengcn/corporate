@@ -9,9 +9,15 @@
         $.ajax({
             url : "/xiaoxiong/cart/" + open_id,
         }).done(function(data) {
-            if (data.ok !== 1 || data.cart.length < 1) {
+            if (data.ok !== 1) {
                 alert('获取购物车数据出错，请重试')
                 return 
+            }
+
+            if (data.cart.length < 1) {
+                alert('购物车内没有东东，请先选购商品')
+                location.href = "/xiaoxiong/menus-today/user/" + open_id
+                return
             }
 
             data.cart.forEach(function(item) {
