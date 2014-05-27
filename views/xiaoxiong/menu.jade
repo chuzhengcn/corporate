@@ -13,7 +13,7 @@ append body
                             a(href="/xiaoxiong/products/#{top_product._id}/user/#{open_id}")
                                 img.img-rounded.img-responsive(src="#{top_product.thumbnail}")
                         .panel-footer.clearfix
-                            span.label.label-info.pull-left 现价：#{(top_product.price / 100).toFixed(2)} 元
+                            span.label.label-info.pull-left 现价：#{(top_product.price / 100).toFixed(2)} 元 / #{top_product.unit}
                             button.btn.btn-primary.btn-sm.pull-right.add-cart-btn(data-productid="#{top_product._id}")  加入购物车
                 - each product in menu.products
                     .panel.panel-default
@@ -22,7 +22,7 @@ append body
                             a(href="/xiaoxiong/products/#{product._id}/user/#{open_id}")
                                 img.img-rounded.img-responsive(src="#{product.thumbnail}")
                         .panel-footer.clearfix
-                            span.label.label-info.pull-left 现价：#{(product.price / 100).toFixed(2)} 元
+                            span.label.label-info.pull-left 现价：#{(product.price / 100).toFixed(2)} 元 / #{top_product.unit}
                             button.btn.btn-primary.btn-sm.pull-right.add-cart-btn(data-productid="#{product._id}")  加入购物车
             - else
                 .alert.alert-warning 今日暂无供应

@@ -27,9 +27,9 @@ append body
                             img.img-thumbnail.thumbnail_in_table(src="#{product.thumbnail}")
                         td #{product.title}
                         td
-                            span.label.label-default #{(product.original_price / 100).toFixed(2)} 元
+                            span.label.label-default #{(product.original_price / 100).toFixed(2)} 元 / #{product.unit}
                         td
-                            span.label.label-info #{(product.price / 100).toFixed(2)} 元
+                            span.label.label-info #{(product.price / 100).toFixed(2)} 元 / #{product.unit}
                         td
                             .btn-group
                                 a.btn.btn-default(href="/xiaoxiong-admin/products/#{product._id}") 详情

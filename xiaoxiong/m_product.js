@@ -2,6 +2,13 @@ var async = require('async'),
     mongoose = require('mongoose'),
     Schema   = mongoose.Schema;
 
+var unit_config = {
+    "1" : "500克",
+    "2" : "个",
+}
+
+exports.unit_config = unit_config
+
 var product_schema = new Schema({
     title               : String,
     content             : String,
@@ -12,8 +19,10 @@ var product_schema = new Schema({
     create_at           : Number,
     modify_at           : Number,
     type                : String,
+    unit                : {type : String, default : unit_config["1"]},
     remove              : {type : String, default : "no"},
 })
+
 
 product_schema.index({ title : 1, type : 1})
 

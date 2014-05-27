@@ -14,9 +14,6 @@ append body
                 a#remove-product-btn.btn.btn-danger.pull-right.gap-right(href="/xiaoxiong-admin/products/#{product._id}") 删除
         form#edit-product-form(role="form", method="put", action="/xiaoxiong-admin/products/#{product._id}")
             .form-group
-                label(for="title") 名称
-                input.form-control(type="text", name="title", value="#{product.title}", required)
-            .form-group
                 label 现有类别
                 ol.breadcrumb
                     - each type, index in types
@@ -29,11 +26,22 @@ append body
                     - each top_type in top_type_list
                         option(value="#{top_type._id}") #{top_type.title}
             .form-group
+                label(for="title") 名称
+                input.form-control(type="text", name="title", value="#{product.title}", required)
+            .form-group
                 label(for="original_price") 原价
                 input.form-control(type="number", min="0.01", step="0.01", name="original_price", value="#{product.original_price / 100}", required)
             .form-group
                 label(for="price") 现价
                 input.form-control(type="number", min="0.01", step="0.01", name="price", value="#{product.price / 100}", required)
+            .form-group
+                label(for="unit") 单位
+                select.form-control(name="unit", value="#{product.unit}")
+                    - each unit in unit_config
+                        - if (unit === product.unit)
+                            option(value="#{unit}", selected) #{unit}
+                        - else
+                            option(value="#{unit}") #{unit}
             .form-group
                 label(for="thumbnail_url") 缩略图
                 input#fileupload.form-control(type="file", value="", name="thumbnail", data-url="/xiaoxiong-admin/upload/thumbnail")

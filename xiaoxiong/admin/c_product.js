@@ -3,7 +3,8 @@ var util                = require("util"),
     lib_util            = require("../../lib/util"),
     login               = require('./c_login'),
     m_product           = require("../m_product").Product,
-    m_product_type      = require("../m_product_type").ProductType;
+    m_product_type      = require("../m_product_type").ProductType,
+    unit_config         = require("../m_product").unit_config;
 
 exports.index = function (req, res) {
     login.check_login_and_send(req, res, function() {
@@ -25,7 +26,10 @@ exports.index = function (req, res) {
 exports.create_page = function(req, res) {
     login.check_login_and_send(req, res, function() {
         m_product_type.find_top_level(function(err, docs) {
-            res.render('xiaoxiong/admin/create_product', {top_type_list : docs})
+            res.render('xiaoxiong/admin/create_product', {
+                top_type_list : docs,
+                unit_config   : unit_config,
+            })
         })
     })
 }
@@ -37,6 +41,7 @@ exports.create = function(req, res) {
                 title           : req.body.title,
                 content         : req.body.content,
                 thumbnail       : req.body.thumbnail_url || "/xiaoxiong/img/blank-product.jpg",
+                unit            : req.body.unit,
                 original_price  : parseFloat(req.body.original_price) * 100,
                 price           : parseFloat(req.body.price) * 100,
                 create_date     : moment(now).format("YYYY-MM-DD"),
@@ -78,6 +83,7 @@ exports.edit_page = function(req, res) {
                         product : doc,
                         types   : type_docs,
                         top_type_list : top_type_docs,
+                        unit_config : unit_config,
                     }) 
                 })
             })
@@ -91,6 +97,7 @@ exports.edit = function(req, res) {
             doc = {
                 title           : req.body.title,
                 content         : req.body.content,
+                unit            : req.body.unit,
                 thumbnail       : req.body.thumbnail_url,
                 original_price  : parseFloat(req.body.original_price) * 100,
                 price           : parseFloat(req.body.price) * 100,

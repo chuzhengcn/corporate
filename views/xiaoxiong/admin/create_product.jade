@@ -27,6 +27,11 @@ append body
                 label(for="price") 现价
                 input.form-control(type="number", min="0.01", step="0.01", name="price", value="", required)
             .form-group
+                label(for="unit") 单位
+                select.form-control(name="unit")
+                    - each unit in unit_config
+                        option(value="#{unit}") #{unit}
+            .form-group
                 label(for="thumbnail_url") 缩略图
                 input#fileupload.form-control(type="file", value="", name="thumbnail", data-url="/xiaoxiong-admin/upload/thumbnail")
                 input#fileupload_url(type="hidden", name="thumbnail_url", value="")

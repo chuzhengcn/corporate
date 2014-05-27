@@ -8,7 +8,7 @@ append body
             .panel-heading.clearfix
                 a.btn.btn-default.pull-left(href="/xiaoxiong/menus-today/user/#{open_id}") 
                     | 今日所有产品
-                span.label.label-info.pull-right #{(product.price / 100).toFixed(2)}元
+                span.label.label-info.pull-right #{(product.price / 100).toFixed(2)}元 / #{product.unit}
             .panel-body
                 h3 #{product.title}
                 p.text-center
