@@ -8,15 +8,14 @@ var express     = require('express'),
     init_routes = require('./routes'),
     http        = require('http'),
     path        = require('path'),
-    config      = require('./config/index'),
+    env         = require('./env'),
     mongoose    = require('mongoose'),
     app         = express();
 
-console.log(process.env.PORT)
 
 var connect = function () {
     var options = { server: { socketOptions: { keepAlive: 1 } } }
-    mongoose.connect(config.db, options)
+    mongoose.connect(env.mongo_url, options)
 }
 connect()
 
