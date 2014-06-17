@@ -34,7 +34,7 @@ mongoose.connection.on('disconnected', function () {
 })
 
 // all environments
-app.set('port', process.env.PORT || 18080);
+app.set('port', env.port);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
