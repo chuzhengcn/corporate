@@ -12,6 +12,8 @@ var express     = require('express'),
     mongoose    = require('mongoose'),
     app         = express();
 
+console.log(process.env.PORT)
+
 var connect = function () {
     var options = { server: { socketOptions: { keepAlive: 1 } } }
     mongoose.connect(config.db, options)
