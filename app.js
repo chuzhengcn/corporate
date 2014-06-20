@@ -8,7 +8,7 @@ var express     = require('express'),
     init_routes = require('./routes'),
     http        = require('http'),
     path        = require('path'),
-    env         = require('./env'),
+    env         = require('./fy_env'),
     mongoose    = require('mongoose'),
     app         = express();
 

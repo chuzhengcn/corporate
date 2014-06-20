@@ -11,10 +11,10 @@ pids
 logs
 results
 .env
-env.js
+fy_env.js
 
 npm-debug.log
-node_modules
+#node_modules
 
 tmp/*
 !tmp/readme
